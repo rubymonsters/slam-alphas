@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @name.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @name.country %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @name.email %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @name.age %>
+</p>
+
+<%= link_to 'Edit', edit_name_path(@name) %> |
+<%= link_to 'Back', names_path %>
