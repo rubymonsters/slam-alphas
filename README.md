@@ -2,4 +2,4 @@
 
 # Requirements
 
-- Ruby 2.1.5
+- Ruby 2.2.4
