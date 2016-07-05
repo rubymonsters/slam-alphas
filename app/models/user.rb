@@ -8,5 +8,5 @@ include ActiveModel::Validations
 	validates :email, email: true
 
   # customized validity check in app/validators/website_validator.rb
-	validates :website, website: true
+	validates :website, website: true, allow_blank: true
 end
