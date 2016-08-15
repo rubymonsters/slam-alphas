@@ -22,10 +22,9 @@ ActiveRecord::Schema.define(version: 20160815174813) do
     t.string   "country"
     t.string   "email"
     t.integer  "age"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "website"
-    t.string   "email_confirmation"
     t.string   "facebook_link"
   end
 
