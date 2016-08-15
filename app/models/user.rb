@@ -9,4 +9,6 @@ include ActiveModel::Validations
 
   # customized validity check in app/validators/website_validator.rb
 	validates :website, website: true, allow_blank: true
+
+	validates :facebook_link, website: true, allow_blank: true
 end
