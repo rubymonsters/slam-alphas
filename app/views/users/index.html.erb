@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Users</h1>
-
+<div id="map"></div>
 <table>
   <thead>
     <tr>
@@ -37,3 +37,17 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+<script>
+    var map = L.map('map',{
+    center: [50.931, 11.272],
+    zoom: 6
+    });
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker = L.marker([50.931, 11.272]).addTo(map);
+
+</script>
