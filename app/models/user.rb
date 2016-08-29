@@ -11,4 +11,11 @@ include ActiveModel::Validations
 	validates :website, website: true, allow_blank: true
 
 	validates :facebook_link, website: true, allow_blank: true
+
+	geocoded_by :location
+  after_validation :geocode
+
+	def location
+		[city, country].compact.join(", ")
+	end
 end
