@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   get "/pages/:id" => "pages#show", as: :page
   root "pages#show", id: "home"
+
+  get '/karten/:country', to:'maps#show'
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
