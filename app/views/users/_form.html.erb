@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.select :country, [['Deutschland', 'de'], ['Schweiz', 'ch'], ['Österreich', 'at']] %>
+    <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
