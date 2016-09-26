@@ -1,5 +1,12 @@
 class User < ActiveRecord::Base
 include ActiveModel::Validations
+
+  COUNTRIES = {
+    de: "Deutschland",
+    at: "Osterreich",
+    ch: "Schweiz"
+  }
+
 	validates :name, :city, :email, presence: true
 	validates :name, length: { minimum: 2 }
 	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -18,4 +25,9 @@ include ActiveModel::Validations
 	def location
 		[city, country].compact.join(", ")
 	end
+
+  def country_name
+    COUNTRIES[country.to_sym]
+  end
+  
 end

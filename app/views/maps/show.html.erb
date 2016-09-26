@@ -1,0 +1,17 @@
+<div id="map"></div>
+<script>
+    var map = L.map('map',{
+    center: <%= @center %>,
+    zoom: <%= @zoom %>,
+    });
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    <% @users.each do |user| %>
+      L.marker(
+        [<%= user.latitude %>, <%= user.longitude %>]
+      ).addTo(map);
+    <% end %>
+</script>
