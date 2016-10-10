@@ -8,9 +8,10 @@ ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 7}
       @users = User.where(country: map_params[:country])
       @center = CENTERS[map_params[:country]]
       @zoom = ZOOMS[map_params[:country]]
-    else 
+      @cities = User.all.pluck(:city).uniq
+    else
     	render plain: "404 Not Found", status: 404
-    end	
+    end
   end
 
   private
