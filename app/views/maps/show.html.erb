@@ -9,9 +9,15 @@
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    <% @users.each do |user| %>
-      L.marker(
-        [<%= user.latitude %>, <%= user.longitude %>]
-      ).addTo(map);
+    var clusters = {};
+    <% @cities.each do |city| %>
+      clusters["<%= city %>"] = L.markerClusterGroup();
+      <% @users.select {|user| user.city == city}.each do |user| %>
+        clusters["<%= city %>"].addLayer(L.marker(
+          [<%= user.latitude %>, <%= user.longitude %>]
+        ))
+      <% end %>
+      map.addLayer(clusters["<%= city %>"]);
     <% end %>
+
 </script>
