@@ -7,9 +7,10 @@ include ActiveModel::Validations
     ch: "Schweiz"
   }
 
-	validates :name, :city, :email, presence: true
+	validates :name, :city, :email, :country, presence: true
 	validates :name, length: { minimum: 2 }
 	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
+  validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s } 
 
 	# customized validity check in app/validators/email_validator.rb
 	validates :email, email: true
@@ -29,5 +30,5 @@ include ActiveModel::Validations
   def country_name
     COUNTRIES[country.to_sym]
   end
-  
+
 end
