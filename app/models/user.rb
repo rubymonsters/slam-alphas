@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Clearance::User
+
 include ActiveModel::Validations
 
   COUNTRIES = {

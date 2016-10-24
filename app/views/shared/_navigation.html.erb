@@ -2,4 +2,12 @@
   <li><a href="/">Home</a></li>
   <li><a href="<%= users_path %>">Users</a></li>
   <li><a href="<%= page_path("about") %>">About</a></li>
+  <li>
+    <% if signed_in? %>
+      Signed in as: <%= current_user.email %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+    <% end %>
+  </li>
   </ul>
