@@ -24,6 +24,7 @@ gem 'pg'
 gem 'addressable', '~> 2.4'
 gem 'puma'
 gem 'geocoder'
+gem 'clearance'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
