@@ -117,7 +117,7 @@ pre {
 
 button,
 input[type=submit] {
-  background: blue;
+  background: #1837a0;
   color: white;
   font-family: inherit;
   border: 2px solid black;
@@ -221,15 +221,16 @@ input[type=submit] {
     .l-main {
       overflow: scroll; } }
 
-.l-content {
+.l-content, .l-content--noflex {
   max-width: 950px;
   height: auto;
   padding: 53px 37px;
   margin-right: auto;
   margin-left: auto; }
-  @media (min-width: 800px) {
-    .l-content {
-      display: flex; } }
+
+@media (min-width: 800px) {
+  .l-content {
+    display: flex; } }
 
 @media (min-width: 800px) {
   .col-2 {
@@ -262,7 +263,8 @@ input[type=submit] {
   .social a {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 20px; }
+    font-size: 20px;
+    color: inherit; }
 
 .navigation,
 .social {
@@ -311,6 +313,20 @@ input[type=submit] {
 .post-single {
   padding-bottom: 100px;
   max-width: calc(95-px / 100 * 66); }
+
+.aligncenter {
+  margin: auto; }
+
+.alignleft {
+  float: left;
+  margin-right: 2em; }
+
+.alignright {
+  float: right;
+  margin-left: 2em; }
+
+hr {
+  border: 2px solid black; }
 
 .logo {
   margin-bottom: 0;
