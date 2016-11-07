@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
-  include Clearance::User
-
-include ActiveModel::Validations
+	include ActiveModel::Validations
 
   COUNTRIES = {
     de: "Deutschland",
@@ -15,20 +13,20 @@ include ActiveModel::Validations
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true
 
-	# customized validity check in app/validators/email_validator.rb
-	validates :email, email: true
+  # customized validity check in app/validators/email_validator.rb
+  validates :email, email: true
 
   # customized validity check in app/validators/website_validator.rb
-	validates :website, website: true, allow_blank: true
+  validates :website, website: true, allow_blank: true
 
-	validates :facebook_link, website: true, allow_blank: true
+  validates :facebook_link, website: true, allow_blank: true
 
-	geocoded_by :location
+  geocoded_by :location
   after_validation :geocode
 
-	def location
-		[city, country].compact.join(", ")
-	end
+  def location
+    [city, country].compact.join(", ")
+  end
 
   def country_name
     COUNTRIES[country.to_sym]
