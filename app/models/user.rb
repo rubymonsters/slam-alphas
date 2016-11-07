@@ -12,7 +12,8 @@ include ActiveModel::Validations
 	validates :name, :city, :email, :country, presence: true
 	validates :name, length: { minimum: 2 }
 	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
-  validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s } 
+  validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
+  validates :password, confirmation: true
 
 	# customized validity check in app/validators/email_validator.rb
 	validates :email, email: true
