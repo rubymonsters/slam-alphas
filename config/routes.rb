@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resource :session, controller: "clearance/sessions", only: [:create]
 
   resources :users, controller: "users", except: [:new] do
+    member do
+      get :change_password
+      patch :update_password
+    end
+
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
