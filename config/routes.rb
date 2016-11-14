@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "users", except: [:new] do
+  resources :users, controller: "users" do
     member do
       get :change_password
       patch :update_password
