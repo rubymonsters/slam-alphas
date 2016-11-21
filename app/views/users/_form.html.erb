@@ -39,6 +39,18 @@
     <%= f.label :facebook_link %><br>
     <%= f.text_field :facebook_link %>
   </div>
+
+  <% if show_password_fields %>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

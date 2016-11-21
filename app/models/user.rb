@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	include ActiveModel::Validations
+	include Clearance::User
 
   COUNTRIES = {
     de: "Deutschland",
