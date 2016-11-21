@@ -1,5 +1,6 @@
 class UsersController < Clearance::UsersController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
+  before_action -> {disallow_unless(@user)}, only: [:edit, :update, :destroy, :change_password, :update_password]
 
   # GET /users
   # GET /users.json
