@@ -1,11 +1,11 @@
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
-    <%= form.label :email %>
+    <%= form.label :email, "E-Mail" %>
     <%= form.text_field :email, type: 'email' %>
   </div>
 
   <div class="password-field">
-    <%= form.label :password %>
+    <%= form.label "Passwort" %>
     <%= form.password_field :password %>
   </div>
 

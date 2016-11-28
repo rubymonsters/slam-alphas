@@ -1,15 +1,17 @@
-<ul class="nav">
-  <li><a href="/">Home</a></li>
-  <li><a href="<%= users_path %>">Users</a></li>
-  <li><a href="<%= page_path("about") %>">About</a></li>
-  <li>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-  </li>
+<nav class="l-navigation">
+  <button class="navigation-button" type="button" title="close navigation">X</button>
+  <ul class="navigation">
+    <li><a href="https://slamalphas.org/">Die Idee</a></li>
+    <li><a href="https://slamalphas.org/blog/">Blog</a></li>
+    <li><a href="<%= users_path %>">Karten</a></li>
+    <li><a href="https://slamalphas.org/faq/">FAQ</a></li>
+    <li>
+    <% if signed_in? %> 
+    <a href="<%= sign_out_path %>">Abmelden</a>
+    <% else %> 
+    <a href="<%= sign_in_path %>">Anmelden</a>
+    <% end %> 
+    </li>
   </ul>
   <ul class="social">
     <li><a href="https://www.facebook.com/Slamalphas-947352311952336/" title="Slam Alphas on Facebook">
