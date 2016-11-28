@@ -5,11 +5,11 @@ one:
   city: MyString
   country: MyString
   email: MyString
-  age: 1
+  year_of_birth: 1
 
 two:
   name: MyString
   city: MyString
   country: MyString
   email: MyString
-  age: 1
+  year_of_birth: 1

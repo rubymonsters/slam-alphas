@@ -31,7 +31,7 @@ en:
       session:
         submit: Anmelden
       user:
-        create: Sign up
+        create: Profil anlegen
   layouts:
     application:
       sign_in: Sign in
@@ -56,4 +56,4 @@ en:
   users:
     new:
       sign_in: Sign in
-      title: Sign up
+      title: Profil anlegen
