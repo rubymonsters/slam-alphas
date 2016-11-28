@@ -19,7 +19,7 @@ en:
     failure_when_not_signed_in: Please sign in to continue.
   helpers:
     label:
-      password:
+      password: 
         email: Email address
       password_reset:
         password: Choose password
@@ -29,7 +29,7 @@ en:
       password_reset:
         submit: Save this password
       session:
-        submit: Sign in
+        submit: Anmelden
       user:
         create: Sign up
   layouts:
@@ -49,10 +49,10 @@ en:
       title: Reset your password
   sessions:
     form:
-      forgot_password: Forgot password?
-      sign_up: Sign up
+      forgot_password: Passwort vergessen?
+      sign_up: Neues Profil!
     new:
-      title: Sign in
+      title: Anmelden
   users:
     new:
       sign_in: Sign in
