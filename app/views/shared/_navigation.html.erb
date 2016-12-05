@@ -6,11 +6,11 @@
     <li><a href="<%= users_path %>">Karten</a></li>
     <li><a href="https://slamalphas.org/faq/">FAQ</a></li>
     <li>
-    <% if signed_in? %> 
-    <a href="<%= sign_out_path %>">Abmelden</a>
-    <% else %> 
+    <% if signed_in? %>
+    <%= link_to "Abmelden", sign_out_path, method: :delete %>
+    <% else %>
     <a href="<%= sign_in_path %>">Anmelden</a>
-    <% end %> 
+    <% end %>
     </li>
   </ul>
   <ul class="social">
