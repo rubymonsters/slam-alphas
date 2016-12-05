@@ -1,0 +1,16 @@
+<aside class="l-alphabet">
+  <ul>
+    <% @alphas.each do |user| %>
+      <li><a href="#"><%= user.name.first %></a></li>
+    <% end %>
+  </ul>
+</aside>
+<div class="list-alphabet">
+  <button class="list-button" type="button" title="close list">X</button>
+  <% @alphas.each do |user| %>
+    <h3 class="title-main"><%= user.name.first %></h3>
+    <ul>
+      <li><a href="#"><%= user.name %> (<%= user.country.upcase %>)</a></li>
+    </ul>
+  <% end %>
+</div>
