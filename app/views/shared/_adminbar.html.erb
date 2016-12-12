@@ -1,0 +1,10 @@
+<% if signed_in? %>
+<div class="topbar">
+  <p>Hey there!</p>
+  <ul>
+    <li><%= link_to "Alle", users_path %> |</li>
+    <li><%= link_to "Neu", new_user_path %> |</li>
+    <li><%= link_to "Abmelden", sign_out_path, method: :delete %></li>
+  </ul>
+</div>
+<% end %>
