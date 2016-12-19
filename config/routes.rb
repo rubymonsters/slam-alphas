@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   resources :users
 
   get "/pages/:id" => "pages#show", as: :page
-  root "pages#show", id: "home"
-
-  get '/karten/:country', to:'maps#show'
-
+  get '/karte/:country', to:'maps#show', as: :map
+  get 'karte', to: redirect("/karte/de")
 
 
 
