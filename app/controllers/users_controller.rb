@@ -2,6 +2,10 @@ class UsersController < Clearance::UsersController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
   before_action :disallow_unless_admin, only: [:edit, :update, :destroy, :change_password, :update_password]
 
+  CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
+  ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 7}
+  MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
+
   # GET /users
   # GET /users.json
   def index
@@ -11,6 +15,18 @@ class UsersController < Clearance::UsersController
   # GET /users/1
   # GET /users/1.json
   def show
+    @center = CENTERS[@user[:country]]
+    @zoom = ZOOMS[@user[:country]]
+    @marker = MARKERS[@user[:country]]
+
+    @alphas = User.all.sort_by {|x| x.name }
+    @list = Array.new
+
+    @alphas.each do |x|
+      unless @list.include? x.name.first
+        @list.push(x.name.first)
+      end
+    end
   end
 
   # GET /users/new
