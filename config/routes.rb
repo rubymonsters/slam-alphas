@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   get "/pages/:id" => "pages#show", as: :page
-  get '/karte/:country', to:'maps#show', as: :map
+  get '/karte/:country', to: 'maps#show', as: :map
   get 'karte', to: redirect("/karte/de")
 
   root to: redirect("/karte/de")
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: redirect("karte")
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
