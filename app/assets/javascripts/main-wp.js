@@ -1,10 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector('body').classList.add('has-js');
 
   // tofuburger toggle
-  
+
   var burger = document.querySelector('.logo-burger');
   var cross = document.querySelector('.navigation-button');
   var nav = document.querySelector('.l-navigation');
@@ -50,6 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
     listClose.addEventListener('click', function () {
       alphabetList.classList.add('is-hidden');
     });
-  }  
-});
 
+    // profile toggle
+    var profileElem = document.querySelector('.slam-profile');
+    var profileClose = document.querySelector('.profile-button');
+
+    if (profileElem && profileClose) {
+      profileClose.addEventListener('click', function () {
+        profileElem.classList.add('is-hidden');
+      });
+    }
+  }
+});

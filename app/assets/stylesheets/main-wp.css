@@ -371,6 +371,14 @@ hr {
   overflow: hidden;
   transition: height 200ms ease; }
 
+.l-map {
+  width: 100%;
+  height: 100%; }
+
+#map {
+  min-height: 100vh;
+  z-index: 1; }
+
 .logo {
   margin-bottom: 0;
   flex: 1 0 60%;
@@ -513,9 +521,11 @@ button {
     .list-alphabet a:hover, .list-alphabet a:active {
       text-decoration: underline;
       color: black; }
-  .has-js .list-alphabet.is-hidden {
-    transform: translateX(-150%);
-    z-index: -1; }
+  .has-js .list-alphabet {
+    transform: translateX(109%); }
+    .has-js .list-alphabet.is-hidden {
+      transform: translateX(-150%);
+      z-index: -1; }
 
 .list-button {
   float: right;
@@ -526,5 +536,41 @@ button {
   font-size: 2rem;
   font-weight: 600; }
   .list-button:hover, .list-button:active {
+    background: none;
+    color: #e63831; }
+
+.slam-profile {
+  position: absolute;
+  width: 300px;
+  left: 329px;
+  height: 100%;
+  padding: 4.5em 1.2em 1em;
+  z-index: 2;
+  background: white;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  transition: transform 200ms ease;
+  z-index: 2; }
+  .slam-profile header {
+    margin: 0 0 3px;
+    text-align: center; }
+    .slam-profile header h1 {
+      line-height: 1; }
+  .has-js .slam-profile.is-hidden {
+    transform: translateX(-150%);
+    z-index: -1; }
+
+.profile-button {
+  position: absolute;
+  top: 16px;
+  right: 19px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600; }
+  .profile-button:hover, .profile-button:active {
     background: none;
     color: #e63831; }
