@@ -133,7 +133,7 @@ figure {
     flex-flow: column nowrap;
     flex: 0 0 284px;
     border-right: 6px solid black;
-    z-index: 3; } }
+    z-index: 4; } }
 
 .l-logo {
   flex: 0 0 100%;
@@ -203,7 +203,7 @@ figure {
   @media (min-width: 800px) {
     .l-alphabet {
       border-right: 6px solid black;
-      z-index: 3; } }
+      z-index: 4; } }
 
 .l-main {
   flex-grow: 1;
@@ -499,10 +499,10 @@ button {
   border-top: 5px solid black;
   border-right: 5px solid black;
   border-bottom: 5px solid black;
-  width: 300px;
+  width: 301px;
   padding: 1em 1.2em;
   transition: transform 200ms ease;
-  z-index: 2; }
+  z-index: 3; }
   @media (min-width: 800px) {
     .list-alphabet {
       position: absolute;
