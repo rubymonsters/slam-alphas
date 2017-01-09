@@ -18,6 +18,13 @@
 </article>
 <div class="l-map">
     <div id="map"><div>
+    <nav class="map-nav is-<%= @user.country  %>">
+      <ul>
+        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
+        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
+        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+      </ul>
+    </nav>
 </div>
 
 <script>
