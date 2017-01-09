@@ -11,6 +11,7 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
       @zoom = ZOOMS[map_params[:country]]
       @cities = User.all.pluck(:city).uniq
       @marker = MARKERS[map_params[:country]]
+      @country = map_params[:country]
     else
       render plain: "404 Not Found", status: 404
     end
