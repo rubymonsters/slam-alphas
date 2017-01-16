@@ -1,6 +1,6 @@
 class UsersController < Clearance::UsersController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
-  before_action -> {disallow_unless(@user)}, only: [:edit, :update, :destroy, :change_password, :update_password]
+  before_action :disallow_unless_admin, only: [:edit, :update, :destroy, :change_password, :update_password]
 
   # GET /users
   # GET /users.json
@@ -86,6 +86,6 @@ class UsersController < Clearance::UsersController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :city, :country, :email, :year_of_birth, :website, :facebook_link, :password, :password_confirmation)
+      params.require(:user).permit(:name, :city, :country, :email, :year_of_birth, :website, :facebook_link, :password, :password_confirmation, :public, :admin)
     end
 end

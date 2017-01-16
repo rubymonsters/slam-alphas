@@ -8,7 +8,15 @@ class ApplicationController < ActionController::Base
     signed_in? && current_user == user
   end
 
+  def signed_in_as_admin?
+    signed_in? && current_user.admin?
+  end
+
   def disallow_unless(user)
     redirect_to root_url unless signed_in_as?(user)
+  end
+
+  def disallow_unless_admin
+    redirect_to root_url unless signed_in_as_admin?
   end
 end

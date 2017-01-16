@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	validates :name, length: { minimum: 2 }
 	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
-  validates :password, confirmation: true
+  validates :password, confirmation: true, unless: :persisted?
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true

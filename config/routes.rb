@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
-  resource :session, controller: "clearance/sessions", only: [:create]
+  resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users" do
     member do
@@ -13,13 +13,15 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  get "/sign_in" => "sessions#new", as: "sign_in"
+  delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   get "/pages/:id" => "pages#show", as: :page
   get '/karte/:country', to:'maps#show', as: :map
   get 'karte', to: redirect("/karte/de")
+
+  root to: redirect("/karte/de")
 
 
 
