@@ -5,6 +5,13 @@
     <li><a href="https://slamalphas.org/blog/">Blog</a></li>
     <li><a href="<%= users_path %>">Karten</a></li>
     <li><a href="https://slamalphas.org/faq/">FAQ</a></li>
+    <li>
+    <% if signed_in? %>
+    <%= link_to "Abmelden", sign_out_path, method: :delete %>
+    <% else %>
+    <a href="<%= sign_in_path %>">Anmelden</a>
+    <% end %>
+    </li>
   </ul>
   <ul class="social">
     <li><a href="https://www.facebook.com/Slamalphas-947352311952336/" title="Slam Alphas on Facebook">

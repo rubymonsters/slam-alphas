@@ -6,29 +6,30 @@
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Stadt:</strong>
   <%= @user.city %>
 </p>
 
 <p>
-  <strong>Country:</strong>
+  <strong>Land:</strong>
   <%= @user.country %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-Mail:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @user.age %>
+  <strong>Geburtsjahr:</strong>
+  <%= @user.year_of_birth %>
 </p>
 
 <p>
-  <strong>Website:</strong>
-  <a href="<%= @user.website %>">Website</a>
+  <strong>Webseite:</strong>
+  <a href="<%= @user.website %>">Webseite</a>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Change Password', change_password_user_path(@user) %> | 
 <%= link_to 'Back', users_path %>

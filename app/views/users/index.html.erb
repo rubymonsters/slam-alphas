@@ -18,9 +18,12 @@
         <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       </li>
     <% end %>
-  </ul>
-  <p><%= link_to 'New User', new_user_path %></p>
-</section>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', sign_up_path %>
 
 <script>
     var map = L.map('map',{

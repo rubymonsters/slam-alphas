@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-	include ActiveModel::Validations
+
+  include Clearance::User
+  include ActiveModel::Validations
 
   COUNTRIES = {
     de: "Deutschland",
@@ -7,10 +9,11 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
-  validates :name, :city, :email, :country, presence: true
-  validates :name, length: { minimum: 2 }
-  validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
-  validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s } 
+	validates :name, :city, :email, :country, presence: true
+	validates :name, length: { minimum: 2 }
+	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
+  validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
+  validates :password, confirmation: true, unless: :persisted?
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true

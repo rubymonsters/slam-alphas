@@ -1,1 +1,1 @@
-json.extract! @user, :id, :name, :city, :country, :email, :age, :created_at, :updated_at
+json.extract! @user, :id, :name, :city, :country, :email, :year_of_birth, :created_at, :updated_at
