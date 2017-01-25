@@ -31,13 +31,7 @@
         <%=render partial: "shared/list" %>
       <% end%>
 
-      <main class="l-main">
-        <div class="l-content--noflex">
-          <%= flash[:alert] %>
-          <%= yield %>
-
-        </div>
-      </main>
+      <%= yield %>
 
     </div>
   </body>
