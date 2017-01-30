@@ -1,20 +1,47 @@
-<div id="map"></div>
+<main class="l-map">
+  <div id="map"><div>
+    <nav class="map-nav is-<%= @country  %>">
+      <ul>
+        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
+        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
+        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+      </ul>
+    </nav>
+</main>
+
 <script>
-    var map = L.map('map',{
-    center: <%= @center %>,
-    zoom: <%= @zoom %>,
-    });
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    var clusters = {};
-    <% @cities.each do |city| %>
-      clusters["<%= city %>"] = L.markerClusterGroup();
-      <% @users.select {|user| user.city == city}.each do |user| %>
-        clusters["<%= city %>"].addLayer(L.marker(
-          [<%= user.latitude %>, <%= user.longitude %>]
-        ))
-      <% end %>
-      map.addLayer(clusters["<%= city %>"]);
-    <% end %>
+ var map = L.map('map', {
+     center: <%= @center %>,
+     zoom: <%= @zoom %>,
+     zoomControl: false,
+     attributionControl: false,
+     scrollWheelZoom: false
+ });
+
+ L.control.zoom({ position: 'topright' }).addTo(map);
+ L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
+  .addTo(map);
+
+ var marker = L.icon({
+     iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
+     iconSize: [30, 48],
+     iconAnchor: [15, 48],
+     riseOnHOver: true
+ });
+
+ var clusters = {};
+ <% @cities.each do |city| %>
+   clusters["<%= city %>"] = L.markerClusterGroup();
+   <% @users.select {|user| user.city == city}.each do |user| %>
+     clusters["<%= city %>"].addLayer(
+       L.marker(
+           [<%= user.latitude %>, <%= user.longitude %>],
+           { icon: marker })
+        .bindTooltip('<%= user.name %>')
+        .on('click', function (ev) {
+          window.location = '<%= user_path(user.id) %>';
+        }));
+   <% end %>
+ map.addLayer(clusters["<%= city %>"]);
+ <% end %>
 </script>

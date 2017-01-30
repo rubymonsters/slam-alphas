@@ -7,7 +7,7 @@
 
     <title>SlamAlphas</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
 </head>
   <body>
@@ -26,21 +26,13 @@
         <%=render partial:"shared/navigation"%>
 
       </header>
-      <aside class="l-alphabet">
-        <ul>
-          <li><a href="#">a</a></li>
-          <li><a href="#">b</a></li>
-          <li><a href="#">c</a></li>
-          <li><a href="#">d</a></li>
-        </ul>
-      </aside>
-      <main class="l-main">
-        <div class="l-content--noflex">
-          <%= flash[:alert] %>
-          <%= yield %>
 
-        </div>
-      </main>
+      <% if @alphas %>
+        <%=render partial: "shared/list" %>
+      <% end%>
+
+      <%= yield %>
+
     </div>
   </body>
 </html>

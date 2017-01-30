@@ -1,0 +1,29 @@
+%title-sub
+  margin-bottom: 0.4em
+  text-transform: uppercase
+  font-weight: 600
+  font-size: 20px
+
+.map-nav
+  position: absolute
+  right: 0
+  bottom: 0
+  padding: 1rem
+  z-index: 999
+
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+  a
+    @extend %title-sub
+    text-decoration: none
+    &:hover,
+    &:active
+      text-decoration: underline
+      color: inherit
+
+  @each $country, $color in (de, red), (at, blue), (ch, turquoise)
+    &.is-#{$country}
+      .#{$country}
+        color: $color

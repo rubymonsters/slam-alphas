@@ -1,0 +1,20 @@
+<aside class="l-alphabet">
+  <ul>
+    <% @list.each do |char| %>
+      <li><%= link_to char, "#{char.downcase}" %></li>
+    <% end %>
+  </ul>
+</aside>
+<div class="list-alphabet">
+  <button class="list-button" type="button" title="close list">X</button>
+  <ul>
+    <% @alphas.each_with_index do |user, i| %>
+      <% if @alphas[i-1].name.first != user.name.first %>
+        <li><h3 class="title-main"><%= user.name.first %></h3></li>
+      <% end %>
+      <li><%= link_to user_path(user.id), {title: "Zu #{user.name}s Profil"}  do %>
+        <%= user.name %> (<%= user.country.upcase %>)
+      <% end %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,35 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<article class="slam-profile">
+    <button class="profile-button" type="button" title="close profile">X</button>
+    <header>
+        <h1 class="title-sub"><%= @user.name %></h1>
+        <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
+    </header>
+    <div>
+        <p>
+          <a href="<%= @user.website %>">website</a>
+        </p>
+        <p>
+          <%= link_to 'Edit', edit_user_path(@user) %> |
+          <%= link_to 'Back', users_path %>
+        </p>
+    </div>
+</article>
+<div class="l-map">
+    <div id="map"><div>
+    <nav class="map-nav is-<%= @user.country  %>">
+      <ul>
+        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
+        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
+        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+      </ul>
+    </nav>
+</div>
 
-<p>
-  <strong>Stadt:</strong>
-  <%= @user.city %>
-</p>
+<script>
+ var map = L.map('map', {
+     center: <%= @center %>,
+     zoom: <%= @zoom %>,
+     zoomControl: false,
+     attributionControl: false,
+     scrollWheelZoom: false
+ });
 
-<p>
-  <strong>Land:</strong>
-  <%= @user.country %>
-</p>
+ L.control.zoom({ position: 'topright' }).addTo(map);
+ L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
+  .addTo(map);
 
-<p>
-  <strong>E-Mail:</strong>
-  <%= @user.email %>
-</p>
+ var marker = L.icon({
+     iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
+     iconSize: [30, 48],
+     iconAnchor: [15, 48],
+     riseOnHOver: true
+ });
 
-<p>
-  <strong>Geburtsjahr:</strong>
-  <%= @user.year_of_birth %>
-</p>
-
-<p>
-  <strong>Webseite:</strong>
-  <a href="<%= @user.website %>">Webseite</a>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Change Password', change_password_user_path(@user) %> | 
-<%= link_to 'Back', users_path %>
+ var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
+                       { icon: marker }).addTo(map);
+ marker.bindTooltip('<%= @user.name %>');
+ marker.on('click', function (ev) {
+   if (document.querySelector('.slam-profile').classList.contains('is-hidden')) {
+     document.querySelector('.slam-profile').classList.remove('is-hidden');
+   }
+ });
+</script>
