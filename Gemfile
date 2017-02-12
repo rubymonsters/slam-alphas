@@ -23,6 +23,7 @@ gem 'addressable', '~> 2.4'
 gem 'puma'
 gem 'geocoder'
 gem 'clearance'
+gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
 
 # Use ActiveModel has_secure_password
