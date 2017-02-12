@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
+
+    resource :avatar
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"
