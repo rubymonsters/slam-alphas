@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128200204) do
+ActiveRecord::Schema.define(version: 20170212180701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20161128200204) do
     t.string   "country"
     t.string   "email"
     t.integer  "year_of_birth"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "website"
     t.string   "facebook_link"
     t.float    "latitude"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20161128200204) do
     t.string   "remember_token",     limit: 128
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "image"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
