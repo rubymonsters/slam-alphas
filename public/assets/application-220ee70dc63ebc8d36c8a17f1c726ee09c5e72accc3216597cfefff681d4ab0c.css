@@ -1,0 +1,1335 @@
+/* required styles */
+
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-map-pane svg,
+.leaflet-map-pane canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+.leaflet-container {
+	overflow: hidden;
+	}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+	  -webkit-user-drag: none;
+	}
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.leaflet-safari .leaflet-tile {
+	image-rendering: -webkit-optimize-contrast;
+	}
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.leaflet-safari .leaflet-tile-container {
+	width: 1600px;
+	height: 1600px;
+	-webkit-transform-origin: 0 0;
+	}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	display: block;
+	}
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+.leaflet-container .leaflet-overlay-pane svg,
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer {
+	max-width: none !important;
+	}
+
+.leaflet-container.leaflet-touch-zoom {
+	-ms-touch-action: pan-x pan-y;
+	touch-action: pan-x pan-y;
+	}
+.leaflet-container.leaflet-touch-drag {
+	-ms-touch-action: pinch-zoom;
+	}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-drag {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.leaflet-tile {
+	filter: inherit;
+	visibility: hidden;
+	}
+.leaflet-tile-loaded {
+	visibility: inherit;
+	}
+.leaflet-zoom-box {
+	width: 0;
+	height: 0;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	z-index: 800;
+	}
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	}
+
+.leaflet-pane         { z-index: 400; }
+
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+
+.leaflet-vml-shape {
+	width: 1px;
+	height: 1px;
+	}
+.lvml {
+	behavior: url(#default#VML);
+	display: inline-block;
+	position: absolute;
+	}
+
+
+/* control positioning */
+
+.leaflet-control {
+	position: relative;
+	z-index: 800;
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.leaflet-top,
+.leaflet-bottom {
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	}
+.leaflet-top {
+	top: 0;
+	}
+.leaflet-right {
+	right: 0;
+	}
+.leaflet-bottom {
+	bottom: 0;
+	}
+.leaflet-left {
+	left: 0;
+	}
+.leaflet-control {
+	float: left;
+	clear: both;
+	}
+.leaflet-right .leaflet-control {
+	float: right;
+	}
+.leaflet-top .leaflet-control {
+	margin-top: 10px;
+	}
+.leaflet-bottom .leaflet-control {
+	margin-bottom: 10px;
+	}
+.leaflet-left .leaflet-control {
+	margin-left: 10px;
+	}
+.leaflet-right .leaflet-control {
+	margin-right: 10px;
+	}
+
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-tile {
+	will-change: opacity;
+	}
+.leaflet-fade-anim .leaflet-popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	   -moz-transition: opacity 0.2s linear;
+	     -o-transition: opacity 0.2s linear;
+	        transition: opacity 0.2s linear;
+	}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+	opacity: 1;
+	}
+.leaflet-zoom-animated {
+	-webkit-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	}
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	will-change: transform;
+	}
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+	     -o-transition:      -o-transform 0.25s cubic-bezier(0,0,0.25,1);
+	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+	}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	     -o-transition: none;
+	        transition: none;
+	}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+	visibility: hidden;
+	}
+
+
+/* cursors */
+
+.leaflet-interactive {
+	cursor: pointer;
+	}
+.leaflet-grab {
+	cursor: -webkit-grab;
+	cursor:    -moz-grab;
+	}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+	cursor: crosshair;
+	}
+.leaflet-popup-pane,
+.leaflet-control {
+	cursor: auto;
+	}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor:    -moz-grabbing;
+	}
+
+/* marker & overlays interactivity */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+	pointer-events: none;
+	}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+
+.leaflet-container {
+	background: #ddd;
+	outline: 0;
+	}
+.leaflet-container a {
+	color: #0078A8;
+	}
+.leaflet-container a.leaflet-active {
+	outline: 2px solid orange;
+	}
+.leaflet-zoom-box {
+	border: 2px dotted #38f;
+	background: rgba(255,255,255,0.5);
+	}
+
+
+/* general typography */
+.leaflet-container {
+	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+
+
+/* general toolbar styles */
+
+.leaflet-bar {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	border-radius: 4px;
+	}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+	}
+.leaflet-bar a:hover {
+	background-color: #f4f4f4;
+	}
+.leaflet-bar a:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	}
+.leaflet-bar a:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom: none;
+	}
+.leaflet-bar a.leaflet-disabled {
+	cursor: default;
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.leaflet-touch .leaflet-bar a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	}
+
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+.leaflet-control-zoom-out {
+	font-size: 20px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in {
+	font-size: 22px;
+	}
+.leaflet-touch .leaflet-control-zoom-out {
+	font-size: 24px;
+	}
+
+
+/* layers control */
+
+.leaflet-control-layers {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	background: #fff;
+	border-radius: 5px;
+	}
+.leaflet-control-layers-toggle {
+	background-image: url(images/layers.png);
+	width: 36px;
+	height: 36px;
+	}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url(images/layers-2x.png);
+	background-size: 26px 26px;
+	}
+.leaflet-touch .leaflet-control-layers-toggle {
+	width: 44px;
+	height: 44px;
+	}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: none;
+	}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+	display: block;
+	position: relative;
+	}
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+	}
+.leaflet-control-layers-scrollbar {
+	overflow-y: scroll;
+	padding-right: 5px;
+	}
+.leaflet-control-layers-selector {
+	margin-top: 2px;
+	position: relative;
+	top: 1px;
+	}
+.leaflet-control-layers label {
+	display: block;
+	}
+.leaflet-control-layers-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 5px -10px 5px -6px;
+	}
+
+/* Default icon URLs */
+.leaflet-default-icon-path {
+	background-image: url(images/marker-icon.png);
+	}
+
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.7);
+	margin: 0;
+	}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	}
+.leaflet-control-attribution a {
+	text-decoration: none;
+	}
+.leaflet-control-attribution a:hover {
+	text-decoration: underline;
+	}
+.leaflet-container .leaflet-control-attribution,
+.leaflet-container .leaflet-control-scale {
+	font-size: 11px;
+	}
+.leaflet-left .leaflet-control-scale {
+	margin-left: 5px;
+	}
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 5px;
+	}
+.leaflet-control-scale-line {
+	border: 2px solid #777;
+	border-top: none;
+	line-height: 1.1;
+	padding: 2px 5px 1px;
+	font-size: 11px;
+	white-space: nowrap;
+	overflow: hidden;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+
+	background: #fff;
+	background: rgba(255, 255, 255, 0.5);
+	}
+.leaflet-control-scale-line:not(:first-child) {
+	border-top: 2px solid #777;
+	border-bottom: none;
+	margin-top: -2px;
+	}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+	border-bottom: 2px solid #777;
+	}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	box-shadow: none;
+	}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+	}
+
+
+/* popup */
+
+.leaflet-popup {
+	position: absolute;
+	text-align: center;
+	margin-bottom: 20px;
+	}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	border-radius: 12px;
+	}
+.leaflet-popup-content {
+	margin: 13px 19px;
+	line-height: 1.4;
+	}
+.leaflet-popup-content p {
+	margin: 18px 0;
+	}
+.leaflet-popup-tip-container {
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	left: 50%;
+	margin-left: -20px;
+	overflow: hidden;
+	pointer-events: none;
+	}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: white;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+	}
+.leaflet-container a.leaflet-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 4px 4px 0 0;
+	border: none;
+	text-align: center;
+	width: 18px;
+	height: 14px;
+	font: 16px/14px Tahoma, Verdana, sans-serif;
+	color: #c3c3c3;
+	text-decoration: none;
+	font-weight: bold;
+	background: transparent;
+	}
+.leaflet-container a.leaflet-popup-close-button:hover {
+	color: #999;
+	}
+.leaflet-popup-scrolled {
+	overflow: auto;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+	zoom: 1;
+	}
+.leaflet-oldie .leaflet-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+.leaflet-oldie .leaflet-popup-tip-container {
+	margin-top: -1px;
+	}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.leaflet-div-icon {
+	background: #fff;
+	border: 1px solid #666;
+	}
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.leaflet-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.leaflet-tooltip.leaflet-clickable {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+	margin-top: 6px;
+}
+.leaflet-tooltip-top {
+	margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+	left: 50%;
+	margin-left: -6px;
+	}
+.leaflet-tooltip-top:before {
+	bottom: 0;
+	margin-bottom: -12px;
+	border-top-color: #fff;
+	}
+.leaflet-tooltip-bottom:before {
+	top: 0;
+	margin-top: -12px;
+	margin-left: -6px;
+	border-bottom-color: #fff;
+	}
+.leaflet-tooltip-left {
+	margin-left: -6px;
+}
+.leaflet-tooltip-right {
+	margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	top: 50%;
+	margin-top: -6px;
+	}
+.leaflet-tooltip-left:before {
+	right: 0;
+	margin-right: -12px;
+	border-left-color: #fff;
+	}
+.leaflet-tooltip-right:before {
+	left: 0;
+	margin-left: -12px;
+	border-right-color: #fff;
+	}
+.marker-cluster-small {
+	background-color: rgba(181, 226, 140, 0.6);
+	}
+.marker-cluster-small div {
+	background-color: rgba(110, 204, 57, 0.6);
+	}
+
+.marker-cluster-medium {
+	background-color: rgba(241, 211, 87, 0.6);
+	}
+.marker-cluster-medium div {
+	background-color: rgba(240, 194, 12, 0.6);
+	}
+
+.marker-cluster-large {
+	background-color: rgba(253, 156, 115, 0.6);
+	}
+.marker-cluster-large div {
+	background-color: rgba(241, 128, 23, 0.6);
+	}
+
+	/* IE 6-8 fallback colors */
+.leaflet-oldie .marker-cluster-small {
+	background-color: rgb(181, 226, 140);
+	}
+.leaflet-oldie .marker-cluster-small div {
+	background-color: rgb(110, 204, 57);
+	}
+
+.leaflet-oldie .marker-cluster-medium {
+	background-color: rgb(241, 211, 87);
+	}
+.leaflet-oldie .marker-cluster-medium div {
+	background-color: rgb(240, 194, 12);
+	}
+
+.leaflet-oldie .marker-cluster-large {
+	background-color: rgb(253, 156, 115);
+	}
+.leaflet-oldie .marker-cluster-large div {
+	background-color: rgb(241, 128, 23);
+}
+
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.marker-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.marker-cluster span {
+	line-height: 30px;
+	}
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+	-o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+.leaflet-cluster-spider-leg {
+	/* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+	-webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+	-moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+	-o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+	transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0; }
+
+/**
+ * Basic styling
+ */
+body {
+  font: 400 16px/1.5 "Roboto", Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal; }
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure {
+  margin-bottom: 15px; }
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  width: 100%;
+  height: auto; }
+
+/**
+ * Figures
+ */
+figure > img {
+  display: block; }
+
+figcaption {
+  font-size: 14px; }
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: 30px; }
+
+li > ul,
+li > ol {
+  margin-bottom: 0; }
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400; }
+
+/**
+ * Links
+ */
+a {
+  color: currentColor;
+  text-decoration: underline; }
+  a:visited {
+    color: black; }
+  a:hover, a:active {
+    color: #1837a0;
+    text-decoration: none; }
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  color: #828282;
+  border-left: 4px solid #e8e8e8;
+  padding-left: 15px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  font-style: italic; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+  font-size: 15px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  background-color: #eef; }
+
+code {
+  padding: 1px 5px; }
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto; }
+  pre > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0; }
+
+figure {
+  max-width: 100% !important; }
+
+.l-wrapper {
+  border: 6px solid black; }
+  @media (min-width: 800px) {
+    .l-wrapper {
+      display: flex;
+      height: 100vh;
+      border: none;
+      overflow: hidden; } }
+
+@media (min-width: 800px) {
+  .l-header {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 0 284px;
+    border-right: 6px solid black;
+    z-index: 4; } }
+
+.l-logo {
+  flex: 0 0 100%;
+  background-color: white;
+  border-bottom: 6px solid black;
+  height: 70px;
+  display: flex;
+  flex-flow: row-reverse;
+  background-color: #5bd8d0; }
+  .l-logo a {
+    display: flex;
+    flex-direction: row;
+    height: 70px; }
+  @media (min-width: 800px) {
+    .l-logo {
+      background-color: white;
+      flex: 0 0 284px; }
+      .l-logo a {
+        display: inherit;
+        height: auto; } }
+
+.l-navigation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 248px;
+  border: 6px solid black;
+  padding: 79px 0 48px;
+  background-color: #e63831;
+  transition: transform 200ms ease;
+  transform: translateX(-100%); }
+  .l-navigation.is-open {
+    transform: translateX(0); }
+  @media (min-width: 800px) {
+    .l-navigation {
+      transition: none;
+      transform: translateX(0);
+      position: static;
+      border: none;
+      width: auto;
+      flex-grow: 1; } }
+
+.navigation-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  margin: auto;
+  font-family: inherit;
+  background: none;
+  border: none;
+  font-size: 36px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black; }
+  .navigation-button:hover, .navigation-button:active {
+    background: inherit;
+    color: inherit; }
+  @media (min-width: 800px) {
+    .navigation-button {
+      display: none; } }
+
+.l-alphabet {
+  background-color: white;
+  flex: 0 0 45px; }
+  @media (min-width: 800px) {
+    .l-alphabet {
+      border-right: 6px solid black;
+      z-index: 4; } }
+
+.l-main {
+  flex-grow: 1;
+  background-color: white; }
+  @media (min-width: 800px) {
+    .l-main {
+      overflow: scroll; } }
+
+.l-content, .l-content--noflex {
+  max-width: 950px;
+  height: auto;
+  padding: 53px 37px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 800px) {
+  .l-content {
+    display: flex; } }
+
+.l-footer {
+  border-top: solid 5px black; }
+
+.l-footer-inner {
+  max-width: 950px;
+  height: auto;
+  padding: 1rem 37px 0;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 800px) {
+  .col-2 {
+    flex: 0 1 66%;
+    padding-right: 74px; } }
+
+@media (min-width: 800px) {
+  .col-1 {
+    flex: 0 0 33%; } }
+
+.title-main {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 32px; }
+  .title-main a {
+    color: inherit; }
+
+.title-sub {
+  margin-bottom: 0.4em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px; }
+
+.list-titlelike, .navigation,
+.social {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+  .list-titlelike li, .navigation li,
+  .social li, .list-titlelike a, .navigation a,
+  .social a {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    color: inherit; }
+  .list-titlelike a, .navigation a,
+  .social a {
+    text-decoration: none; }
+    .list-titlelike a:hover, .navigation a:hover,
+    .social a:hover, .list-titlelike a:active, .navigation a:active,
+    .social a:active {
+      text-decoration: underline; }
+
+.navigation,
+.social {
+  text-align: center; }
+
+.navigation li {
+  margin-bottom: 36px; }
+.navigation a {
+  color: black; }
+
+.social a {
+  padding: 0 10px;
+  color: white; }
+.social .svg-fill {
+  fill: white; }
+.social a:hover .svg-fill,
+.social a:active .svg-fill {
+  fill: black; }
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .post-list .title-main a {
+    text-decoration: none; }
+    .post-list .title-main a:hover, .post-list .title-main a:active {
+      text-decoration: underline; }
+  .post-list article {
+    border-bottom: 6px solid black;
+    padding-bottom: 25px;
+    margin-bottom: 40px; }
+  @media (min-width: 1000px) {
+    .post-list {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between; }
+      .post-list li {
+        flex: 0 1 auto;
+        width: 47.5%; } }
+
+.post-single {
+  padding-bottom: 100px;
+  max-width: calc(95-px / 100 * 66); }
+
+.aligncenter {
+  margin: auto; }
+
+.alignleft {
+  float: left;
+  margin-right: 2em; }
+
+.alignright {
+  float: right;
+  margin-left: 2em; }
+
+hr {
+  border: 2px solid black; }
+
+.list-images {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+  .list-images li, .list-images a {
+    color: inherit; }
+  .list-images a {
+    text-decoration: none; }
+    .list-images a:hover, .list-images a:active {
+      text-decoration: underline; }
+  .list-images li {
+    position: relative;
+    overflow: hidden; }
+    .list-images li:hover .image-additional, .list-images li:active .image-additional {
+      transform: translateY(0); }
+
+.image-additional {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.2em;
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  transition: transform 200ms ease;
+  transform: translateY(130%); }
+
+.has-js .accordion-h {
+  position: relative;
+  cursor: pointer; }
+  .has-js .accordion-h:hover, .has-js .accordion-h:active {
+    background: #f1f1f1; }
+  .has-js .accordion-h.is-open {
+    display: block; }
+
+.is-hidden {
+  height: 0;
+  overflow: hidden;
+  transition: height 200ms ease; }
+
+.l-map {
+  width: 100%;
+  height: 100%; }
+
+#map {
+  min-height: 100vh;
+  z-index: 1; }
+
+.logo {
+  margin-bottom: 0;
+  flex: 1 0 60%;
+  background-color: white; }
+
+.logo-name {
+  background-image: url(../assets/logo.svg);
+  background-size: 140px auto;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+  display: block;
+  height: 70px;
+  flex: 1 0 60%;
+  text-indent: 999%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 6px solid black;
+  border-left: 6px solid black; }
+  @media (min-width: 800px) {
+    .logo-name {
+      width: 182px;
+      height: 134px;
+      margin: 53px auto 0;
+      background-size: 134% auto;
+      background-position: center 38%;
+      border: none; } }
+
+.logo-symbol {
+  background-image: url(../assets/alphaherz.svg);
+  background-size: 160% auto;
+  background-position: 45% 54%;
+  background-repeat: no-repeat;
+  display: block;
+  flex: 0 100px;
+  height: 70px;
+  text-indent: 999%;
+  overflow: hidden;
+  white-space: nowrap; }
+  @media (min-width: 800px) {
+    .logo-symbol {
+      margin: -17px auto 0;
+      width: 182px;
+      height: 52px;
+      background-size: 107% auto;
+      background-position: 2px center; } }
+
+.logo-burger {
+  padding: 0;
+  border: none;
+  border-top: 6px solid black;
+  background: white;
+  height: 41px;
+  align-self: flex-end;
+  flex: 0 0 70px;
+  font-family: inherit;
+  font-size: 34px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1837a0;
+  line-height: 1; }
+  @media (min-width: 800px) {
+    .logo-burger {
+      display: none; } }
+
+form {
+  display: block; }
+
+input[type="text"],
+input[type="email"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6em;
+  font-size: 14px;
+  font-family: inherit;
+  border-radius: 4px;
+  border: solid 1px lightgrey;
+  resize: vertical; }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: black; }
+
+input[type="submit"],
+button {
+  display: inline-block;
+  display: inline-block;
+  padding: 8px 16px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: #444;
+  border-color: #1e1e1e;
+  color: white; }
+  input[type="submit"]:active, input[type="submit"]:hover,
+  button:active,
+  button:hover {
+    color: white;
+    background-color: black; }
+
+.l-alphabet ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600; }
+.l-alphabet a {
+  color: black;
+  text-decoration: none; }
+  .l-alphabet a:hover, .l-alphabet a:active {
+    color: #e63831; }
+
+.list-alphabet {
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  width: 301px;
+  padding: 1em 1.2em;
+  transition: transform 200ms ease;
+  z-index: 3; }
+  @media (min-width: 800px) {
+    .list-alphabet {
+      position: absolute;
+      left: 0;
+      background: white;
+      height: 100%;
+      overflow-y: scroll; } }
+  .list-alphabet .title-main {
+    margin-bottom: 0.3em; }
+  .list-alphabet ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.3em;
+    font-weight: 600; }
+  .list-alphabet a {
+    text-decoration: none; }
+    .list-alphabet a:hover, .list-alphabet a:active {
+      text-decoration: underline;
+      color: black; }
+  .has-js .list-alphabet {
+    transform: translateX(109%); }
+    .has-js .list-alphabet.is-hidden {
+      transform: translateX(-150%);
+      z-index: -1; }
+
+.list-button {
+  float: right;
+  padding: 0;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600; }
+  .list-button:hover, .list-button:active {
+    background: none;
+    color: #e63831; }
+
+.slam-profile {
+  position: absolute;
+  width: 300px;
+  left: 329px;
+  height: 100%;
+  padding: 4.5em 1.2em 1em;
+  z-index: 2;
+  background: white;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  transition: transform 200ms ease;
+  z-index: 2; }
+  .slam-profile header {
+    margin: 0 0 3px;
+    text-align: center; }
+    .slam-profile header h1 {
+      line-height: 1; }
+  .has-js .slam-profile.is-hidden {
+    transform: translateX(-150%);
+    z-index: -1; }
+
+.profile-button {
+  position: absolute;
+  top: 16px;
+  right: 19px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600; }
+  .profile-button:hover, .profile-button:active {
+    background: none;
+    color: #e63831; }
+/* line 1, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav a {
+  margin-bottom: 0.4em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* line 7, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  z-index: 999;
+}
+/* line 14, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 18, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav a {
+  text-decoration: none;
+}
+/* line 21, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav a:hover, .map-nav a:active {
+  text-decoration: underline;
+  color: inherit;
+}
+/* line 28, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav.is-de .de {
+  color: red;
+}
+/* line 28, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav.is-at .at {
+  color: blue;
+}
+/* line 28, /home/vagrant/slam_alphas/app/assets/stylesheets/map.sass */
+.map-nav.is-ch .ch {
+  color: turquoise;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+
