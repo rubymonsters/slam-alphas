@@ -39,13 +39,27 @@
     <%= f.label :facebook_link, "Facebook-Link" %><br>
     <%= f.text_field :facebook_link %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :public, "Öffentlich?" %><br>  
-    <%= f.check_box :public %>  
+    <%= image_tag @user.avatar_url(:thumb) if @user.avatar? %>
+    <%= f.label :avatar, "Image Upload" %><br>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+    <p>
+    <label>
+      <%= f.check_box :remove_avatar %>
+      Remove avatar
+    </label>
+    </p>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :public, "Öffentlich?" %><br>
+    <%= f.check_box :public %>
   </div>
   <div class="field">
-    <%= f.label :admin, "Admin?" %><br>  
-    <%= f.check_box :admin %>  
+    <%= f.label :admin, "Admin?" %><br>
+    <%= f.check_box :admin %>
   </div>
   <% if show_password_fields %>
     <div class="field">
@@ -57,7 +71,7 @@
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -8,6 +8,13 @@
     </header>
     <div>
         <p>
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar_url(:small_thumb).to_s %>
+          <% else %>
+            <%= image_tag @user.avatar.default_url %>
+          <% end %>
+        </p>
+        <p>
           <a href="<%= @user.website %>">website</a>
         </p>
         <p>
