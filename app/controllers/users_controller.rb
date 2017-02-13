@@ -102,6 +102,6 @@ class UsersController < Clearance::UsersController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :city, :country, :email, :year_of_birth, :website, :facebook_link, :password, :password_confirmation, :public, :admin, :avatar, :remote_image_url)
+      params.require(:user).permit(:name, :city, :country, :email, :year_of_birth, :website, :facebook_link, :password, :password_confirmation, :public, :admin, :avatar)
     end
 end
