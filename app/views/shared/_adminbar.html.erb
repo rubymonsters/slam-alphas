@@ -1,9 +1,9 @@
 <% if signed_in? %>
-<div class="topbar">
-  <p>Hey there!</p>
+<div class="admin-topbar">
+  <p>Hey <%= current_user.name %>!</p>
   <ul>
-    <li><%= link_to "Alle", users_path %> |</li>
-    <li><%= link_to "Neu", new_user_path %> |</li>
+    <li><%= link_to "Alle", users_path, title: "Alle Profile ansehen"%> |</li>
+    <li><%= link_to "Neu", new_user_path, title: "Neues Profil anlegen" %> |</li>
     <li><%= link_to "Abmelden", sign_out_path, method: :delete %></li>
   </ul>
 </div>
