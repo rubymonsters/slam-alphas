@@ -327,6 +327,7 @@ DEPENDENCIES
   clearance
   coffee-rails (~> 4.1.0)
   faker (~> 1.7, >= 1.7.2)
+  fog (~> 1.38)
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
