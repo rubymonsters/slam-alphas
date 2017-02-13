@@ -1,11 +1,11 @@
+<divn class="admin-wrapper">
 <div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
-
+  <h2 class="title-main"><%= t(".title") %></h2>
 
     <%= render partial: '/users/form', locals: {show_password_fields: true} %>
 
     <div class="other-links">
       <%= link_to t("Anmelden"), sign_in_path %>
     </div>
-
+</div>
 </div>
