@@ -8,9 +8,13 @@
 
 
 .admin-wrapper
+  width: 100%
   padding: 3em
+  overflow-y: scroll
 
-input[type="password"]
+input[type="password"],
+input[type="number"],
+select
   display: block
   width: 100%
   padding: 0.6em
@@ -19,7 +23,7 @@ input[type="password"]
   border-radius: 4px
   border: solid 1px lightgrey
   resize: vertical
-  input[type="password"]:focus
+  &:focus
     border-color: black
 
 
@@ -27,7 +31,7 @@ input[type="password"]
   margin-bottom: 2em
 
   label
-    margin-bottom: 0.4em
+    margin-bottom: 0.4rem
     text-transform: uppercase
     font-weight: 600
     font-size: 20px
