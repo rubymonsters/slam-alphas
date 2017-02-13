@@ -19,3 +19,6 @@
 
 # Ignore config files
 .ENV
+
+# Ignore public folder
+/public
