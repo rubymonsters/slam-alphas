@@ -1,5 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   require 'carrierwave/orm/activerecord'
+  require 'carrierwave/processing/mini_magick'
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -34,13 +35,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # Image on user detail page (show)
-  version :thumb do
+  version :medium do
     process resize_to_fill: [300, 300]
+    process convert: 'jpg'
+    process :store_meta
   end
 
   # Save performance memory by resizing from a resized resource (thumb)
-  version :small_thumb, from_version: :thumb do
+  version :thumb, from_version: :medium do
     process resize_to_fill: [125, 125]
+    process convert: 'jpg'
+    process :store_meta
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
