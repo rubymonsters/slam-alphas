@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-field field">
     <%= f.label :name, "Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :city, "Stadt" %><br>
+  <div class="form-field field">
+    <%= f.label :city, "Stadt" %>
     <%= f.text_field :city %>
   </div>
-  <div class="field">
-    <%= f.label :country, "Land" %><br>
+  <div class="form-field field">
+    <%= f.label :country, "Land" %>
     <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
-  <div class="field">
-    <%= f.label :email, "E-Mail" %><br>
+  <div class="form-field field">
+    <%= f.label :email, "E-Mail" %>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
-    <%= f.label :year_of_birth, "Geburtsjahr" %><br>
+  <div class="form-field field">
+    <%= f.label :year_of_birth, "Geburtsjahr" %>
     <%= f.number_field :year_of_birth %>
   </div>
-  <div class="field">
-    <%= f.label :website, "Webseite" %><br>
+  <div class="form-field field">
+    <%= f.label :website, "Webseite" %>
     <%= f.text_field :website %>
   </div>
-  <div class="field">
-    <%= f.label :facebook_link, "Facebook-Link" %><br>
+  <div class="form-field field">
+    <%= f.label :facebook_link, "Facebook-Link" %>
     <%= f.text_field :facebook_link %>
   </div>
   <br />
@@ -52,22 +52,25 @@
     </label>
     </p>
   </div>
-  <br />
-  <div class="field">
-    <%= f.label :public, "Öffentlich?" %><br>
-    <%= f.check_box :public %>
+  <div class="form-field field">
+    <%= f.label :public do %>
+      Öffentlich?
+      <%= f.check_box :public %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :admin, "Admin?" %><br>
-    <%= f.check_box :admin %>
+  <div class="form-field field">
+    <%= f.label :admin do %>
+      Admin?
+      <%= f.check_box :admin %>
+    <% end %>
   </div>
   <% if show_password_fields %>
-    <div class="field">
-      <%= f.label :password, "Passwort" %><br>
+    <div class="form-field field">
+      <%= f.label :password, "Passwort" %>
       <%= f.password_field :password %>
     </div>
-    <div class="field">
-      <%= f.label :password_confirmation, "Passwort bestätigen" %><br>
+    <div class="form-field field">
+      <%= f.label :password_confirmation, "Passwort bestätigen" %>
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
