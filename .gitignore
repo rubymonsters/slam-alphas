@@ -18,7 +18,7 @@
 .DS_Store
 
 # Ignore config files
-.ENV
+.env
 
 # Ignore public assets folder
 /public/assets
