@@ -38,14 +38,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :medium do
     process resize_to_fill: [300, 300]
     process convert: 'jpg'
-    process :store_meta
   end
 
   # Save performance memory by resizing from a resized resource (thumb)
   version :thumb, from_version: :medium do
     process resize_to_fill: [125, 125]
     process convert: 'jpg'
-    process :store_meta
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
