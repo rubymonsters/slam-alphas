@@ -48,11 +48,12 @@ cities = ["Hamburg", "Berlin", "München", "Frankfurt am Main", "Bremen", "Stutt
   name = Faker::Name.name
   email = Faker::Internet.email
   password = 'password'
-  User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password,
-			   city: cities.sample,
-			   country: "de")
+  User.create!(
+  	name: name,
+  	email: email,
+  	password: password,
+  	password_confirmation: password,
+  	city: cities.sample,
+  	country: "de")
 end
 
