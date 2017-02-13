@@ -20,5 +20,5 @@
 # Ignore config files
 .ENV
 
-# Ignore public folder
-/public
+# Ignore public assets folder
+/public/assets
