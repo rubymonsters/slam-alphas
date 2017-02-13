@@ -9,7 +9,7 @@
     <div>
         <p>
           <% if @user.avatar? %>
-            <%= image_tag @user.avatar_url(:small_thumb).to_s %>
+            <%= image_tag @user.avatar_url(:thumb).to_s %>
           <% else %>
             <%= image_tag @user.avatar.default_url %>
           <% end %>
