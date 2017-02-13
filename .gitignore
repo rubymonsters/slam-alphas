@@ -19,6 +19,7 @@
 
 # Ignore config files
 .env
+.fog
 
 # Ignore public assets folder
 /public/assets
