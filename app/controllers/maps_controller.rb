@@ -16,12 +16,12 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
       render plain: "404 Not Found", status: 404
     end
 
-    @alphas = User.all.sort_by {|x| x.name }
+    @alphas = User.all.sort_by {|x| x.name.upcase }
     @list = Array.new
 
     @alphas.each do |x|
       unless @list.include? x.name.first
-        @list.push(x.name.first)
+        @list.push(x.name.first.upcase)
       end
     end
   end

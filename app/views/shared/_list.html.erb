@@ -9,7 +9,7 @@
   <button class="list-button" type="button" title="close list">X</button>
   <ul>
     <% @alphas.each_with_index do |user, i| %>
-      <% if @alphas[i-1].name.first != user.name.first %>
+      <% if @alphas[i-1].name.upcase.first != user.name.upcase.first || i == 0 %>
         <li><h3 class="title-main"><%= user.name.first %></h3></li>
       <% end %>
       <li><%= link_to user_path(user.id), {title: "Zu #{user.name}s Profil"}  do %>
