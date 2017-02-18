@@ -21,5 +21,6 @@
 .env
 .fog
 
-# Ignore public assets folder
+# Ignore public folder
 /public/assets
+/public/uploads
