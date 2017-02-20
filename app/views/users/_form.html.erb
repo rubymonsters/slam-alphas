@@ -11,57 +11,53 @@
     </div>
   <% end %>
 
-  <div class="form-field field">
+  <div class="field">
     <%= f.label :name, "Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="form-field field">
-    <%= f.label :city, "Stadt" %>
+  <div class="field">
+    <%= f.label :city, "Stadt" %><br>
     <%= f.text_field :city %>
   </div>
-  <div class="form-field field">
-    <%= f.label :country, "Land" %>
+  <div class="field">
+    <%= f.label :country, "Land" %><br>
     <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
-  <div class="form-field field">
-    <%= f.label :email, "E-Mail" %>
+  <div class="field">
+    <%= f.label :email, "E-Mail" %><br>
     <%= f.text_field :email %>
   </div>
-  <div class="form-field field">
-    <%= f.label :year_of_birth, "Geburtsjahr" %>
+  <div class="field">
+    <%= f.label :year_of_birth, "Geburtsjahr" %><br>
     <%= f.number_field :year_of_birth %>
   </div>
-  <div class="form-field field">
-    <%= f.label :website, "Webseite" %>
+  <div class="field">
+    <%= f.label :website, "Webseite" %><br>
     <%= f.text_field :website %>
   </div>
-  <div class="form-field field">
-    <%= f.label :facebook_link, "Facebook-Link" %>
+  <div class="field">
+    <%= f.label :facebook_link, "Facebook-Link" %><br>
     <%= f.text_field :facebook_link %>
   </div>
-  <div class="form-field field">
-    <%= f.label :public do %>
-      Öffentlich?
-      <%= f.check_box :public %>
-    <% end %>
+  <div class="field">
+    <%= f.label :public, "Öffentlich?" %><br>  
+    <%= f.check_box :public %>  
   </div>
-  <div class="form-field field">
-    <%= f.label :admin do %>
-      Admin?
-      <%= f.check_box :admin %>
-    <% end %>
+  <div class="field">
+    <%= f.label :admin, "Admin?" %><br>  
+    <%= f.check_box :admin %>  
   </div>
   <% if show_password_fields %>
-    <div class="form-field field">
-      <%= f.label :password, "Passwort" %>
+    <div class="field">
+      <%= f.label :password, "Passwort" %><br>
       <%= f.password_field :password %>
     </div>
-    <div class="form-field field">
-      <%= f.label :password_confirmation, "Passwort bestätigen" %>
+    <div class="field">
+      <%= f.label :password_confirmation, "Passwort bestätigen" %><br>
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
-
+  
   <div class="actions">
     <%= f.submit %>
   </div>
