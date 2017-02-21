@@ -11,7 +11,9 @@
           <a href="<%= @user.website %>">website</a>
         </p>
         <p>
-          <%= link_to 'Edit', edit_user_path(@user) %> |
+          <% if signed_in_as_admin? %>
+            <%= link_to 'Edit', edit_user_path(@user) %> |
+          <% end %>
           <%= link_to 'Karte', map_path(country: @user.country) %>
         </p>
     </div>
