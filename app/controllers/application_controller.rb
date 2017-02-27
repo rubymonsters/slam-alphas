@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :signed_in_as_admin?
+  helper_method :signed_in_as_admin?, :signed_in_as?
 
 
   def signed_in_as?(user)
@@ -21,5 +21,9 @@ class ApplicationController < ActionController::Base
 
   def disallow_unless_admin
     redirect_to root_url unless signed_in_as_admin?
+  end
+
+  def disallow_unless_admin_or_user(user)
+    redirect_to root_url unless signed_in_as_admin? || signed_in_as?(user)
   end
 end
