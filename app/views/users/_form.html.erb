@@ -39,18 +39,20 @@
     <%= f.label :facebook_link, "Facebook-Link" %>
     <%= f.text_field :facebook_link %>
   </div>
-  <div class="form-field field">
-    <%= f.label :public do %>
-      Öffentlich?
-      <%= f.check_box :public %>
-    <% end %>
-  </div>
-  <div class="form-field field">
-    <%= f.label :admin do %>
-      Admin?
-      <%= f.check_box :admin %>
-    <% end %>
-  </div>
+  <% if current_user.admin? %>
+    <div class="form-field field">
+      <%= f.label :public do %>
+        Öffentlich?
+        <%= f.check_box :public %>
+      <% end %>
+    </div>
+    <div class="form-field field">
+      <%= f.label :admin do %>
+        Admin?
+        <%= f.check_box :admin %>
+      <% end %>
+    </div>
+  <% end %>  
   <% if show_password_fields %>
     <div class="form-field field">
       <%= f.label :password, "Passwort" %>
