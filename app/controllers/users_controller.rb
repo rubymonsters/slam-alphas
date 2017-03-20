@@ -20,7 +20,7 @@ class UsersController < Clearance::UsersController
     @zoom = ZOOMS[@user[:country]]
     @marker = MARKERS[@user[:country]]
 
-    @alphas = User.all.sort_by {|x| x.name }
+    @alphas = User.where(public: true).sort_by {|x| x.name }
     @list = Array.new
 
     @alphas.each do |x|
