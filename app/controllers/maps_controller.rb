@@ -6,7 +6,7 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
 
   def show
     if ["de", "at", "ch"].include?(map_params[:country])
-      @users = User.where(country: map_params[:country])
+      @users = User.where(public: true, country: map_params[:country])
       @center = CENTERS[map_params[:country]]
       @zoom = ZOOMS[map_params[:country]]
       @cities = User.all.pluck(:city).uniq
