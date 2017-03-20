@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var heads = document.querySelectorAll('.accordion-h');
     var bodies = document.querySelectorAll('.accordion-b');
 
-    for (var item of bodies) {
+    bodies.forEach(function(item) {
       item.classList.add('is-hidden');
-    }
+    });
 
     for (var i = 0; i < heads.length; i++) {
       heads[i].addEventListener('click', function (el) {
@@ -39,12 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var listTrigger = document.querySelectorAll('.l-alphabet a');
     var listClose = document.querySelector('.list-button');
 
-    for (trigger of listTrigger) {
+    listTrigger.forEach(function(trigger) {
       trigger.addEventListener('click', function (ev) {
         ev.preventDefault();
         alphabetList.classList.remove('is-hidden');
       });
-    }
+    });
 
     listClose.addEventListener('click', function () {
       alphabetList.classList.add('is-hidden');
