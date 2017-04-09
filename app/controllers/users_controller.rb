@@ -21,7 +21,12 @@ class UsersController < Clearance::UsersController
     @zoom = ZOOMS[@user[:country]]
     @marker = MARKERS[@user[:country]]
 
-    @alphas = User.where(public: true).sort_by {|x| x.name }
+    if current_user.admin?
+     @alphas = User.all
+    else
+     @alphas = (User.where(id: current_user.id) + User.where(public: true)).sort_by {|x| x.name.upcase }
+    end
+
     @list = Array.new
 
     @alphas.each do |x|
