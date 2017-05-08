@@ -21,7 +21,7 @@ class UsersController < Clearance::UsersController
     @zoom = ZOOMS[@user[:country]]
     @marker = MARKERS[@user[:country]]
 
-    @alphas = current_user.visible_users
+    @alphas = visible_users
     @list = Array.new
 
     @alphas.each do |x|
