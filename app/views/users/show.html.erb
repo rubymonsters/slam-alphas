@@ -4,7 +4,7 @@
     <button class="profile-button" type="button" title="close profile">X</button>
     <header>
         <h1 class="title-sub"><%= @user.name %></h1>
-        <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
+        <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
     </header>
     <div>
       <% if @user.year_of_birth %>
