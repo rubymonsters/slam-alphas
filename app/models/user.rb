@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
 # According to the user rights which users is the logged_in user able to see
-  def visible_users
-    if admin?
+  def visible_for_signed_in_users
+    if signed_in_as_admin?
       User.all.order("upper(name) ASC")
     else
       # Adds the user's id to the array of public ids

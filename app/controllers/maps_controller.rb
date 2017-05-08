@@ -16,7 +16,7 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
       render plain: "404 Not Found", status: 404
     end
 
-    @alphas = current_user.visible_users
+    @alphas = visible_users
     @list = Array.new
 
     @alphas.each do |x|
