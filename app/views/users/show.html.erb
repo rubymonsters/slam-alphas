@@ -11,10 +11,24 @@
           <a href="<%= @user.website %>">website</a>
         </p>
         <p>
-          <% if show_edit_links?(@user) %>
-            <%= link_to 'Edit', edit_user_path(@user) %> |
-          <% end %>
-          <%= link_to 'Karte', map_path(country: @user.country) %>
+          <div class="profile-links">
+            <div class="row">
+                <% if show_edit_links?(@user) %>
+                  <div class="profile-links edit">
+                    <%= link_to 'Bearbeiten', edit_user_path(@user) %>
+                  </div>
+                <% end %>
+              <% if signed_in? %>
+                <div class="profile-links back">
+                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+                </div>
+                <% else %>
+                <div class="profile-links back-full">
+                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </p>
     </div>
 </article>
