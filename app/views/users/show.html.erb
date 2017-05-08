@@ -16,6 +16,9 @@
           <% end %>
           <%= link_to 'Karte', map_path(country: @user.country) %>
         </p>
+        <% if signed_in_as?(@user) %>
+          <p>You can see your own profile, but it is not public yet</p>
+        <% end %>
     </div>
 </article>
 <div class="l-map">
