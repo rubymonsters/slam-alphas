@@ -18,15 +18,15 @@
                     <%= link_to 'Bearbeiten', edit_user_path(@user) %>
                   </div>
                 <% end %>
-              <% if signed_in? %>
-                <div class="profile-links back">
-                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-                </div>
+                <% if signed_in? %>
+                  <div class="profile-links back">
+                    <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+                  </div>
                 <% else %>
-                <div class="profile-links back-full">
-                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-                </div>
-              <% end %>
+                  <div class="profile-links back-full">
+                    <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+                  </div>
+                <% end %>
             </div>
           </div>
         </p>
