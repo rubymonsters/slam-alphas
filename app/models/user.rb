@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true, unless: :persisted?
 
+  validates :referenced_by, presence: true
+
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
 
