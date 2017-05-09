@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <article class="slam-profile">
-    <button class="profile-button" type="button" title="close profile">X</button>
+  <button class="profile-button" type="button" title="close profile">X</button>
+  <% if @user.alpha? %>
+  <p class="profile-alphabadge">SLAM ALPHA</p>
+  <% end%>
     <header>
         <h1 class="title-sub"><%= @user.name %></h1>
         <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
