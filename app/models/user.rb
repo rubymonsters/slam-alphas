@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
-	validates :name, :city, :email, :country, presence: true
+	validates :name, :city, :email, :country, :is_available_on, presence: true
 	validates :name, length: { minimum: 2 }
 	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :website, website: true, allow_blank: true
 
   validates :facebook_link, website: true, allow_blank: true
-  validates :video_link, website: true, allow_blank: true  
+  validates :video_link, website: true, allow_blank: true
 
   geocoded_by :location
   after_validation :geocode
