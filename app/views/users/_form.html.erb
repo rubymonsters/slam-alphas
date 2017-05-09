@@ -39,6 +39,10 @@
     <%= f.label :facebook_link, "Facebook-Link" %>
     <%= f.text_field :facebook_link %>
   </div>
+  <div class="form-field field">
+    <%= f.label :video_link, "Video-Link" %>
+    <%= f.text_field :video_link %>
+  </div>
   <% if current_user.admin? %>
     <div class="form-field field">
       <%= f.label :public do %>
@@ -52,7 +56,7 @@
         <%= f.check_box :admin %>
       <% end %>
     </div>
-  <% end %>  
+  <% end %>
   <% if show_password_fields %>
     <div class="form-field field">
       <%= f.label :password, "Passwort" %>
