@@ -2,41 +2,39 @@
 
 <article class="slam-profile">
   <button class="profile-button" type="button" title="close profile">X</button>
-  <% if @user.alpha? %>
-  <p class="profile-alphabadge">SLAM ALPHA</p>
-  <% end%>
-    <header>
-        <h1 class="title-sub"><%= @user.name %></h1>
-        <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
-    </header>
-    <div>
-        <p>
-          <a href="<%= @user.website %>">website</a>
-        </p>
-        <p>
-          <div class="profile-links">
-            <div class="row">
-                <% if show_edit_links?(@user) %>
-                  <div class="profile-links edit">
-                    <%= link_to 'Bearbeiten', edit_user_path(@user) %>
-                  </div>
-                <% end %>
-              <% if signed_in? %>
-                <div class="profile-links back">
-                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-                </div>
-                <% else %>
-                <div class="profile-links back-full">
-                  <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-                </div>
-              <% end %>
+  <p class="profile-alphabadge"><%= user_alpha_or_recommended(@user) %></p>
+  <header>
+    <h1 class="title-sub"><%= @user.name %></h1>
+    <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
+  </header>
+  <div>
+    <p>
+      <a href="<%= @user.website %>">website</a>
+    </p>
+    <p>
+      <div class="profile-links">
+        <div class="row">
+          <% if show_edit_links?(@user) %>
+            <div class="profile-links edit">
+              <%= link_to 'Bearbeiten', edit_user_path(@user) %>
             </div>
-          </div>
-        </p>
-    </div>
+          <% end %>
+          <% if signed_in? %>
+            <div class="profile-links back">
+              <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+            </div>
+          <% else %>
+            <div class="profile-links back-full">
+              <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </p>
+  </div>
 </article>
 <div class="l-map">
-    <div id="map"><div>
+  <div id="map"><div>
     <nav class="map-nav is-<%= @user.country  %>">
       <ul>
         <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
@@ -44,34 +42,34 @@
         <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
       </ul>
     </nav>
-</div>
+  </div>
 
-<script>
- var map = L.map('map', {
+  <script>
+   var map = L.map('map', {
      center: <%= @center %>,
      zoom: <%= @zoom %>,
      zoomControl: false,
      attributionControl: false,
      scrollWheelZoom: false
- });
+   });
 
- L.control.zoom({ position: 'topright' }).addTo(map);
- L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
-  .addTo(map);
+   L.control.zoom({ position: 'topright' }).addTo(map);
+   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
+    .addTo(map);
 
- var marker = L.icon({
+   var marker = L.icon({
      iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
      iconSize: [30, 48],
      iconAnchor: [15, 48],
      riseOnHOver: true
- });
+   });
 
- var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
-                       { icon: marker }).addTo(map);
- marker.bindTooltip('<%= @user.name %>');
- marker.on('click', function (ev) {
-   if (document.querySelector('.slam-profile').classList.contains('is-hidden')) {
-     document.querySelector('.slam-profile').classList.remove('is-hidden');
-   }
- });
-</script>
+   var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
+                         { icon: marker }).addTo(map);
+   marker.bindTooltip('<%= @user.name %>');
+   marker.on('click', function (ev) {
+     if (document.querySelector('.slam-profile').classList.contains('is-hidden')) {
+       document.querySelector('.slam-profile').classList.remove('is-hidden');
+     }
+   });
+  </script>

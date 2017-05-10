@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true, unless: :persisted?
 
+  validates :recommended_by, presence: true
+
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
 
@@ -34,6 +36,10 @@ class User < ActiveRecord::Base
 
   def country_name
     COUNTRIES[country.to_sym]
+  end
+
+  def recommended_by_alpha
+    User.find_by_id(recommended_by).name
   end
 
 end

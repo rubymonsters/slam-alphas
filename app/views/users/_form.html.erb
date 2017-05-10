@@ -59,6 +59,14 @@
       <% end %>
     </div>
   <% end %>
+
+  <div class="form-field field">
+    <%= f.label :recommended_by do %>
+      Welche SlamAlpha hat dich empfohlen?
+      <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
+    <% end %>
+  </div>
+
   <% if show_password_fields %>
     <div class="form-field field">
       <%= f.label :password, "Passwort" %>
