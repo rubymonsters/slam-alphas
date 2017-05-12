@@ -11,7 +11,11 @@ class UsersController < Clearance::UsersController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user
+      @users = current_user.visible_for_signed_in_users
+    else
+      @users = User.where(public: true).order("upper(name) ASC")
+    end
   end
 
   # GET /users/1

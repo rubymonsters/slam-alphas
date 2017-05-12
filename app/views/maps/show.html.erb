@@ -10,24 +10,8 @@
 </main>
 
 <script>
- var map = L.map('map', {
-     center: <%= @center %>,
-     zoom: <%= @zoom %>,
-     zoomControl: false,
-     attributionControl: false,
-     scrollWheelZoom: false
- });
 
- L.control.zoom({ position: 'topright' }).addTo(map);
- L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
-  .addTo(map);
-
- var marker = L.icon({
-     iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
-     iconSize: [30, 48],
-     iconAnchor: [15, 48],
-     riseOnHOver: true
- });
+ <%= render 'shared/map'%>
 
  var clusters = {};
  <% @cities.each do |city| %>

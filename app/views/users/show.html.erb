@@ -4,41 +4,34 @@
   <button class="profile-button" type="button" title="close profile">X</button>
   <p class="profile-alphabadge"><%= user_alpha_or_recommended(@user) %></p>
   <header>
-    <h1 class="title-sub"><%= @user.name %></h1>
-    <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
-  </header>
-  <div>
-    <% if @user.year_of_birth %>
-      <p><%= @user.age %> Jahre alt</p>
-    <% end %>
-    <% if @user.website %>
-      <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
-    <% end %>
-    <% if @user.facebook_link %>
-      <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
-    <% end %>
-    <p>
-      <div class="profile-links">
-        <div class="row">
-          <% if show_edit_links?(@user) %>
-            <div class="profile-links edit">
-              <%= link_to 'Bearbeiten', edit_user_path(@user) %>
-            </div>
-          <% end %>
-          <% if signed_in? %>
-            <div class="profile-links back">
-              <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-            </div>
-          <% else %>
-            <div class="profile-links back-full">
-              <%= link_to 'Zurück zur Karte', map_path(country: @user.country) %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </p>
-    <% if signed_in_as?(@user) %>
-      <p>You can see your own profile, but it is not public yet</p>
+      <h1 class="title-sub">
+        <% if admin_user_public?(current_user, @user) %>
+           <span title="Profil is öffentlich">📍</span>
+        <% end %>
+        <%= @user.name %></h1>
+        <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
+    </header>
+    <div>
+      <% if @user.year_of_birth %>
+        <p><%= @user.age %> Jahre alt</p>
+      <% end %>
+      <% if @user.website %>
+        <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+      <% end %>
+      <% if @user.facebook_link %>
+        <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+      <% end %>
+
+    <div class="profile-links">
+      <% if show_edit_links?(@user) %>
+        <%= link_to '📎 Bearbeiten', edit_user_path(@user) %>
+      <% end %>
+
+      <noscript><%= link_to 'Zurück zur Übersicht', users_path() %></noscript>
+      <script>document.write('<%= link_to "Zurück zur Karte", map_path(country: @user.country) %>');</script>
+    </div>
+    <% if signed_in_as?(@user) && !@user.public %>
+      <p class="profile-notice">You can see your own profile, but it is not public yet</p>
     <% end %>
   </div>
 </article>
@@ -54,24 +47,8 @@
   </div>
 
   <script>
-   var map = L.map('map', {
-     center: <%= @center %>,
-     zoom: <%= @zoom %>,
-     zoomControl: false,
-     attributionControl: false,
-     scrollWheelZoom: false
-   });
 
-   L.control.zoom({ position: 'topright' }).addTo(map);
-   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
-    .addTo(map);
-
-   var marker = L.icon({
-     iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
-     iconSize: [30, 48],
-     iconAnchor: [15, 48],
-     riseOnHOver: true
-   });
+   <%= render 'shared/map' %>
 
    var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
                          { icon: marker }).addTo(map);
