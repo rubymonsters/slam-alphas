@@ -4,12 +4,18 @@
     <button class="profile-button" type="button" title="close profile">X</button>
     <header>
         <h1 class="title-sub"><%= @user.name %></h1>
-        <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
+        <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
     </header>
     <div>
-        <p>
-          <a href="<%= @user.website %>">website</a>
-        </p>
+      <% if @user.year_of_birth %>
+        <p><%= @user.age %> Jahre alt</p>
+      <% end %>
+      <% if @user.website %>
+        <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+      <% end %>
+      <% if @user.facebook_link %>
+        <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+      <% end %>
         <p>
           <div class="profile-links">
             <div class="row">

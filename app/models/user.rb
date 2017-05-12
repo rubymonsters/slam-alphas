@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode
 
-# According to the user rights which users is the logged_in user able to see
+  # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users
     if admin?
       User.all.order("upper(name) ASC")
@@ -37,6 +37,16 @@ class User < ActiveRecord::Base
       #with a collation - adding SQL in the query
       User.where(id: visible_ids).order("upper(name) ASC")
     end
+  end
+
+  def age
+    Time.now.utc.year - year_of_birth
+  end
+
+  def website_clean
+    web = website.sub 'https://', ''
+    web = web.sub 'http://', ''
+    web
   end
 
   def location
