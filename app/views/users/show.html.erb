@@ -12,6 +12,9 @@
         <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
     </header>
     <div>
+      <% if signed_in_as?(@user) && !@user.public? %>
+        <p><em>Du kannst dein eigenes Profil sehen aber es ist nicht öffentlich zugänglich.</em></p>
+      <% end %>
       <% if @user.year_of_birth %>
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
@@ -21,7 +24,6 @@
       <% if @user.facebook_link %>
         <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
       <% end %>
-
     <div class="profile-links">
       <% if show_edit_links?(@user) %>
         <%= link_to '📎 Bearbeiten', edit_user_path(@user) %>
