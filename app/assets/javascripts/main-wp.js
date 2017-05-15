@@ -35,23 +35,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // alphabet list toggle
 
     var alphabetList = document.querySelector('.list-alphabet');
-    var listTrigger = document.querySelectorAll('.l-alphabet a');
     var listClose = document.querySelector('.list-button');
 
     if (alphabetList) {
       alphabetList.classList.add('is-hidden');
 
-      listTrigger.forEach(function(trigger) {
-        trigger.addEventListener('click', function (ev) {
-          ev.preventDefault();
-          alphabetList.classList.remove('is-hidden');
-        });
+      $('.l-alphabet a').on('click', function (ev) {
+        ev.preventDefault();
+        alphabetList.classList.remove('is-hidden');
+        // get clicked on letter
+        var letter = $(this).attr('href');
+        // find letter section in the overall list and how far it is down
+        var offsetInList = $('.list-alphabet .title-main.'+ letter).offset().top;
+        var offsetOfList = $('.list-alphabet').scrollTop();
+        // scroll to that point!
+        var sectionHeaderHeight =  $('.list-alphabet .title-main.'+ letter).height();
+        $('.list-alphabet').scrollTop(offsetOfList - (-1 * offsetInList) - sectionHeaderHeight);
       });
 
       listClose.addEventListener('click', function () {
         alphabetList.classList.add('is-hidden');
       });
     }
+
 
 
     // profile toggle
