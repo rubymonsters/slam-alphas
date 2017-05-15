@@ -1,0 +1,48 @@
+.error_explanation
+  padding: .5em 1em
+  margin-bottom: 2em
+  background: crimson
+  color: white
+
+.field_with_errors
+  label
+    color: crimson
+
+  input,
+  select
+    border: crimson 2px solid !important
+
+.flashes
+  position: absolute
+  top: 2.5rem
+  left: 0
+  right: 0
+  width: 90%
+  z-index: 5
+  height: 3rem
+  margin: auto
+  .inner p
+    padding: .5em
+    animation: fadeOut 4s 1 ease-out
+    animation-fill-mode: forwards
+
+  .notice,
+  .success
+    background: lightblue
+    border: 1px solid steelblue
+    color: steelblue
+
+  .warning,
+  .error
+    background-color: lemonchiffon
+    color: orange
+    border: 1px solid orange
+
+@keyframes fadeOut
+  0%
+    opacity: 1
+    display: block
+  99%
+    opacity: 1
+  100%
+    opacity: 0

@@ -34,6 +34,14 @@
         <%=render partial: "shared/list" %>
       <% end%>
 
+      <div class="flashes">
+        <% flash.each do |name, msg| -%>
+          <div class="inner">
+            <%= content_tag :p, msg, class: name %>
+          </div>
+        <% end -%>
+      </div>
+
       <%= yield %>
 
     </div>
