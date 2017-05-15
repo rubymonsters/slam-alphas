@@ -62,7 +62,12 @@ class User < ActiveRecord::Base
   end
 
   def recommended_by_alpha
-    User.find_by_id(recommended_by).name
+    user = User.find_by_id(recommended_by)
+    if user.present?
+      user.name
+    else
+      ""
+    end
   end
 
 end

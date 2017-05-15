@@ -13,7 +13,7 @@
             <%= user.name %>
           <% end %>
         </h2>
-        <p>user_alpha_or_recommended(user) | <%= user.city %>,
+        <p><%= user_alpha_or_recommended(user) %> | <%= user.city %>,
           <%= user.country.upcase %></p>
         <% if current_user && current_user.admin?%>
           <p>
