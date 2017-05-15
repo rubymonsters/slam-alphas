@@ -1,6 +1,6 @@
-<main class="l-map">
+<main class="l-map is-<%= @country %>">
   <div id="map"><div>
-    <nav class="map-nav is-<%= @country  %>">
+    <nav class="map-nav is-<%= @country %>">
       <ul>
         <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
         <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
