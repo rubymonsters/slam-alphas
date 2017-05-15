@@ -1,43 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<section>
-<h1 class="title-main">Finde Slammerinnen</h1>
-<div id="map"></div>
-
-
-  <ul class="">
+<main class="admin-wrapper">
+  <h1 class="title-main">Finde Slammerinnen</h1>
+  <ul class="user-index-list">
     <% @users.each do |user| %>
       <li>
-        <h2 class="title-sub"><%= user.name %> <small>(<%= user.city %>, <%= user.country_name %>)</small></h2>
-        <p><%= user.email %></p>
-        <p><a href="<%= user.website %>"><%= user.website %></a> |
-        <a href="<%= user.facebook_link %>"><%= user.facebook_link %></a></p>
-        <p>
-        <%= link_to 'Show', user %> |
-        <%= link_to 'Edit', edit_user_path(user) %> |
-        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <h2 class="title-sub">
+          <% if admin_user_public?(current_user, user) %>
+            <span title="Profil is öffentlich">📍</span>
+          <% end %>
+          <%=  link_to user, title: "Zu #{user.name}s Profil" do %>
+            <%= user.name %>
+          <% end %>
+        </h2>
+        <p>user_alpha_or_recommended(user) | <%= user.city %>,
+          <%= user.country.upcase %></p>
+        <% if current_user && current_user.admin?%>
+          <p>
+            <%= link_to '📎 Bearbeiten', edit_user_path(user) %> |
+            <%= link_to '❌Löschen', user, method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %></p>
+        <% end %>
       </li>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', sign_up_path %>
-
-<script>
-    var map = L.map('map',{
-    center: [50.931, 11.272],
-    zoom: 6
-    });
-
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    <% @users.each do |user| %>
-      L.marker(
-        [<%= user.latitude %>, <%= user.longitude %>]
-      ).addTo(map);
-    <% end %>
-</script>
+  </ul>
+  <p>
+    <%= link_to 'Du willst auch auf die Liste?', sign_up_path, title: "Zur Anmeldung" %>
+  </p>
+</main>

@@ -3,7 +3,8 @@
   <ul class="navigation">
     <li><a href="https://slamalphas.org/">Die Idee</a></li>
     <li><a href="https://slamalphas.org/blog/">Blog</a></li>
-    <li><a href="<%= karte_path %>">Karten</a></li>
+    <noscript><li><a href="<%= users_path %>">Alphas</a></li></noscript>
+    <script>document.write('<li><a href="<%= karte_path %>">Karten</a></li>');</script>
     <li><a href="https://slamalphas.org/faq/">FAQ</a></li>
   </ul>
   <ul class="social">

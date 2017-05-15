@@ -10,10 +10,12 @@ $turquoise: #5bd8d0
 
 .map-nav
   position: absolute
-  right: 0
+  right: 1rem
   bottom: 0
   padding: 1rem
   z-index: 999
+  background-color: white
+  border: 5px solid black
 
   ul
     list-style: none
@@ -41,3 +43,26 @@ $country-color: ("de": $red, "at": $blue, "ch": $turquoise)
       background-color: rgba($color, .6)
       div
         background-color: $color
+
+.leaflet-bar
+  box-shadow: none
+  border-radius: 0
+  border: 5px solid black
+  a
+    box-sizing: content-box
+    border-bottom: 5px solid black
+    &.leaflet-control-zoom-in:hover,
+    &.leaflet-control-zoom-in:focus,
+    &.leaflet-control-zoom-in:active
+      border-bottom: inherit
+
+.leaflet-right .leaflet-control
+  margin-right: 1rem
+
+.leaflet-top .leaflet-control
+  margin-top: 1rem
+
+.leaflet-control
+  a
+    font-family: Roboto
+    font-weight: 600

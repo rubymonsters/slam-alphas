@@ -1,0 +1,18 @@
+var map = L.map('map', {
+  center: <%= @center %>,
+  zoom: <%= @zoom %>,
+  zoomControl: false,
+  attributionControl: false,
+  scrollWheelZoom: false
+});
+
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png')
+.addTo(map);
+
+var marker = L.icon({
+  iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
+  iconSize: [30, 48],
+  iconAnchor: [15, 48],
+  riseOnHOver: true
+});
