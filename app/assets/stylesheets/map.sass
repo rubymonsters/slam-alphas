@@ -4,6 +4,10 @@
   font-weight: 600
   font-size: 20px
 
+$red: #e63831
+$blue: #1837a0
+$turquoise: #5bd8d0
+
 .map-nav
   position: absolute
   right: 0
@@ -27,3 +31,13 @@
     &.is-#{$country}
       .#{$country}
         color: $color
+
+// overwrite leaflet styles
+$country-color: ("de": $red, "at": $blue, "ch": $turquoise)
+
+@each $country, $color in $country-color
+  .is-#{$country}
+    .marker-cluster-small
+      background-color: rgba($color, .6)
+      div
+        background-color: $color
