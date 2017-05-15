@@ -45,18 +45,18 @@
   </div>
   <div class="form-field field">
     <%= f.label :is_available_on, "Is available on (multiple choice)" %>
-    <%= select_tag(:is_available_on, options_for_select(
-      [
-        ['N/A', 1],
-        ['Weekends', 2],
-        ['Work Days', 3],
-        ['Public Holidays', 4],
-        ['Vacations', 5],
-        ['Request', 6],
-        ['Always', 7],
-        ['Currently Not Available for Booking', 8]
-      ]
-    ),  options = { multiple: true, size: 8 }) %>
+    <%= f.select :is_available_on,
+        [
+            ['N/A', 1],
+            ['Weekends', 2],
+            ['Work Days', 3],
+            ['Public Holidays', 4],
+            ['Vacations', 5],
+            ['Request', 6],
+            ['Always', 7],
+            ['Currently Not Available for Booking', 8]
+          ], {}, multiple: true
+    %>
   </div>
 
   <% if current_user.admin? %>
