@@ -51,6 +51,10 @@ $country-color: ("de": $red, "at": $blue, "ch": $turquoise)
   a
     box-sizing: content-box
     border-bottom: 5px solid black
+    &.leaflet-control-zoom-in:hover,
+    &.leaflet-control-zoom-in:focus,
+    &.leaflet-control-zoom-in:active
+      border-bottom: inherit
 
 .leaflet-right .leaflet-control
   margin-right: 1rem
