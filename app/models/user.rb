@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   scope :alphas, -> { where(alpha: true) }
+  scope :admin, -> { where(admin: true) }
 
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users

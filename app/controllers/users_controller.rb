@@ -49,8 +49,10 @@ class UsersController < Clearance::UsersController
     respond_to do |format|
       if @user.save
         sign_in @user
-        # TODO email admins about new user
-        # TODO email user saying to wait for admin approval
+
+        UserMailer.welcome(@user).deliver_now
+        User.admin.each { |u| UserMailer.new_user(u, @user).deliver_now }
+
         format.html { redirect_to @user, notice: 'Danke! Du bekommst eine E-Mail sobald dein Profil öffentlich zugänglich ist.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -65,7 +67,9 @@ class UsersController < Clearance::UsersController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        # TODO email to inform the user when profile goes public
+        if @user.public_changed? && @user.public?
+          UserMailer.user_is_public(@user).deliver_now
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
