@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
-	validates :name, :city, :email, :country, presence: true
-	validates :name, length: { minimum: 2 }
-	validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
+  validates :name, :city, :email, :country, presence: true
+  validates :name, length: { minimum: 2 }
+  validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true, unless: :persisted?
+
+  validates :recommended_by, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
@@ -25,6 +27,8 @@ class User < ActiveRecord::Base
 
   geocoded_by :location
   after_validation :geocode
+
+  scope :alphas, -> { where(alpha: true) }
 
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users
@@ -55,6 +59,10 @@ class User < ActiveRecord::Base
 
   def country_name
     COUNTRIES[country.to_sym]
+  end
+
+  def recommended_by_alpha
+    User.find_by_id(recommended_by).name
   end
 
 end
