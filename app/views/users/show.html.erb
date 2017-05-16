@@ -11,6 +11,12 @@
           <a href="<%= @user.website %>">website</a>
         </p>
         <p>
+          <p>
+            Is available on:<br/>
+            <%= @user.is_available_on %>
+          </p>
+        </p>
+        <p>
           <div class="profile-links">
             <div class="row">
               <% if show_edit_links?(@user) %>
