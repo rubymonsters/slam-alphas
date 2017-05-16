@@ -35,4 +35,19 @@ class User < ActiveRecord::Base
     COUNTRIES[country.to_sym]
   end
 
+  def is_available_on
+    available_options = [
+      ['Work Days', 1],
+      ['Weekends', 2],
+      ['Vacations', 3],
+      ['Public Holidays', 4],
+      ['Request', 5],
+      ['Always', 6],
+      ['Not Available', 7]
+    ]
+
+    available_options.each do |day|
+      puts day.to_s
+    end
+  end
 end

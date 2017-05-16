@@ -44,22 +44,10 @@
     <%= f.text_field :video_link %>
   </div>
   <div class="form-field field">
-    <%= f.label :is_available_on, "Is available on (multiple choice)" %>
-    <%= f.select :is_available_on,
-        [
-            ['N/A', 1],
-            ['Weekends', 2],
-            ['Work Days', 3],
-            ['Public Holidays', 4],
-            ['Vacations', 5],
-            ['Request', 6],
-            ['Always', 7],
-            ['Currently Not Available for Booking', 8]
-          ], {}, multiple: true
-    %>
+    <%= f.label :is_available_on, "Is available on" %>
+      <%= select_tag(:is_available_on, options_for_select(@user.is_available_on), include_blank: true, multiple: true, size: 8) %>
   </div>
-
-  <% if current_user.admin? %>
+  <% if current_user.admin? %>s
     <div class="form-field field">
       <%= f.label :public do %>
         Öffentlich?
