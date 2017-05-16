@@ -34,4 +34,15 @@ class ApplicationController < ActionController::Base
      User.where(public: true).sort_by { |x| x.transliterate_last_name }
    end
   end
+
+  def set_list
+    list = Array.new
+
+    visible_users.each do |x| # visible_users appears to be nil
+      unless list.include? x.name.first
+        list.push(x.transliterate_last_name.first.upcase)
+      end
+    end
+    list.sort!.uniq!
+  end
 end

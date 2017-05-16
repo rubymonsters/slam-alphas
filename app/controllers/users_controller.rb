@@ -25,13 +25,7 @@ class UsersController < Clearance::UsersController
     @marker = MARKERS[@user[:country]]
 
     @alphas = visible_users
-    @list = Array.new
-
-    @alphas.each do |x|
-      @list.push(x.transliterate_last_name.first.upcase)
-    end
-
-    @list.sort!.uniq!
+    @list = set_list
   end
 
   # GET /users/new

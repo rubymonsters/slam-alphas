@@ -1,8 +1,7 @@
 class MapsController < ApplicationController
-
-CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
-ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
-MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
+  CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
+  ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
+  MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
 
   def show
     if ["de", "at", "ch"].include?(map_params[:country])
@@ -17,13 +16,7 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
     end
 
     @alphas = visible_users
-    @list = Array.new
-
-    @alphas.each do |x|
-      @list.push(x.transliterate_last_name.first.upcase)
-    end
-
-    @list.sort!.uniq!
+    @list = set_list
   end
 
   private
@@ -31,5 +24,4 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
   def map_params
     params.permit(:country)
   end
-
 end
