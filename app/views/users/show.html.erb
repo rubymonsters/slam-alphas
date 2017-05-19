@@ -13,7 +13,7 @@
     </header>
     <div>
       <% if signed_in_as?(@user) && !@user.public? %>
-        <p><em>Du kannst dein eigenes Profil sehen aber es ist nicht öffentlich zugänglich.</em></p>
+        <p class="profile-notice">Du kannst dein eigenes Profil sehen aber es ist nicht öffentlich zugänglich.</p>
       <% end %>
       <% if @user.year_of_birth %>
         <p><%= @user.age %> Jahre alt</p>
@@ -32,9 +32,6 @@
       <noscript><%= link_to 'Zurück zur Übersicht', users_path() %></noscript>
       <script>document.write('<%= link_to "Zurück zur Karte", map_path(country: @user.country) %>');</script>
     </div>
-    <% if signed_in_as?(@user) && !@user.public %>
-      <p class="profile-notice">You can see your own profile, but it is not public yet</p>
-    <% end %>
   </div>
 </article>
 <div class="l-map">
