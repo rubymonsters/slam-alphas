@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
-  validates :name, :city, :email, :country, presence: true
+  validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
@@ -21,14 +21,15 @@ class User < ActiveRecord::Base
   validates :email, email: true
 
   # customized validity check in app/validators/website_validator.rb
-  validates :website, website: true, allow_blank: true
+  validates :website, website: true, allow_blank: false
 
-  validates :facebook_link, website: true, allow_blank: true
+  validates :facebook_link, website: true, allow_blank: false
 
   geocoded_by :location
   after_validation :geocode
 
   scope :alphas, -> { where(alpha: true) }
+  scope :admin, -> { where(admin: true) }
 
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users

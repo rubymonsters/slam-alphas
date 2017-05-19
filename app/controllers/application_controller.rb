@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def visible_users
-    if current_user
+    if signed_in?
       current_user.visible_for_signed_in_users
     else
      User.where(public: true).order("upper(name) ASC")
