@@ -1,8 +1,6 @@
 class UsersController < Clearance::UsersController
-  skip_before_action :redirect_signed_in_users, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
   before_action  -> {disallow_unless_admin_or_user(@user)}, only: [:edit, :update, :destroy, :change_password, :update_password]
-  before_action :disallow_unless_admin, only: [:new, :create]
 
   CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
   ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 7}
@@ -11,7 +9,11 @@ class UsersController < Clearance::UsersController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user
+      @users = current_user.visible_for_signed_in_users
+    else
+      @users = User.where(public: true).order("upper(name) ASC")
+    end
   end
 
   # GET /users/1
@@ -21,7 +23,7 @@ class UsersController < Clearance::UsersController
     @zoom = ZOOMS[@user[:country]]
     @marker = MARKERS[@user[:country]]
 
-    @alphas = User.where(public: true).sort_by {|x| x.name }
+    @alphas = visible_users
     @list = Array.new
 
     @alphas.each do |x|
@@ -44,10 +46,14 @@ class UsersController < Clearance::UsersController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        sign_in @user
+
+        UserMailer.welcome(@user).deliver_now
+        User.admin.each { |u| UserMailer.new_user(u, @user).deliver_now }
+
+        format.html { redirect_to @user, notice: 'Danke! Du bekommst eine E-Mail sobald dein Profil öffentlich zugänglich ist.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -61,6 +67,9 @@ class UsersController < Clearance::UsersController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        if @user.public_changed? && @user.public?
+          UserMailer.user_is_public(@user).deliver_now
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

@@ -26,4 +26,12 @@ class ApplicationController < ActionController::Base
   def disallow_unless_admin_or_user(user)
     redirect_to root_url unless signed_in_as_admin? || signed_in_as?(user)
   end
+
+  def visible_users
+    if signed_in?
+      current_user.visible_for_signed_in_users
+    else
+     User.where(public: true).order("upper(name) ASC")
+   end
+  end
 end

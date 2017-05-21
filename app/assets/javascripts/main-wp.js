@@ -35,20 +35,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // alphabet list toggle
 
     var alphabetList = document.querySelector('.list-alphabet');
-    alphabetList.classList.add('is-hidden');
-    var listTrigger = document.querySelectorAll('.l-alphabet a');
     var listClose = document.querySelector('.list-button');
 
-    listTrigger.forEach(function(trigger) {
-      trigger.addEventListener('click', function (ev) {
+    if (alphabetList) {
+      alphabetList.classList.add('is-hidden');
+
+      $('.l-alphabet a').on('click', function (ev) {
         ev.preventDefault();
         alphabetList.classList.remove('is-hidden');
+        // get clicked on letter
+        var letter = $(this).attr('href');
+        // find letter section in the overall list and how far it is down
+        var offsetInList = $('.list-alphabet .title-main.'+ letter).offset().top;
+        var offsetOfList = $('.list-alphabet').scrollTop();
+        // scroll to that point!
+        var sectionHeaderHeight =  $('.list-alphabet .title-main.'+ letter).height();
+        $('.list-alphabet').scrollTop(offsetOfList - (-1 * offsetInList) - sectionHeaderHeight);
       });
-    });
 
-    listClose.addEventListener('click', function () {
-      alphabetList.classList.add('is-hidden');
-    });
+      listClose.addEventListener('click', function () {
+        alphabetList.classList.add('is-hidden');
+      });
+    }
+
+
 
     // profile toggle
     var profileElem = document.querySelector('.slam-profile');

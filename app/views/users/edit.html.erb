@@ -1,7 +1,7 @@
 <div class="admin-wrapper">
   <h1 class="title-main">Editing user</h1>
 
-  <%= render partial: '/users/form', locals: {show_password_fields: true} %>
+  <%= render partial: '/users/form', locals: { show_password_fields: false } %>
 
   <div class="other-links">
     <%= link_to 'Show', @user %> |

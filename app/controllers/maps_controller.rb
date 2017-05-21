@@ -16,7 +16,7 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
       render plain: "404 Not Found", status: 404
     end
 
-    @alphas = User.where(public: true).sort_by {|x| x.name.upcase }
+    @alphas = visible_users
     @list = Array.new
 
     @alphas.each do |x|

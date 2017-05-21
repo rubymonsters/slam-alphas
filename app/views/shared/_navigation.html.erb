@@ -1,10 +1,12 @@
 <nav class="l-navigation">
   <button class="navigation-button" type="button" title="close navigation">X</button>
   <ul class="navigation">
-    <li><a href="https://slamalphas.org/">Die Idee</a></li>
+    <li><a href="https://slamalphas.org/">Wer wir sind</a></li>
     <li><a href="https://slamalphas.org/blog/">Blog</a></li>
-    <li><a href="<%= karte_path %>">Karten</a></li>
+    <noscript><li><a href="<%= users_path %>">Alphas</a></li></noscript>
+    <script>document.write('<li><a href="<%= karte_path %>">Karten</a></li>');</script>
     <li><a href="https://slamalphas.org/faq/">FAQ</a></li>
+    <li><a href="https://slamalphas.org/kontakt/">Kontakt</a></li>
   </ul>
   <ul class="social">
     <li><a href="https://www.facebook.com/Slamalphas-947352311952336/" title="Slam Alphas on Facebook">
