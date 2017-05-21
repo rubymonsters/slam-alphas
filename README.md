@@ -7,4 +7,4 @@ For a project overview of the Github issues, please refer to our [Waffle Board](
 
 ## Requirements
 
-- Ruby 2.2.4
+- Ruby 2.3.4
