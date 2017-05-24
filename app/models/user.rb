@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, unless: :persisted?
 
   validates :recommended_by, presence: true
+  validates :is_available_on, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
   validates :website, website: true, allow_blank: false
 
   validates :facebook_link, website: true, allow_blank: false
-  validates :video_link, website: true, allow_blank: true
+  validates :video_link, website: true, allow_blank: false
 
   geocoded_by :location
   after_validation :geocode
