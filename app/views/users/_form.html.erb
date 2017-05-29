@@ -58,7 +58,7 @@
 
   <div class="form-field field">
     <%= f.label :recommended_by do %>
-      Welche SlamAlpha hat dich empfohlen?*
+      Welche Slam Alpha hat dich empfohlen?*
       <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
     <% end %>
   </div>
