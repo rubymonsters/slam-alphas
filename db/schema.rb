@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170509214705) do
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
     t.boolean  "alpha",                          default: false, null: false
-    t.integer  "recommended_by",                  default: 0,     null: false
+    t.integer  "recommended_by",                 default: 0,     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
