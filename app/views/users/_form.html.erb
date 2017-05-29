@@ -11,26 +11,26 @@
     </div>
   <% end %>
 
-  <p style="color:#e63831">Bitte fülle alle Felder aus, es sind Pflichtfelder!</p>
+  <p style="color:#e63831">Felder mit * sind Pflichtfelder</p>
 
   <div class="form-field field">
-    <%= f.label :name, "Name" %>
+    <%= f.label :name, "Name*" %>
     <%= f.text_field :name %>
   </div>
   <div class="form-field field">
-    <%= f.label :city, "Stadt" %>
+    <%= f.label :city, "Stadt*" %>
     <%= f.text_field :city %>
   </div>
   <div class="form-field field">
-    <%= f.label :country, "Land" %>
+    <%= f.label :country, "Land*" %>
     <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
   <div class="form-field field">
-    <%= f.label :email, "E-Mail" %>
+    <%= f.label :email, "E-Mail*" %>
     <%= f.text_field :email %>
   </div>
   <div class="form-field field">
-    <%= f.label :year_of_birth, "Geburtsjahr" %>
+    <%= f.label :year_of_birth, "Geburtsjahr*" %>
     <%= f.number_field :year_of_birth %>
   </div>
   <div class="form-field field">
@@ -58,18 +58,18 @@
 
   <div class="form-field field">
     <%= f.label :recommended_by do %>
-      Welche SlamAlpha hat dich empfohlen?
+      Welche SlamAlpha hat dich empfohlen?*
       <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
     <% end %>
   </div>
 
   <% if show_password_fields %>
     <div class="form-field field">
-      <%= f.label :password, "Passwort" %>
+      <%= f.label :password, "Passwort*" %>
       <%= f.password_field :password %>
     </div>
     <div class="form-field field">
-      <%= f.label :password_confirmation, "Passwort bestätigen" %>
+      <%= f.label :password_confirmation, "Passwort bestätigen*" %>
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
