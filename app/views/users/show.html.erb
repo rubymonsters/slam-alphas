@@ -18,7 +18,7 @@
       <% end %>
       <% if @user.is_available_on %>
         <p><strong>Verfügbarkeit:</strong><br/>
-        <%= @user.available_at.join(", ")%> </p>
+        <%= @user.available_at.join(", ") %> </p>
       <% end %>
       <% if @user.website %>
         <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>

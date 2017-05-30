@@ -44,7 +44,7 @@
     <%= f.text_field :video_link %>
   </div>
   <div class="form-field field">
-    <%= f.label :is_available_on, "Is available on" %>
+    <%= f.label :is_available_on, "Verfügbarkeit" %>
       <%= f.select(:is_available_on, options_for_select(User.available_form_options), {}, multiple: true, size: 7) %>
   </div>
   <% if current_user.present? && current_user.admin? %>
