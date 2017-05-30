@@ -45,7 +45,7 @@
   </div>
   <div class="form-field field">
     <%= f.label :is_available_on, "Is available on" %>
-      <%= select_tag(:is_available_on, options_for_select(@user.is_available_on), include_blank: true, multiple: true, size: 8) %>
+      <%= f.select(:is_available_on, options_for_select(User.available_form_options), {}, multiple: true, size: 7) %>
   </div>
   <% if current_user.present? && current_user.admin? %>
     <div class="form-field field">
