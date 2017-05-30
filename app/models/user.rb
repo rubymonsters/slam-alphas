@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
+  AVAILABLE_OPTIONS = [
+    'Wochentage',
+    'Wochenende',
+    'Urlaub',
+    'Feiertage',
+    'auf Anfrage',
+    'Immer',
+    'Nicht verfügbar'
+  ]
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -64,20 +74,13 @@ class User < ActiveRecord::Base
     COUNTRIES[country.to_sym]
   end
 
-  def is_available_on
-    available_options = [
-      ['Work Days', 1],
-      ['Weekends', 2],
-      ['Vacations', 3],
-      ['Public Holidays', 4],
-      ['Request', 5],
-      ['Always', 6],
-      ['Not Available', 7]
-    ]
+  def self.available_form_options
+    AVAILABLE_OPTIONS.map.with_index { |day, i| [day, i] }
+  end
 
-    available_options.each do |day|
-      puts day.to_s
-    end
+  def available_at
+    num = is_available_on.map(&:to_i)
+    AVAILABLE_OPTIONS.select.with_index { |day, i| day if num.include?(i) }
   end
 
   def recommended_by_alpha
