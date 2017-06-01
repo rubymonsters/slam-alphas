@@ -16,11 +16,18 @@
       <% if @user.year_of_birth %>
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
+      <% if @user.is_available_on %>
+        <p><strong>Verfügbarkeit:</strong><br/>
+        <%= @user.available_at.join(", ") %> </p>
+      <% end %>
       <% if @user.website %>
         <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
       <% end %>
       <% if @user.facebook_link %>
         <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+      <% end %>
+      <% if @user.video_link %>
+        <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video-Link</a></p>
       <% end %>
     <div class="profile-links">
       <% if show_edit_links?(@user) %>

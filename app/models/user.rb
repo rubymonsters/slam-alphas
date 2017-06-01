@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
     ch: "Schweiz"
   }
 
+  AVAILABLE_OPTIONS = [
+    'Wochentage',
+    'Wochenende',
+    'Urlaub',
+    'Feiertage',
+    'auf Anfrage',
+    'Immer',
+    'Nicht verfügbar'
+  ]
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -16,6 +26,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, unless: :persisted?
 
   validates :recommended_by, presence: true
+  validates :is_available_on, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
@@ -24,6 +35,7 @@ class User < ActiveRecord::Base
   validates :website, website: true, allow_blank: false
 
   validates :facebook_link, website: true, allow_blank: false
+  validates :video_link, website: true, allow_blank: false
 
   geocoded_by :location
   after_validation :geocode
@@ -62,6 +74,15 @@ class User < ActiveRecord::Base
     COUNTRIES[country.to_sym]
   end
 
+  def self.available_form_options
+    AVAILABLE_OPTIONS.map.with_index { |day, i| [day, i] }
+  end
+
+  def available_at
+    num = is_available_on.map(&:to_i)
+    AVAILABLE_OPTIONS.select.with_index { |day, i| day if num.include?(i) }
+  end
+
   def recommended_by_alpha
     user = User.find_by_id(recommended_by)
     if user.present?
@@ -70,5 +91,6 @@ class User < ActiveRecord::Base
       ""
     end
   end
+
 
 end
