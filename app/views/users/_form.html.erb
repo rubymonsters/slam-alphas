@@ -41,6 +41,15 @@
     <%= f.label :facebook_link, "Facebook-Link" %>
     <%= f.text_field :facebook_link %>
   </div>
+  <div class="form-field field">
+    <%= f.label :video_link, "Video-Link" %>
+    <%= f.text_field :video_link %>
+  </div>
+  <div class="form-field field">
+    <%= f.label :is_available_on, "Verfügbarkeit" %>
+    <small>Mehrfachauswahl möglich mit CMD + Maus-Klick (Mac) / STRG + Maus-Klick (Win/Linux)</small>
+    <%= f.select(:is_available_on, options_for_select(User.available_form_options), {}, multiple: true, size: 7) %>
+  </div>
   <% if current_user.present? && current_user.admin? %>
     <div class="form-field field">
       <%= f.label :public do %>
