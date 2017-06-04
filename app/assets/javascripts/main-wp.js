@@ -63,11 +63,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // profile toggle
     var profileElem = document.querySelector('.slam-profile');
-    var profileClose = document.querySelector('.profile-button');
+    var videoElem = document.querySelector('.slam-profile-video');
+    var profileClose = document.querySelector('.profile-close');
+    var videoClose = document.querySelector('.video-close');
+    var videoOpen = document.querySelector('.js-open-video');
 
     if (profileElem && profileClose) {
       profileClose.addEventListener('click', function () {
         profileElem.classList.add('is-hidden');
+        if (videoElem) {
+          videoElem.classList.remove('is-open');
+        }
+      });
+    }
+
+    if (videoElem && videoClose && videoOpen) {
+      videoClose.addEventListener('click', function () {
+        videoElem.classList.remove('is-open');
+      });
+      videoOpen.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        videoElem.classList.toggle('is-open');
       });
     }
   }

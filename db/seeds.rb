@@ -16,13 +16,14 @@ User.create!(
   password_confirmation: "password",
   website: "http://svenjagraefen.de",
   facebook_link: "https://fb.com/svenjagraefen",
+  video_link: "https://vimeo.com/89895541",
+  is_available_on: [0],
   year_of_birth: 1990,
   alpha: true,
   recommended_by: 1,
   admin: true)
 
-# TODO: to be added when we have the colums
-# video: "https://www.youtube.com/watch?v=tKDqWYuaNVU",
+# TODO: to be added when we have the columsrails
 # Kann wann: Wochenende, unter der Woche, Urlaubs-/Ferienzeiten
 # Kann wo: überall
 # Reist mit: Zug 'im Besitz von: BC50
@@ -36,6 +37,8 @@ User.create!(
   password: "password",
   password_confirmation: "password",
   website: "http://www.franziskaholzheimer.de",
+  video_link: "https://vimeo.com/89895541",
+  is_available_on: [1],
   year_of_birth: 1988,
   alpha: true,
   recommended_by: 1,
@@ -54,12 +57,15 @@ cities = ["Hamburg", "Berlin", "München", "Frankfurt am Main", "Bremen", "Stutt
   email = Faker::Internet.email
   password = 'password'
   User.create!(
-  	name: name,
-  	email: email,
-  	password: password,
-  	password_confirmation: password,
-  	city: cities.sample,
-        alpha: false,
-        recommended_by: 1,
-  	country: "de")
+    name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    city: cities.sample,
+    video_link: "https://vimeo.com/89895541",
+    is_available_on: [1],
+    year_of_birth: 1988,
+    alpha: false,
+    recommended_by: 1,
+    country: "de")
 end

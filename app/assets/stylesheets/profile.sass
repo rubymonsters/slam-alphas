@@ -10,6 +10,7 @@
   overflow: auto
 
 .slam-profile
+  z-index: 4
   p
     word-wrap: break-word
 
@@ -46,3 +47,25 @@
   &:hover,
   &:active
     background-image: url(/facebook-blue.svg)
+
+.slam-profile-video
+  width: 540px
+  left: 220px
+  position: absolute
+  height: 100%
+  padding: 4.5em 1.2em 1em
+  z-index: 3
+  background: white
+  border-top: 5px solid black
+  border-right: 5px solid black
+  border-bottom: 5px solid black
+  transition: transform 200ms ease
+  transform: translate(-150%)
+  overflow: hidden
+
+  @media (min-width: 800px)
+    width: 700px
+    left: 629px
+
+  &.is-open
+    transform: translate(0)
