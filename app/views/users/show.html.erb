@@ -24,7 +24,7 @@
         <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
       <% end %>
       <% if @user.facebook_link %>
-        <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+        <p><a href="<%= @user.facebook_link %>" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
       <% end %>
       <% if @user.video_link %>
         <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video-Link</a></p>

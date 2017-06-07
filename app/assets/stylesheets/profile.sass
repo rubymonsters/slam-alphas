@@ -24,14 +24,24 @@
   border: 1px solid steelblue
   color: steelblue
 
-.alphaheart
+=ico
   display: block
-  width: 2em
-  height: 2em
+  width: 2rem
+  height: 2rem
   overflow: hidden
   white-space: nowrap
   text-indent: 200%
-  background:
-    image: url(/alphaherz.svg)
-    position: 45% center
-    size: 6rem
+  background-position: 45% center
+
+.alphaheart
+  +ico
+  background-image: url(/alphaherz.svg)
+  background-size: 6rem
+
+.facebook
+  +ico
+  background-image: url(/facebook.svg)
+  background-size: 100%
+  &:hover,
+  &:active
+    background-image: url(/facebook-blue.svg)
