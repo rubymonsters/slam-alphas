@@ -7,7 +7,7 @@ var map = L.map('map', {
 });
 
 L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png')
+L.tileLayer('https://api.mapbox.com/styles/v1/l1sl1s/cj3est9sk00042smqpywtke4i/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibDFzbDFzIiwiYSI6ImNqM25jZWxyNDAwMDMyd3FkendmYmJoZHcifQ.c_6cgfZFT-ooeWWJ8UqaBg')
 .addTo(map);
 
 var marker = L.icon({
