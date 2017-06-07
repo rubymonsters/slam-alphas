@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       $('.l-alphabet a').on('click', function (ev) {
         ev.preventDefault();
+
+        $('.is-highlight').removeClass('is-highlight');
+        $(this).addClass('is-highlight');
         alphabetList.classList.remove('is-hidden');
         // get clicked on letter
         var letter = $(this).attr('href');
@@ -57,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alphabetList.classList.add('is-hidden');
       });
     }
-
-
 
     // profile toggle
     var profileElem = document.querySelector('.slam-profile');
