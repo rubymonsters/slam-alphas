@@ -16,18 +16,21 @@
       <% if @user.year_of_birth %>
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
-      <% if @user.is_available_on %>
-        <p><strong>Verfügbarkeit:</strong><br/>
-        <%= @user.available_at.join(", ") %> </p>
-      <% end %>
-      <% if @user.website %>
-        <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
-      <% end %>
-      <% if @user.facebook_link %>
-        <p><a href="<%= @user.facebook_link %>" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
-      <% end %>
       <% if @user.video_link %>
-        <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video-Link</a></p>
+        <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
+      <% end %>
+      <% if @user.is_available_on %>
+        <h2 class="title-sub">Verfügbar</h2>
+        <p><%= @user.available_at.join(", ") %></p>
+      <% end %>
+      <% if @user.website || @user.facebook_link %>
+        <h2 class="title-sub">Kontakt</h2>
+        <% if @user.website %>
+          <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+        <% end %>
+        <% if @user.facebook_link %>
+          <p><a href="<%= @user.facebook_link %>" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+        <% end %>
       <% end %>
     <div class="profile-links">
       <% if show_edit_links?(@user) %>
@@ -35,7 +38,6 @@
       <% end %>
 
       <noscript><%= link_to 'Zurück zur Übersicht', users_path() %></noscript>
-      <script>document.write('<%= link_to "Zurück zur Karte", map_path(country: @user.country) %>');</script>
     </div>
   </div>
 </article>

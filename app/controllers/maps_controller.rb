@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
 
 CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
-ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 7}
+ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
 MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
 
   def show

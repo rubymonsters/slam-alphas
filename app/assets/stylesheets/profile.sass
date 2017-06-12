@@ -1,3 +1,8 @@
+//
+.profile-button,
+.list-button
+  font-size: 1.5rem
+
 .profile-links
   width: 100%
   display: flex
@@ -18,3 +23,26 @@
   background: lightblue
   border: 1px solid steelblue
   color: steelblue
+
+=ico
+  display: inline-block
+  width: 2rem
+  height: 2rem
+  overflow: hidden
+  white-space: nowrap
+  text-indent: 200%
+  vertical-align: middle
+  background-position: 45% center
+
+.alphaheart
+  +ico
+  background-image: url(/alphaherz.svg)
+  background-size: 6rem
+
+.facebook
+  +ico
+  background-image: url(/facebook.svg)
+  background-size: 100%
+  &:hover,
+  &:active
+    background-image: url(/facebook-blue.svg)

@@ -44,11 +44,12 @@ $country-color: ("de": $red, "at": $blue, "ch": $turquoise)
       div
         background-color: $color
 
-.leaflet-bar
+.leaflet-bar,
+.leaflet-touch .leaflet-bar // explicit overwrite for chrome
   box-shadow: none
   border-radius: 0
   border: 5px solid black
-  a
+  a:not(:last-child)
     box-sizing: content-box
     border-bottom: 5px solid black
     &.leaflet-control-zoom-in:hover,
