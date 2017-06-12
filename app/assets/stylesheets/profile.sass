@@ -25,10 +25,13 @@
   border: 1px solid steelblue
   color: steelblue
 
+.profile-alphabadge
+  position: absolute
+  top: 1.2em
+  font-weight: 600
+
 =ico
   display: inline-block
-  width: 2rem
-  height: 2rem
   overflow: hidden
   white-space: nowrap
   text-indent: 200%
@@ -37,12 +40,16 @@
 
 .alphaheart
   +ico
+  width: 2rem
+  height: 2rem
   background-image: url(/alphaherz.svg)
-  background-size: 6rem
+  background-size: 6.7rem
 
 .facebook
   +ico
-  background-image: url(/facebook.svg)
+  width: 1.6rem
+  height: 1.6rem
+  backgroualpnd-image: url(/facebook.svg)
   background-size: 100%
   &:hover,
   &:active

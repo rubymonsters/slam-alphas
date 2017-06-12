@@ -17,7 +17,7 @@
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
       <% if @user.video_link %>
-        <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
+        <p><a class="js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video</a></p>
       <% end %>
       <% if @user.is_available_on %>
         <h2 class="title-sub">Verfügbar</h2>
@@ -31,8 +31,6 @@
         <% if @user.facebook_link %>
           <p><a href="<%= @user.facebook_link %>" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
         <% end %>
-      <% if @user.video_link %>
-        <p><a class="js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video</a></p>
       <% end %>
     <div class="profile-links">
       <% if show_edit_links?(@user) %>
