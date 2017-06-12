@@ -1,9 +1,10 @@
+# coding: utf-8
 class UsersController < Clearance::UsersController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :change_password, :update_password]
   before_action  -> {disallow_unless_admin_or_user(@user)}, only: [:edit, :update, :destroy, :change_password, :update_password]
 
   CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
-  ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 7}
+  ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
   MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
 
   # GET /users

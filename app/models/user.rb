@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
 
   include Clearance::User
@@ -12,7 +13,8 @@ class User < ActiveRecord::Base
   AVAILABLE_OPTIONS = [
     'Wochentage',
     'Wochenende',
-    'Urlaub',
+    'Schulferien',
+    'Semesterferien',
     'Feiertage',
     'auf Anfrage',
     'Immer',

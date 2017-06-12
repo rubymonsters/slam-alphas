@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170605074200) do
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
     t.text     "video_link"
-    t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false
+    t.text     "is_available_on",                default: [],                 array: true
     t.integer  "recommended_by",                 default: 0,     null: false
     t.string   "will_travel"
   end
