@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509231226) do
+ActiveRecord::Schema.define(version: 20170509214705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170509231226) do
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
     t.text     "video_link"
-    t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false
+    t.text     "is_available_on",                default: [],                 array: true
     t.integer  "recommended_by",                 default: 0,     null: false
   end
 

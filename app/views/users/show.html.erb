@@ -1,5 +1,5 @@
 <article class="slam-profile">
-  <button class="profile-button" type="button" title="close profile">X</button>
+  <button class="profile-button profile-close" type="button" title="close profile">X</button>
   <p class="profile-alphabadge"><%= user_alpha_or_recommended(@user) %></p>
   <header>
       <h1 class="title-sub">
@@ -17,7 +17,7 @@
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
       <% if @user.video_link %>
-        <p><a href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
+        <p><a class="js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video</a></p>
       <% end %>
       <% if @user.is_available_on %>
         <h2 class="title-sub">Verfügbar</h2>
@@ -41,6 +41,10 @@
     </div>
   </div>
 </article>
+<div class="slam-profile-video">
+  <button class="profile-button video-close" type="button" title="close video">X</button>
+  <%= user_embedded_video(@user) %>
+</div>
 <div class="l-map">
   <div id="map"><div>
     <nav class="map-nav is-<%= @user.country  %>">
