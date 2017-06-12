@@ -20,6 +20,10 @@
         <p><strong>Verfügbarkeit:</strong><br/>
         <%= @user.available_at.join(", ") %> </p>
       <% end %>
+      <% if @user.will_travel %>
+        <p><strong>Reisebereitschaft:</strong><br/>
+        <%= @user.will_travel_within %> </p>
+      <% end %>
       <% if @user.website %>
         <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
       <% end %>

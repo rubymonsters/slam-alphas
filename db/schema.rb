@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20170509231226) do
-=======
 ActiveRecord::Schema.define(version: 20170605074200) do
->>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +33,12 @@ ActiveRecord::Schema.define(version: 20170605074200) do
     t.string   "remember_token",     limit: 128
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "image"
+    t.string   "avatar"
     t.text     "video_link"
     t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false

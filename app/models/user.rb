@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
     'Nicht verfügbar'
   ]
 
+  WILL_TRAVEL = {
+    '50' => 'innerhalb von 50km',
+    '100' => 'innerhalb von 100km',
+    '300' => 'innerhalb von 300km',
+    'jede'=> 'jede Entfernung',
+    'keine'=> 'keine Reisebereitschaft'
+  }
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -35,6 +43,8 @@ class User < ActiveRecord::Base
   validates :website, website: true, allow_blank: true
   validates :facebook_link, website: true, allow_blank: true
   validates :video_link, website: true, allow_blank: false
+
+  validates :will_travel, presence: true
 
   geocoded_by :location
   after_validation :geocode
@@ -91,5 +101,7 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  def will_travel_within
+    WILL_TRAVEL[will_travel]
+  end
 end
