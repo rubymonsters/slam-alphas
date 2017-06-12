@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20170605074200) do
     t.string   "remember_token",     limit: 128
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "image"
-    t.string   "avatar"
     t.text     "video_link"
     t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false
