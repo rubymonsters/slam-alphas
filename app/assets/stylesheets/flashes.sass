@@ -24,6 +24,7 @@
     position: relative
     z-index: 5
     p
+      position: relative
       padding: .5em
     //animation: fadeOut 4s 1 ease-out
     //animation-fill-mode: forwards
@@ -39,6 +40,19 @@
     background-color: lemonchiffon
     color: orange
     border: 1px solid orange
+
+.flash-close
+  background-color: transparent
+  color: black
+  position: absolute
+  right: .5rem
+  border: none
+  font-weight: 600
+  line-height: 0.6
+  &:hover,
+  &:active
+    border: none
+    background-color: transparent
 
 @keyframes fadeOut
   0%
