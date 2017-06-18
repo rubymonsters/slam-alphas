@@ -27,12 +27,12 @@
         <h2 class="title-sub">Verfügbar</h2>
         <p><%= @user.available_at.join(", ") %></p>
       <% end %>
-      <% if @user.website || @user.facebook_link %>
+      <% if !@user.website.empty? || !@user.facebook_link.empty? %>
         <h2 class="title-sub">Kontakt</h2>
-        <% if @user.website %>
+        <% unless @user.website.empty? %>
           <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
         <% end %>
-        <% if @user.facebook_link %>
+        <% unless @user.facebook_link.empty? %>
           <p><a href="<%= @user.facebook_link %>" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
         <% end %>
       <% end %>
