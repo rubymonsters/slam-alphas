@@ -39,7 +39,7 @@
       <div class="flashes">
         <% flash.each do |name, msg| -%>
           <div class="inner">
-            <%= content_tag :p, msg, class: name %>
+            <p class="<%= name%>"><%= msg %> <button class="flash-close" type="button">X</button></p>
           </div>
         <% end -%>
       </div>

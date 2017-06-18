@@ -86,5 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         videoElem.classList.toggle('is-open');
       });
     }
+
+    // hide flash messages
+    $('.flashes .flash-close').click(function (ev) {
+        $(this).parent().hide();
+    });
   }
 });
