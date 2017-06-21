@@ -71,7 +71,7 @@ class UsersController < Clearance::UsersController
         if @user.public_changed? && @user.public?
           UserMailer.user_is_public(@user).deliver_now
         end
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Das Profil wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -86,7 +86,7 @@ class UsersController < Clearance::UsersController
   def update_password
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Password was successfully changed.' }
+        format.html { redirect_to @user, notice: 'Das Passwort wurde erfolgreich geändert' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :change_password }
@@ -100,7 +100,7 @@ class UsersController < Clearance::UsersController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Das Profil wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
