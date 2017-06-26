@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
       $('.l-alphabet a').on('click', function (ev) {
         ev.preventDefault();
 
+        if ($('.slam-profile').length) {
+          $('.slam-profile').addClass('is-hidden');
+        }
+
         $('.is-highlight').removeClass('is-highlight');
         $(this).addClass('is-highlight');
         alphabetList.classList.remove('is-hidden');
