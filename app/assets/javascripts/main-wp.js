@@ -70,10 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (profileElem && profileClose) {
       profileClose.addEventListener('click', function () {
-        profileElem.classList.add('is-hidden');
-        if (videoElem) {
-          videoElem.classList.remove('is-open');
-        }
+        var url = $('.map-nav .active').attr('href');
+        location = url;
       });
     }
 

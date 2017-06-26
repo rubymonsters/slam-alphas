@@ -53,9 +53,9 @@
   <div id="map"><div>
     <nav class="map-nav is-<%= @user.country  %>">
       <ul>
-        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
-        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
-        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+        <li><%= link_to 'DE', map_path('de'), class: user_map_nav_class(@user.country, "de") %></li>
+        <li><%= link_to 'AT', map_path('at'), class: user_map_nav_class(@user.country, "at") %></li>
+        <li><%= link_to 'CH', map_path('ch'), class: user_map_nav_class(@user.country, "ch") %></li>
       </ul>
     </nav>
   </div>
