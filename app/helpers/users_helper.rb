@@ -36,4 +36,13 @@ module UsersHelper
     match = url.match(/youtube.com.*(?:\/|v=)([^&$]+)/)
     match[1] if match.present?
   end
+
+  def user_map_nav_class(user_country, countrystring)
+    classes = []
+    classes.push countrystring
+    if user_country == countrystring
+      classes.push "active"
+    end
+    classes
+  end
 end

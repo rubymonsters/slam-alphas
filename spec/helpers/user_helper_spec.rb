@@ -14,4 +14,15 @@ describe UsersHelper, type: :helper do
       expect(youtube_id(url)).to eq('t5atbOiI8i0')
     end
   end
+
+  describe 'user_map_nav_class' do
+    it 'returns an array of clases based on the user\'s country' do
+      usercountry = 'de'
+      countrystring = 'at'
+      expect(user_map_nav_class(usercountry, countrystring)).to eq(['at'])
+
+      countrystring = 'de'
+      expect(user_map_nav_class(usercountry, countrystring)).to eq(['de', 'active'])
+    end
+  end
 end

@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
       $('.l-alphabet a').on('click', function (ev) {
         ev.preventDefault();
 
+        if ($('.slam-profile').length) {
+          $('.slam-profile').addClass('is-hidden');
+        }
+
         $('.is-highlight').removeClass('is-highlight');
         $(this).addClass('is-highlight');
         alphabetList.classList.remove('is-hidden');
@@ -70,10 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (profileElem && profileClose) {
       profileClose.addEventListener('click', function () {
-        profileElem.classList.add('is-hidden');
-        if (videoElem) {
-          videoElem.classList.remove('is-open');
-        }
+        var url = $('.map-nav .active').attr('href');
+        location = url;
       });
     }
 

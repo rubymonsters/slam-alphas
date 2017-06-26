@@ -10,9 +10,11 @@
   overflow: auto
 
 .slam-profile
-  z-index: 4
+  z-index: 8
   p
     word-wrap: break-word
+  header
+    margin: 1rem 0 3rem
 
 .profile-location
   word-wrap: break-word
@@ -29,6 +31,10 @@
   position: absolute
   top: 1.2em
   font-weight: 600
+  width: 80%
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
 
 =ico
   display: inline-block
@@ -49,7 +55,7 @@
   +ico
   width: 1.6rem
   height: 1.6rem
-  backgroualpnd-image: url(/facebook.svg)
+  background-image: url(/facebook.svg)
   background-size: 100%
   &:hover,
   &:active
@@ -76,3 +82,21 @@
 
   &.is-open
     transform: translate(0)
+
+
+.button
+  display: block
+  padding: 8px 16px
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  cursor: pointer
+  border: 1px solid transparent
+  border-radius: 2px
+  background-color: #444
+  border-color: #1e1e1e
+  color: white !important
+  text-decoration: none
+  &:hover,
+  &:active
+    background-color: black
