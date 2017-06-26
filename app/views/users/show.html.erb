@@ -17,7 +17,7 @@
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
       <% if @user.video_link %>
-        <p><a class="js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video</a></p>
+        <p><a class="button js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
       <% end %>
       <% if @user.will_travel %>
         <h2 class="title-sub">Reisebereitschaft</h2>
