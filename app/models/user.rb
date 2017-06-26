@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     '100' => 'innerhalb von 100km',
     '300' => 'innerhalb von 300km',
     'jede'=> 'jede Entfernung',
-    'keine'=> 'keine Reisebereitschaft'
+    'keine'=> 'zur Zeit keine'
   }
 
   validates :name, :city, :email, :country, :year_of_birth, presence: true

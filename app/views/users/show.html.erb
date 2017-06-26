@@ -16,12 +16,12 @@
       <% if @user.year_of_birth %>
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
-      <% if @user.will_travel %>
-        <p><strong>Reisebereitschaft:</strong><br/>
-        <%= @user.will_travel_within %> </p>
-      <% end %>
       <% if @user.video_link %>
         <p><a class="js-open-video" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video</a></p>
+      <% end %>
+      <% if @user.will_travel %>
+        <h2 class="title-sub">Reisebereitschaft</h2>
+        <%= @user.will_travel_within %> </p>
       <% end %>
       <% if @user.is_available_on %>
         <h2 class="title-sub">Verfügbar</h2>
