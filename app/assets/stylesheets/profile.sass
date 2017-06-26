@@ -1,4 +1,8 @@
 //
+
+$break: 1300px
+
+
 .profile-button,
 .list-button
   font-size: 1.5rem
@@ -63,7 +67,7 @@
 
 .slam-profile-video
   width: 540px
-  left: 220px
+  left: 629px
   position: absolute
   height: 100%
   padding: 4.5em 1.2em 1em
@@ -73,15 +77,21 @@
   border-right: 5px solid black
   border-bottom: 5px solid black
   transition: transform 200ms ease
-  transform: translate(-150%)
+  transform: translate(-190%)
   overflow: hidden
 
-  @media (min-width: 800px)
+  @media (min-width: $break)
     width: 700px
-    left: 629px
 
   &.is-open
     transform: translate(0)
+
+.video-container
+  max-width: 650px
+  iframe
+    width: 100%
+    height: auto
+    min-height: 500px
 
 
 .button
