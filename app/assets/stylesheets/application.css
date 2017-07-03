@@ -11,6 +11,15 @@
  * file per style scope.
  *
  *= require leaflet
- *= require_tree .
+ *= require MarkerCluster.Default
+ *= require MarkerCluster
+ *= require main-wp
+ *= require base
+ *= require admin
+ *= require map
+ *= require profile
+ *= require flashes
+ *= require user
+ *= require layout
  *= require_self
  */

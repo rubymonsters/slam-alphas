@@ -8,6 +8,9 @@ $red: #e63831
 $blue: #1837a0
 $turquoise: #5bd8d0
 
+$break-s: 800px
+$break: 1300px
+
 .map-nav
   position: absolute
   right: 1rem
@@ -67,3 +70,8 @@ $country-color: ("de": $red, "at": $blue, "ch": $turquoise)
   a
     font-family: Roboto
     font-weight: 600
+
+
+.l-map
+  @media (max-width: $break-s)
+    padding: 2em
