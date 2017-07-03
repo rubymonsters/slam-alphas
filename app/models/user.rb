@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
     'keine'=> 'zur Zeit keine'
   }
 
+  TRAVELS_VIA_OPTIONS = [
+    'Bahn',
+    'Bus',
+    'Fähre/Schiff',
+    'Fahrrad',
+    'Auto',
+    'Flugzeug'
+  ]
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -37,6 +46,7 @@ class User < ActiveRecord::Base
 
   validates :recommended_by, presence: true
   validates :is_available_on, presence: true
+  validates :travels_via, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
@@ -92,6 +102,15 @@ class User < ActiveRecord::Base
   def available_at
     num = is_available_on.map(&:to_i)
     AVAILABLE_OPTIONS.select.with_index { |day, i| day if num.include?(i) }
+  end
+
+  def self.travels_via_form_options
+    TRAVELS_VIA_OPTIONS.map.with_index { |way, i| [way, i] }
+  end
+
+  def travels_with
+    transport_options = travels_via.map(&:to_i)
+    TRAVELS_VIA_OPTIONS.select.with_index { |way, i| way if transport_options.include?(i) }
   end
 
   def recommended_by_alpha
