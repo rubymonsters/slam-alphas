@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703192614) do
+ActiveRecord::Schema.define(version: 20170703220318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(version: 20170703192614) do
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
     t.text     "video_link"
-    t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false
+    t.text     "is_available_on",                default: [],                 array: true
     t.integer  "recommended_by",                 default: 0,     null: false
     t.string   "will_travel"
     t.text     "travels_via",                    default: [],                 array: true
+    t.text     "train_bonus_card",               default: [],                 array: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

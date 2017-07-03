@@ -56,7 +56,7 @@
   <% end %>
   </div>
   <div class="form-field field">
-    <%= f.label :will_travel, "Reisebereitschaft" %>
+    <%= f.label :will_travel, "Reisebereitschaft*" %>
     <% User::WILL_TRAVEL.each.with_index do |option, index| %>
       <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
     <% end %>
@@ -71,6 +71,17 @@
       <% end %>
   <% end %>
   </div>
+
+  <div class="form-field field">
+    <%= f.label :travels_via, "Bahnbonus" %>
+      <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
+      <%= label_tag "train_bonus_card_#{index}" do %>
+        <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>
+        <%= option %>
+      <% end %>
+  <% end %>
+  </div>
+
   <% if current_user.present? && current_user.admin? %>
     <div class="form-field field">
       <%= f.label :public do %>
