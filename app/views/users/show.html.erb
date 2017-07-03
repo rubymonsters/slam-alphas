@@ -27,6 +27,10 @@
         <h2 class="title-sub">Reisebereitschaft</h2>
         <%= @user.will_travel_within %> </p>
       <% end %>
+      <% if @user.travels_via.present? %>
+        <h2 class="title-sub">Fortbewegungsmittel</h2>
+        <%= @user.travels_with.join(", ") %> </p>
+      <% end %>
       <% if @user.website.present? || @user.facebook_link.present? %>
         <h2 class="title-sub">Kontakt</h2>
         <% if @user.website.present? %>
