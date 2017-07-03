@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if ($('.slam-profile').length) {
           $('.slam-profile').addClass('is-hidden');
         }
+        if ($('.slam-profile-video').length) {
+          $('.slam-profile-video').removeClass('is-open');
+        }
 
         $('.is-highlight').removeClass('is-highlight');
         $(this).addClass('is-highlight');

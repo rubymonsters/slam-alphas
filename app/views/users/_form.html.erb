@@ -56,12 +56,10 @@
   <% end %>
   </div>
   <div class="form-field field">
-    <%= f.label :will_travel, "Reisebereitschaft" %><br />
-    <%= f.radio_button(:will_travel, '50', checked: true) %> innerhalb von 50km
-    <%= f.radio_button(:will_travel, '100', checked: false) %> innerhalb von 100km
-    <%= f.radio_button(:will_travel, '300', checked: false) %> innerhalb von 300km
-    <%= f.radio_button(:will_travel, 'jede', checked: false) %>jede Entfernung
-    <%= f.radio_button(:will_travel, 'keine', checked: false) %>zur Zeit keine
+    <%= f.label :will_travel, "Reisebereitschaft" %>
+    <% User::WILL_TRAVEL.each.with_index do |option, index| %>
+      <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
+    <% end %>
   </div>
   <div class="form-field field">
     <%= f.label :travels_via, "Fortbewegungsmittel*" %>
@@ -87,14 +85,12 @@
       <% end %>
     </div>
   <% end %>
-
   <div class="form-field field">
     <%= f.label :recommended_by do %>
       Welche Slam Alpha hat dich empfohlen?*
       <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
     <% end %>
   </div>
-
   <% if show_password_fields %>
     <div class="form-field field">
       <%= f.label :password, "Passwort*" %>
@@ -105,7 +101,6 @@
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
-
   <div class="actions">
     <%= f.submit("Profil aktualisieren") %>
   </div>

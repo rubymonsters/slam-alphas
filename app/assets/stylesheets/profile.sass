@@ -1,7 +1,17 @@
 //
+
+$break-s: 800px
+$break: 1300px
+
+
 .profile-button,
 .list-button
   font-size: 1.5rem
+
+.profile-button
+  @media (max-width: $break-s)
+    position: static
+    float: right
 
 .profile-links
   width: 100%
@@ -15,6 +25,13 @@
     word-wrap: break-word
   header
     margin: 1rem 0 3rem
+
+  @media (max-width: $break-s)
+    position: static
+    width: 100%
+    border-right: none
+    border-left: 5px solid black
+    padding-top: 1.5em
 
 .profile-location
   word-wrap: break-word
@@ -35,6 +52,9 @@
   white-space: nowrap
   text-overflow: ellipsis
   overflow: hidden
+
+  @media (max-width: $break-s)
+    position: static
 
 =ico
   display: inline-block
@@ -61,9 +81,13 @@
   &:active
     background-image: url(/facebook-blue.svg)
 
+.profile-video-link
+  @media (max-width: $break-s)
+    display: none
+
 .slam-profile-video
   width: 540px
-  left: 220px
+  left: 629px
   position: absolute
   height: 100%
   padding: 4.5em 1.2em 1em
@@ -73,16 +97,34 @@
   border-right: 5px solid black
   border-bottom: 5px solid black
   transition: transform 200ms ease
-  transform: translate(-150%)
+  transform: translate(-190%)
   overflow: hidden
 
-  @media (min-width: 800px)
+  @media (max-width: $break-s)
+    position: static
+    width: 100%
+    padding-top: 1.5em
+    transform: translate(0)
+    border-right: none
+
+  @media (min-width: $break)
     width: 700px
-    left: 629px
 
   &.is-open
     transform: translate(0)
 
+.video-container
+  max-width: 650px
+  iframe
+    width: 100%
+    height: auto
+    min-height: 500px
+  @media (max-width: $break-s)
+    width: 100%
+
+.video-close
+  @media (max-width: $break-s)
+    display: none
 
 .button
   display: block

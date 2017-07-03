@@ -17,7 +17,7 @@
         <p><%= @user.age %> Jahre alt</p>
       <% end %>
       <% if @user.video_link %>
-        <p><a class="js-open-video button" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
+        <p class="profile-video-link"><a class="js-open-video button" target="_blank" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
       <% end %>
       <% if @user.is_available_on.present? %>
         <h2 class="title-sub">Verfügbar</h2>
@@ -34,10 +34,10 @@
       <% if @user.website.present? || @user.facebook_link.present? %>
         <h2 class="title-sub">Kontakt</h2>
         <% if @user.website.present? %>
-          <p><a href="<%= @user.website %>" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+          <p><a href="<%= @user.website %>" target="_blank" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
         <% end %>
         <% if @user.facebook_link.present? %>
-          <p><a href="<%= @user.facebook_link %>" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+          <p><a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
         <% end %>
       <% end %>
     <div class="profile-links">
@@ -51,7 +51,9 @@
 </article>
 <div class="slam-profile-video">
   <button class="profile-button video-close" type="button" title="close video">X</button>
-  <%= user_embedded_video(@user) %>
+  <div class="video-container">
+    <%= user_embedded_video(@user) %>
+  </div>
 </div>
 <div class="l-map">
   <div id="map"><div>
