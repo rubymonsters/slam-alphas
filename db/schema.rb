@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170703192614) do
     t.string   "remember_token",     limit: 128
     t.boolean  "public",                         default: false
     t.boolean  "admin",                          default: false
-    t.string   "avatar"
     t.text     "video_link"
     t.text     "is_available_on",                default: [],                 array: true
     t.boolean  "alpha",                          default: false, null: false
