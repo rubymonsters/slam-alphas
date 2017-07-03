@@ -54,7 +54,6 @@ class User < ActiveRecord::Base
 
   validates :recommended_by, presence: true
   validates :is_available_on, presence: true
-  validates :travels_via, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true

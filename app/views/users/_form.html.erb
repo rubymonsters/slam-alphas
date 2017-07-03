@@ -46,7 +46,7 @@
     <%= f.text_field :video_link %>
   </div>
   <div class="form-field field">
-    <%= f.label :is_available_on, "Verfügbarkeit" %>
+    <%= f.label :is_available_on, "Verfügbarkeit*" %>
       <small>Aufgrund eines Bugs wird dein letztes Update nicht überschrieben, wenn keine Checkbox aktiviert ist. Bitte achte daher darauf, dass mindst. eine Checkbox aktiviert ist. Wir werden dieses Problem schnellstmöglich beheben.</small>
       <% User::AVAILABLE_OPTIONS.each.with_index do |option, index| %>
       <%= label_tag "is_available_on_#{index}" do %>
