@@ -47,8 +47,13 @@
   </div>
   <div class="form-field field">
     <%= f.label :is_available_on, "Verfügbarkeit" %>
-    <small>Mehrfachauswahl möglich mit CMD + Maus-Klick (Mac) / STRG + Maus-Klick (Win/Linux)</small>
-    <%= f.select(:is_available_on, options_for_select(User.available_form_options), {}, multiple: true, size: 7) %>
+      <small>Aufgrund eines Bugs wird dein letztes Update nicht überschrieben, wenn keine Checkbox aktiviert ist. Bitte achte daher darauf, dass mindst. eine Checkbox aktiviert ist. Wir werden dieses Problem schnellstmöglich beheben.</small>
+      <% User::AVAILABLE_OPTIONS.each.with_index do |option, index| %>
+      <%= label_tag "is_available_on_#{index}" do %>
+        <%= check_box_tag :'user[is_available_on][]', index, @user.is_available_on.include?(index.to_s), id: "is_available_on_#{index}" %>
+        <%= option %>
+      <% end %>
+  <% end %>
   </div>
   <div class="form-field field">
     <%= f.label :will_travel, "Reisebereitschaft" %><br />
