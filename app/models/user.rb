@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
     'Flugzeug'
   ]
 
+  TRAIN_BONUS_CARDS = [
+    'Bahncard 25',
+    'Bahncard 50',
+    'Bahncard 100',
+    'Österreichcard',
+    'Halbtax'
+  ]
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -46,7 +54,6 @@ class User < ActiveRecord::Base
 
   validates :recommended_by, presence: true
   validates :is_available_on, presence: true
-  validates :travels_via, presence: true
 
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
@@ -111,6 +118,15 @@ class User < ActiveRecord::Base
   def travels_with
     transport_options = travels_via.map(&:to_i)
     TRAVELS_VIA_OPTIONS.select.with_index { |way, i| way if transport_options.include?(i) }
+  end
+
+  def self.train_bonus_card_form_optins
+    TRAIN_BONUS_CARDS.map.with_index { |card, i| [card, i] }
+  end
+
+  def has_train_bonus_card
+    train_bonus_card_options = train_bonus_card.map(&:to_i)
+    TRAIN_BONUS_CARDS.select.with_index { |card, i| card if train_bonus_card_options.include?(i) }
   end
 
   def recommended_by_alpha
