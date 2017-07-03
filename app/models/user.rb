@@ -71,6 +71,10 @@ class User < ActiveRecord::Base
   scope :alphas, -> { where(alpha: true) }
   scope :admin, -> { where(admin: true) }
 
+  def self.sort_by_name(users)
+    users.sort { |a, b| a.last_name <=> b.last_name }
+  end
+
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users
     if admin?
@@ -82,6 +86,10 @@ class User < ActiveRecord::Base
       #with a collation - adding SQL in the query
       User.where(id: visible_ids).order("upper(name) ASC")
     end
+  end
+
+  def last_name
+    name.split(" ").last
   end
 
   def age
