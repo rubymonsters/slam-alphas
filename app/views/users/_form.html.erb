@@ -73,7 +73,7 @@
   </div>
 
   <div class="form-field field">
-    <%= f.label :travels_via, "Bahnbonus" %>
+    <%= f.label :travels_via, "Bahncards" %>
       <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
       <%= label_tag "train_bonus_card_#{index}" do %>
         <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>

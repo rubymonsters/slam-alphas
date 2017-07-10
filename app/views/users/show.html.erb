@@ -32,19 +32,23 @@
         <%= @user.travels_with.join(", ") %> </p>
       <% end %>
       <% if @user.train_bonus_card.present? %>
-        <h2 class="title-sub">Bahnbonus</h2>
+        <h2 class="title-sub">Bahncards</h2>
         <%= @user.has_train_bonus_card.join(", ") %> </p>
       <% end %>
-      <% if @user.website.present? || @user.facebook_link.present? %>
-        <h2 class="title-sub">Kontakt</h2>
-        <% if @user.website.present? %>
-          <p><a href="<%= @user.website %>" target="_blank" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+
+      <h2 class="title-sub">Kontakt</h2>
+      <% if @user.website.present? %>
+        <p><a href="<%= @user.website %>" target="_blank" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
+      <% end %>
+      <p>
+        <% if @user.email %>
+          <a href="mailto:<%= @user.email %>" title="Email an <%= @user.name%> senden" class="email">Email <%= @user.name %></a>
         <% end %>
         <% if @user.facebook_link.present? %>
-          <p><a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
+          <a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a>
         <% end %>
-        <p><a href="mailto:<%= @user.email %>" title="Email an <%= @user.name%> senden">Email <%= @user.name %></a></p>
-      <% end %>
+      </p>
+    </div>
     <div class="profile-links">
       <% if show_edit_links?(@user) %>
         <%= link_to '📎 Bearbeiten', edit_user_path(@user) %>
