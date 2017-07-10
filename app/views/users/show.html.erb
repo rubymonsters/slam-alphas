@@ -43,6 +43,7 @@
         <% if @user.facebook_link.present? %>
           <p><a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a></p>
         <% end %>
+        <p><a href="mailto:<%= @user.email %>" title="Email an <%= @user.name%> senden">Email <%= @user.name %></a></p>
       <% end %>
     <div class="profile-links">
       <% if show_edit_links?(@user) %>
