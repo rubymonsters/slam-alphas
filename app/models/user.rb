@@ -31,9 +31,8 @@ class User < ActiveRecord::Base
   TRAVELS_VIA_OPTIONS = [
     'Bahn',
     'Bus',
-    'Fähre/Schiff',
-    'Fahrrad',
-    'Auto',
+    'Auto (eigenes)',
+    'Mietwagen',
     'Flugzeug'
   ]
 
