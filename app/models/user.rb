@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     'Semesterferien',
     'Feiertage',
     'auf Anfrage',
-    'Immer',
     'Nicht verfügbar'
   ]
 
