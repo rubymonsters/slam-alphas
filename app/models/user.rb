@@ -40,8 +40,10 @@ class User < ActiveRecord::Base
     'Bahncard 25',
     'Bahncard 50',
     'Bahncard 100',
+    'Vorteilscard',
     'Österreichcard',
-    'Halbtax'
+    'Halbtax',
+    'General Abonnement'
   ]
 
   validates :name, :city, :email, :country, :year_of_birth, presence: true
