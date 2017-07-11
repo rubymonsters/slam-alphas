@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
     'Semesterferien',
     'Feiertage',
     'auf Anfrage',
-    'Immer',
     'Nicht verfügbar'
   ]
 
@@ -32,9 +31,8 @@ class User < ActiveRecord::Base
   TRAVELS_VIA_OPTIONS = [
     'Bahn',
     'Bus',
-    'Fähre/Schiff',
-    'Fahrrad',
-    'Auto',
+    'Auto (eigenes)',
+    'Mietwagen',
     'Flugzeug'
   ]
 
