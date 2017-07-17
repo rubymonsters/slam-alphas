@@ -1,5 +1,6 @@
 # Slam Alphas App
-[![Stories in Ready](https://badge.waffle.io/rubymonsters/slam-alphas.svg?label=ready&title=Ready)](http://waffle.io/rubymonsters/slam-alphas)
+
+[![Build Status](https://travis-ci.org/rubymonsters/slam-alphas.svg?branch=master)](https://travis-ci.org/rubymonsters/slam-alphas) [![Stories in Ready](https://badge.waffle.io/rubymonsters/slam-alphas.svg?label=ready&title=Ready)](http://waffle.io/rubymonsters/slam-alphas)
 
 This repo is the open source code for the interactive map of [Slam Alphas](https://slamalphas.org), a collective of women poetry slam artists in Germany, Austria and Switzerland.
 
