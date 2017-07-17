@@ -17,16 +17,6 @@ RSpec.describe User, type: :model do
       will_travel: '50'}.merge(attributes))
   end
 
-  it "doesn't allow countries outside DACH" do
-    user = make_user(email: "user@email.com", country: "gb")
-    expect(user.valid?).to be(false)
-  end
-
-  it "allows countries within DACH" do
-    user = make_user(email: "user2@email.com", country: "de")
-    expect(user.valid?).to be(true)
-  end
-
   describe "sorting by user name" do
 
     it "can sort users with only one name" do

@@ -78,13 +78,11 @@ class User < ActiveRecord::Base
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users
     if admin?
-      User.all.order("upper(name) ASC")
+      User.sort_by_name(User.all)
     else
       # Adds the user's id to the array of public ids
       visible_ids = User.where(public: true).pluck(:id) << id
-      # The logged_in user may see the users whose ids are within the visble ids and they will be sorted ascendingly
-      #with a collation - adding SQL in the query
-      User.where(id: visible_ids).order("upper(name) ASC")
+      User.sort_by_name(User.where(id: visible_ids))
     end
   end
 
