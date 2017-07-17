@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if signed_in?
       current_user.visible_for_signed_in_users
     else
-     User.where(public: true).order("upper(name) ASC")
+     User.sort_by_name(User.where(public: true))
    end
   end
 end

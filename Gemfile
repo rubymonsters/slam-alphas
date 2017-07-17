@@ -39,6 +39,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'faker', '~> 1.7', '>= 1.7.2'
+  gem 'database_cleaner'
 end
 
 group :development do
