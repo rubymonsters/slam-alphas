@@ -37,10 +37,10 @@
     <% end %>
 
     <h2 class="title-sub">Kontakt</h2>
-    <% if @user.website.present? %>
-      <p><a href="<%= @user.website %>" target="_blank" title="Besuche <%= @user.name %>s website"><%= @user.website_clean %></a></p>
-    <% end %>
     <p>
+      <% if @user.website.present? %>
+        <a href="<%= @user.website %>" target="_blank" title="Website von <%= @user.name %>" class="website"><%= @user.website_clean %></a>
+      <% end %>
       <% if @user.email %>
         <a href="mailto:<%= @user.email %>" title="Email an <%= @user.name%> senden" class="email">Email <%= @user.name %></a>
       <% end %>
