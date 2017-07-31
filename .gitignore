@@ -15,7 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
-.DS_Store
 
 # Ignore config files
 .env
@@ -24,3 +23,6 @@
 # Ignore public folder
 /public/assets
 /public/uploads
+
+.DS_Store
+.byebug_history

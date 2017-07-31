@@ -1,65 +1,89 @@
-<p id="notice"><%= notice %></p>
-
 <article class="slam-profile">
-    <button class="profile-button" type="button" title="close profile">X</button>
-    <header>
-        <h1 class="title-sub"><%= @user.name %></h1>
-        <p><%= @user.city %> (<%= @user.country.upcase %>)</p>
-    </header>
-    <div>
-        <p>
-          <% if @user.avatar? %>
-            <%= image_tag @user.avatar_url(:thumb).to_s %>
-          <% else %>
-            <%= image_tag @user.avatar.default_url %>
-          <% end %>
-        </p>
-        <p>
-          <a href="<%= @user.website %>">website</a>
-        </p>
-        <p>
-          <%= link_to 'Edit', edit_user_path(@user) %> |
-          <%= link_to 'Back', users_path %>
-        </p>
+  <button class="profile-button profile-close" type="button" title="close profile">X</button>
+  <p class="profile-alphabadge"><%= user_alpha_or_recommended(@user) %></p>
+  <header>
+    <h1 class="title-sub">
+      <% if admin_user_public?(current_user, @user) %>
+        <span title="Profil is öffentlich">📍</span>
+      <% end %>
+      <%= @user.name %></h1>
+      <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
+  </header>
+  <div>
+    <% if signed_in_as?(@user) && !@user.public? %>
+      <p class="profile-notice">Du kannst dein eigenes Profil sehen aber es ist nicht öffentlich zugänglich.</p>
+    <% end %>
+    <% if @user.year_of_birth %>
+      <p><%= @user.age %> Jahre alt</p>
+    <% end %>
+    <% if @user.video_link %>
+      <p class="profile-video-link"><a class="js-open-video button" target="_blank" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
+    <% end %>
+    <% if @user.is_available_on.present? %>
+      <h2 class="title-sub">Verfügbar</h2>
+      <p><%= @user.available_at.join(", ") %></p>
+    <% end %>
+    <% if @user.will_travel.present? %>
+      <h2 class="title-sub">Reisebereitschaft</h2>
+      <%= @user.will_travel_within %> </p>
+    <% end %>
+    <% if @user.travels_via.present? %>
+      <h2 class="title-sub">Fortbewegungsmittel</h2>
+      <%= @user.travels_with.join(", ") %> </p>
+    <% end %>
+    <% if @user.train_bonus_card.present? %>
+      <h2 class="title-sub">Bahncards</h2>
+      <%= @user.has_train_bonus_card.join(", ") %> </p>
+    <% end %>
+
+    <h2 class="title-sub">Kontakt</h2>
+    <p>
+      <% if @user.website.present? %>
+        <a href="<%= @user.website %>" target="_blank" title="Website von <%= @user.name %>" class="website"><%= @user.website_clean %></a>
+      <% end %>
+      <% if @user.email %>
+        <a href="mailto:<%= @user.email %>" title="Email an <%= @user.name%> senden" class="email">Email <%= @user.name %></a>
+      <% end %>
+      <% if @user.facebook_link.present? %>
+        <a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a>
+      <% end %>
+    </p>
+
+    <div class="profile-links">
+      <% if show_edit_links?(@user) %>
+        <%= link_to '📎 Bearbeiten', edit_user_path(@user) %>
+      <% end %>
+      <noscript><%= link_to 'Zurück zur Übersicht', users_path() %></noscript>
     </div>
+  </div>
 </article>
+<div class="slam-profile-video">
+  <button class="profile-button video-close" type="button" title="close video">X</button>
+  <div class="video-container">
+    <%= user_embedded_video(@user) %>
+  </div>
+</div>
 <div class="l-map">
-    <div id="map"><div>
+  <div id="map"><div>
     <nav class="map-nav is-<%= @user.country  %>">
       <ul>
-        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
-        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
-        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+        <li><%= link_to 'DE', map_path('de'), class: user_map_nav_class(@user.country, "de") %></li>
+        <li><%= link_to 'AT', map_path('at'), class: user_map_nav_class(@user.country, "at") %></li>
+        <li><%= link_to 'CH', map_path('ch'), class: user_map_nav_class(@user.country, "ch") %></li>
       </ul>
     </nav>
-</div>
+  </div>
 
-<script>
- var map = L.map('map', {
-     center: <%= @center %>,
-     zoom: <%= @zoom %>,
-     zoomControl: false,
-     attributionControl: false,
-     scrollWheelZoom: false
- });
+  <script>
 
- L.control.zoom({ position: 'topright' }).addTo(map);
- L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
-  .addTo(map);
+   <%= render 'shared/map' %>
 
- var marker = L.icon({
-     iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
-     iconSize: [30, 48],
-     iconAnchor: [15, 48],
-     riseOnHOver: true
- });
-
- var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
-                       { icon: marker }).addTo(map);
- marker.bindTooltip('<%= @user.name %>');
- marker.on('click', function (ev) {
-   if (document.querySelector('.slam-profile').classList.contains('is-hidden')) {
-     document.querySelector('.slam-profile').classList.remove('is-hidden');
-   }
- });
-</script>
+   var marker = L.marker([<%= @user.latitude %>, <%= @user.longitude %>],
+                         { icon: marker }).addTo(map);
+   marker.bindTooltip('<%= @user.name %>');
+   marker.on('click', function (ev) {
+     if (document.querySelector('.slam-profile').classList.contains('is-hidden')) {
+       document.querySelector('.slam-profile').classList.remove('is-hidden');
+     }
+   });
+  </script>

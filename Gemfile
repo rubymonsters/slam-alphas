@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'faker', '~> 1.7', '>= 1.7.2'
+  gem 'database_cleaner'
 end
 
 group :development do

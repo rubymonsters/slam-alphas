@@ -1,0 +1,18 @@
+var map = L.map('map', {
+  center: <%= @center %>,
+  zoom: <%= @zoom %>,
+  zoomControl: false,
+  attributionControl: false,
+  scrollWheelZoom: false
+});
+
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.tileLayer('https://api.mapbox.com/styles/v1/l1sl1s/cj3est9sk00042smqpywtke4i/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibDFzbDFzIiwiYSI6ImNqM25jZWxyNDAwMDMyd3FkendmYmJoZHcifQ.c_6cgfZFT-ooeWWJ8UqaBg')
+.addTo(map);
+
+var marker = L.icon({
+  iconUrl: '<%= image_path("marker-#{@marker}.svg") %>',
+  iconSize: [30, 48],
+  iconAnchor: [15, 48],
+  riseOnHOver: true
+});

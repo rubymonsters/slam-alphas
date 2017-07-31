@@ -1,0 +1,53 @@
+.l-header
+  z-index: 10 !important
+
+$break-s: 800px
+$blue: #1837a0
+
+.l-alphabet
+  @media (max-width: $break-s)
+    li
+      display: inline-block
+      padding: 0.5em
+    ul
+      border-bottom: 5px solid black
+
+  .is-highlight
+    color: $blue
+
+  @supports (animation-delay: 5s)
+    .is-highlight
+      animation: fadeoutColor infinite 2s ease
+      animation-delay: 5s
+    @keyframes fadeoutColor
+      0%
+        color: $blue
+      100%
+        color: #000
+
+.list-alphabet
+  @media (max-width: $break-s)
+    .has-js &
+      position: static
+      width: 100%
+      transform: translate(0, 0)
+
+.l-navigation
+  z-index: 20
+
+.mobile-nav-toggle
+  cursor: pointer
+  text-align: center
+  padding: 0.4em
+  margin-bottom: 0
+  border-bottom: 5px solid black
+
+.mobile-only
+  display: none
+  @media (max-width: $break-s)
+    display: block
+
+.desktop-only
+  display: block
+  @media (max-width: $break-s)
+    display: none

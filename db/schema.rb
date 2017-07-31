@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170212180701) do
+=======
+ActiveRecord::Schema.define(version: 20170703220318) do
+>>>>>>> d01a7eacacdc12304ca87e15a4a422cd86bcb103
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +43,13 @@ ActiveRecord::Schema.define(version: 20170212180701) do
     t.datetime "photo_updated_at"
     t.string   "image"
     t.string   "avatar"
+    t.text     "video_link"
+    t.boolean  "alpha",                          default: false, null: false
+    t.text     "is_available_on",                default: [],                 array: true
+    t.integer  "recommended_by",                 default: 0,     null: false
+    t.string   "will_travel"
+    t.text     "travels_via",                    default: [],                 array: true
+    t.text     "train_bonus_card",               default: [],                 array: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

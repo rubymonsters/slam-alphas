@@ -1,6 +1,6 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
@@ -11,24 +11,26 @@
     </div>
   <% end %>
 
+  <p style="color:#e63831">Felder mit * sind Pflichtfelder</p>
+
   <div class="form-field field">
-    <%= f.label :name, "Name" %><br>
+    <%= f.label :name, "Name*" %>
     <%= f.text_field :name %>
   </div>
   <div class="form-field field">
-    <%= f.label :city, "Stadt" %>
+    <%= f.label :city, "Stadt*" %>
     <%= f.text_field :city %>
   </div>
   <div class="form-field field">
-    <%= f.label :country, "Land" %>
+    <%= f.label :country, "Land*" %>
     <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
   <div class="form-field field">
-    <%= f.label :email, "E-Mail" %>
+    <%= f.label :email, "E-Mail*" %>
     <%= f.text_field :email %>
   </div>
   <div class="form-field field">
-    <%= f.label :year_of_birth, "Geburtsjahr" %>
+    <%= f.label :year_of_birth, "Geburtsjahr*" %>
     <%= f.number_field :year_of_birth %>
   </div>
   <div class="form-field field">
@@ -53,29 +55,77 @@
     </p>
   </div>
   <div class="form-field field">
-    <%= f.label :public do %>
-      Öffentlich?
-      <%= f.check_box :public %>
+    <%= f.label :video_link, "Video-Link*" %>
+    <%= f.text_field :video_link %>
+  </div>
+  <div class="form-field field">
+    <p class="title-sub">Verfügbarkeit*</p>
+    <p><small>Aufgrund eines Bugs wird dein letztes Update nicht überschrieben, wenn keine Checkbox aktiviert ist. Bitte achte daher darauf, dass mindst. eine Checkbox aktiviert ist. Wir werden dieses Problem schnellstmöglich beheben.</small></p>
+      <% User::AVAILABLE_OPTIONS.each.with_index do |option, index| %>
+      <%= label_tag "is_available_on_#{index}", class: 'label-thin' do %>
+        <%= check_box_tag :'user[is_available_on][]', index, @user.is_available_on.include?(index.to_s), id: "is_available_on_#{index}" %>
+        <%= option %>
+      <% end %>
+  <% end %>
+  </div>
+  <div class="form-field field">
+    <%= f.label :will_travel, "Reisebereitschaft*" %>
+    <% User::WILL_TRAVEL.each.with_index do |option, index| %>
+      <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
     <% end %>
   </div>
   <div class="form-field field">
-    <%= f.label :admin do %>
-      Admin?
-      <%= f.check_box :admin %>
+    <p class="title-sub">Forbewegungmittel*</p>
+    <p><small>Bitte achte darauf, dass mindst. eine Checkbox aktiviert ist (siehe Erläuterung unter Verfügbarkeit).</small></p>
+      <% User::TRAVELS_VIA_OPTIONS.each.with_index do |option, index| %>
+      <%= label_tag "travels_via_#{index}", class: 'label-thin' do %>
+        <%= check_box_tag :'user[travels_via][]', index, @user.travels_via.include?(index.to_s), id: "travels_via_#{index}" %>
+        <%= option %>
+      <% end %>
+  <% end %>
+  </div>
+
+  <div class="form-field field">
+    <p class="title-sub">Bahncards</p>
+      <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
+      <%= label_tag "train_bonus_card_#{index}", class: 'label-thin' do %>
+        <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>
+        <%= option %>
+      <% end %>
+  <% end %>
+  </div>
+
+  <% if current_user.present? && current_user.admin? %>
+    <div class="form-field field">
+      <%= f.label :public do %>
+        Öffentlich?
+        <%= f.check_box :public %>
+      <% end %>
+    </div>
+    <div class="form-field field">
+      <%= f.label :admin do %>
+        Admin?
+        <%= f.check_box :admin %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form-field field">
+    <%= f.label :recommended_by do %>
+      Welche Slam Alpha hat dich empfohlen?*
+      <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
     <% end %>
   </div>
   <% if show_password_fields %>
     <div class="form-field field">
-      <%= f.label :password, "Passwort" %>
+      <%= f.label :password, "Passwort*" %>
       <%= f.password_field :password %>
     </div>
     <div class="form-field field">
-      <%= f.label :password_confirmation, "Passwort bestätigen" %>
+      <%= f.label :password_confirmation, "Passwort bestätigen*" %>
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("Profil aktualisieren") %>
   </div>
 <% end %>

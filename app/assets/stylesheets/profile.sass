@@ -1,0 +1,164 @@
+//
+
+$break-s: 800px
+$break: 1300px
+
+
+.profile-button,
+.list-button
+  font-size: 1.5rem
+
+.profile-button
+  @media (max-width: $break-s)
+    position: static
+    float: right
+
+.profile-links
+  width: 100%
+  display: flex
+  justify-content: space-between
+  overflow: auto
+
+.slam-profile
+  z-index: 8
+  overflow-y: scroll
+  p
+    word-wrap: break-word
+  header
+    margin: 1rem 0 3rem
+
+  @media (max-width: $break-s)
+    position: static
+    width: 100%
+    border-right: none
+    border-left: 5px solid black
+    padding-top: 1.5em
+
+.profile-location
+  word-wrap: break-word
+
+.profile-notice
+  clear: both
+  margin-top: 2em
+  padding: .3em
+  background: lightblue
+  border: 1px solid steelblue
+  color: steelblue
+
+.profile-alphabadge
+  position: absolute
+  top: 1.2em
+  font-weight: 600
+  width: 80%
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+
+  @media (max-width: $break-s)
+    position: static
+
+=ico
+  display: inline-block
+  overflow: hidden
+  white-space: nowrap
+  text-indent: 200%
+  vertical-align: middle
+  background-position: 45% center
+  background-repeat: no-repeat
+
+.alphaheart
+  +ico
+  width: 2rem
+  height: 2rem
+  background-image: url(/alphaherz.svg)
+  background-size: 6.7rem
+
+.facebook
+  +ico
+  width: 1.6rem
+  height: 1.6rem
+  background-image: url(/facebook.svg)
+  background-size: 100%
+  &:hover,
+  &:active
+    background-image: url(/facebook-blue.svg)
+
+.email
+  +ico
+  width: 1.65rem
+  height: 1.6rem
+  background-image: url(/email-icon.svg)
+  &:hover,
+  &:active
+    background-image: url(/email-icon-blue.svg)
+
+.website
+  +ico
+  width: 1.6rem
+  height: 1.6rem
+  background-image: url(/globe.svg)
+  &:hover,
+  &:active
+    background-image: url(/globe-blue.svg)
+
+.profile-video-link
+  @media (max-width: $break-s)
+    display: none
+
+.slam-profile-video
+  width: 540px
+  left: 629px
+  position: absolute
+  height: 100%
+  padding: 4.5em 1.2em 1em
+  z-index: 3
+  background: white
+  border-top: 5px solid black
+  border-right: 5px solid black
+  border-bottom: 5px solid black
+  transition: transform 200ms ease
+  transform: translate(-190%)
+  overflow: hidden
+
+  @media (max-width: $break-s)
+    position: static
+    width: 100%
+    padding-top: 1.5em
+    transform: translate(0)
+    border-right: none
+
+  @media (min-width: $break)
+    width: 700px
+
+  &.is-open
+    transform: translate(0)
+
+.video-container
+  max-width: 650px
+  iframe
+    width: 100%
+    height: auto
+    min-height: 500px
+  @media (max-width: $break-s)
+    width: 100%
+
+.video-close
+  @media (max-width: $break-s)
+    display: none
+
+.button
+  display: block
+  padding: 8px 16px
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  cursor: pointer
+  border: 1px solid transparent
+  border-radius: 2px
+  background-color: #444
+  border-color: #1e1e1e
+  color: white !important
+  text-decoration: none
+  &:hover,
+  &:active
+    background-color: black

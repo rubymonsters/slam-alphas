@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <title>SlamAlphas</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -12,13 +14,13 @@
 </head>
   <body>
 
-    <%=render partial: "shared/adminbar" %>
+    <%= render partial: "shared/adminbar" %>
 
     <div class="l-wrapper">
       <header class="l-header">
         <div class="l-logo">
           <h1 class="logo">
-            <a href="/" title="Slam Alphas">
+            <a href="https://slamalphas.org" title="Slam Alphas">
               <span class="logo-name">Slam Alphas</span>
               <span class="logo-symbol" aria-hidden="true"></span>
             </a>
@@ -33,6 +35,14 @@
       <% if @alphas %>
         <%=render partial: "shared/list" %>
       <% end%>
+
+      <div class="flashes">
+        <% flash.each do |name, msg| -%>
+          <div class="inner">
+            <p class="<%= name%>"><%= msg %> <button class="flash-close" type="button">X</button></p>
+          </div>
+        <% end -%>
+      </div>
 
       <%= yield %>
 

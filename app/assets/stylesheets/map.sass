@@ -4,12 +4,21 @@
   font-weight: 600
   font-size: 20px
 
+$red: #e63831
+$blue: #1837a0
+$turquoise: #5bd8d0
+
+$break-s: 800px
+$break: 1300px
+
 .map-nav
   position: absolute
-  right: 0
-  bottom: 0
+  right: 1rem
+  bottom: 1rem
   padding: 1rem
   z-index: 999
+  background-color: white
+  border: 5px solid black
 
   ul
     list-style: none
@@ -27,3 +36,42 @@
     &.is-#{$country}
       .#{$country}
         color: $color
+
+// overwrite leaflet styles
+$country-color: ("de": $red, "at": $blue, "ch": $turquoise)
+
+@each $country, $color in $country-color
+  .is-#{$country}
+    .marker-cluster-small
+      background-color: rgba($color, .6)
+      div
+        background-color: $color
+
+.leaflet-bar,
+.leaflet-touch .leaflet-bar // explicit overwrite for chrome
+  box-shadow: none
+  border-radius: 0
+  border: 5px solid black
+  a:not(:last-child)
+    box-sizing: content-box
+    border-bottom: 5px solid black
+    &.leaflet-control-zoom-in:hover,
+    &.leaflet-control-zoom-in:focus,
+    &.leaflet-control-zoom-in:active
+      border-bottom: inherit
+
+.leaflet-right .leaflet-control
+  margin-right: 1rem
+
+.leaflet-top .leaflet-control
+  margin-top: 1rem
+
+.leaflet-control
+  a
+    font-family: Roboto
+    font-weight: 600
+
+
+.l-map
+  @media (max-width: $break-s)
+    padding: 2em
