@@ -21,7 +21,8 @@ User.create!(
   year_of_birth: 1990,
   alpha: true,
   recommended_by: 1,
-  admin: true)
+  admin: true,
+  will_travel: 'keine')
 
 # TODO: to be added when we have the columsrails
 # Kann wann: Wochenende, unter der Woche, Urlaubs-/Ferienzeiten
@@ -42,7 +43,8 @@ User.create!(
   year_of_birth: 1988,
   alpha: true,
   recommended_by: 1,
-  admin: true)
+  admin: true,
+  will_travel: 'keine')
 
 # TODO: to be added when we have the colums
 # video: "https://vimeo.com/89895541"
@@ -67,5 +69,6 @@ cities = ["Hamburg", "Berlin", "München", "Frankfurt am Main", "Bremen", "Stutt
     year_of_birth: 1988,
     alpha: false,
     recommended_by: 1,
-    country: "de")
+    country: "de",
+    will_travel: 'keine')
 end
