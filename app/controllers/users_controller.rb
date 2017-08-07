@@ -28,10 +28,10 @@ class UsersController < Clearance::UsersController
     @list = Array.new
 
     @alphas.each do |x|
-      unless @list.include? x.name.first
-        @list.push(x.name.first)
-      end
+      @list.push(x.last_name.first.upcase)
     end
+
+    @list.sort!.uniq!
   end
 
   # GET /users/new
