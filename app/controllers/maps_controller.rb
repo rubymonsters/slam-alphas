@@ -20,10 +20,10 @@ MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
     @list = Array.new
 
     @alphas.each do |x|
-      unless @list.include? x.last_name.first.upcase
-        @list.push(x.last_name.first.upcase)
-      end
+      @list.push(x.last_name.first.upcase)
     end
+
+    @list.sort!.uniq!
   end
 
   private
