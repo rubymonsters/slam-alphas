@@ -16,6 +16,13 @@
 !/log/.keep
 /tmp
 
+# Ignore config files
+.env
+.fog
+
+# Ignore public folder
+/public/assets
+/public/uploads
 
 .DS_Store
 .byebug_history

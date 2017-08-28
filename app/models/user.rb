@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   include Clearance::User
   include ActiveModel::Validations
+  mount_uploader :avatar, AvatarUploader
 
   COUNTRIES = {
     de: "Deutschland",
