@@ -1,12 +1,13 @@
 <main class="l-map is-<%= @country %>">
   <div id="map"><div>
-    <nav class="map-nav is-<%= @country %>">
-      <ul>
-        <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
-        <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
-        <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
-      </ul>
-    </nav>
+  <nav class="map-nav is-<%= @country %>">
+    <ul>
+      <li><%= link_to 'DE', map_path('de'), class: "de" %></li>
+      <li><%= link_to 'AT', map_path('at'), class: "at" %></li>
+      <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
+    </ul>
+  </nav>
+  <div class="sign-in-main"><%= link_to 'Anmelden', sign_in_path, class: "title-sub" %></div>
 </main>
 
 <script>

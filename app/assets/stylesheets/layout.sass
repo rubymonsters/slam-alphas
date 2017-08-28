@@ -51,3 +51,19 @@ $blue: #1837a0
   display: block
   @media (max-width: $break-s)
     display: none
+
+.sign-in-main
+  position: absolute
+  left: 1rem
+  bottom: 1rem
+  padding: 0.5rem 1rem
+  z-index: 999
+  background-color: white
+  border: 5px solid black
+  a
+    text-decoration: none
+    &:hover,
+    &:active,
+    &:focus
+      text-decoration: underline
+      color: currentColor
