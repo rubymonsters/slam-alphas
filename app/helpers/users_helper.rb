@@ -2,8 +2,10 @@ module UsersHelper
   def user_alpha_or_recommended(user)
     if user.alpha?
       return '<span class="alphaheart" title="SLAM ALPHA">SLAM ALPHA</span>'.html_safe
-    else
+    elsif user.recommended_by_alpha.present?
       return "empfohlen von #{user.recommended_by_alpha}"
+    else
+      return ""
     end
   end
 
