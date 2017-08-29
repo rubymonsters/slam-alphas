@@ -1,7 +1,10 @@
+# coding: utf-8
 class UserMailer < ApplicationMailer
+  default from: "info@slamalphas.org"
+
   def welcome(user)
     @user = user
-    mail(to: @user.email, subject: 'Willkommen bei Slam Alphas')
+    mail(to: @user.email, subject: 'Willkommen bei SLAM ALPHAS')
   end
 
   def new_user(admin_user, user)
@@ -13,5 +16,10 @@ class UserMailer < ApplicationMailer
   def user_is_public(user)
     @user = user
     mail(to: @user.email, subject: 'Dein Profil ist jetzt öffentlich zugänglich')
+  end
+
+  def remind_user(user)
+    @user = user
+    mail(to: @user.email, subject: 'Vervollständige dein SLAM ALPHAS-Profil')
   end
 end
