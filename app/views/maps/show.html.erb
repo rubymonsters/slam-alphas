@@ -7,7 +7,9 @@
       <li><%= link_to 'CH', map_path('ch'), class: "ch" %></li>
     </ul>
   </nav>
-  <div class="sign-in-main"><%= link_to 'Anmelden', sign_in_path, class: "title-sub" %></div>
+  <% unless signed_in? %>
+    <div class="sign-in-main"><%= link_to 'Anmelden', sign_in_path, class: "title-sub" %></div>
+  <% end%>
 </main>
 
 <script>
