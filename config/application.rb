@@ -1,4 +1,4 @@
-ENV['admin_email'] ||= 'admin@example.org'
+ENV['ADMIN_EMAIL'] ||= 'admin@example.org'
 
 require File.expand_path('../boot', __FILE__)
 
