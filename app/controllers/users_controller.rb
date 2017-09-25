@@ -52,7 +52,8 @@ class UsersController < Clearance::UsersController
         sign_in @user
 
         UserMailer.welcome(@user).deliver_now
-        UserMailer.new_user(ENV['ADMIN_EMAIL'], @user).deliver_now
+        # UserMailer.new_user(ENV['ADMIN_EMAIL'], @user).deliver_now
+        User.admin.each { |u| UserMailer.new_user(u, @user).deliver_now }
 
         format.html { redirect_to @user, notice: 'Danke! Du bekommst eine E-Mail sobald dein Profil öffentlich zugänglich ist.' }
         format.json { render :show, status: :created, location: @user }
