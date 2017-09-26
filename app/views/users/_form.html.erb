@@ -117,8 +117,8 @@
   <% end %>
   <div class="form-field field">
     <%= f.label :recommended_by do %>
-      Welche Slam Alpha hat dich empfohlen?*
-      <%= collection_select(:user, :recommended_by, User.alphas, :id, :name) %>
+      Welche Slam Alpha hat dich empfohlen?
+      <%= collection_select(:user, :recommended_by, @options, :id, :name) %>
     <% end %>
   </div>
   <% if show_password_fields %>
