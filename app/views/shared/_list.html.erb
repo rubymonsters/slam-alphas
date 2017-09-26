@@ -6,16 +6,18 @@
     <% end %>
   </ul>
 </aside>
-<div class="list-alphabet">
+<div class="list-position-wrapper">
   <button class="list-button" type="button" title="close list">X</button>
-  <ul>
-    <% @alphas.each_with_index do |user, i| %>
-      <% if @alphas[i-1].last_name.upcase.first != user.last_name.upcase.first || i == 0 %>
-        <li><h3 class="title-main <%= user.last_name.first.downcase %>"><%= user.last_name.first %></h3></li>
+  <div class="list-alphabet">
+    <ul>
+      <% @alphas.each_with_index do |user, i| %>
+        <% if @alphas[i-1].last_name.upcase.first != user.last_name.upcase.first || i == 0 %>
+          <li><h3 class="title-main <%= user.last_name.first.downcase %>"><%= user.last_name.first %></h3></li>
+        <% end %>
+        <li><%= link_to user_path(user.id), {title: "Zu #{user.name}s Profil"}  do %>
+          <%= user.name %> (<%= user.country.upcase %>)
+        <% end %></li>
       <% end %>
-      <li><%= link_to user_path(user.id), {title: "Zu #{user.name}s Profil"}  do %>
-        <%= user.name %> (<%= user.country.upcase %>)
-      <% end %></li>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
 </div>

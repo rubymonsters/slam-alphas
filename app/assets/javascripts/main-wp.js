@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // alphabet list toggle
 
-    var alphabetList = document.querySelector('.list-alphabet');
+    var alphabetList = document.querySelector('.list-position-wrapper');
     var listClose = document.querySelector('.list-button');
 
     if (alphabetList) {

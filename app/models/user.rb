@@ -53,7 +53,6 @@ class User < ActiveRecord::Base
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true, unless: :persisted?
 
-  validates :recommended_by, presence: true
   validates :is_available_on, presence: true
 
   # customized validity check in app/validators/email_validator.rb
