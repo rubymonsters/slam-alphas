@@ -3,7 +3,7 @@ module UsersHelper
     if user.alpha?
       return '<span class="alphaheart" title="SLAM ALPHA">SLAM ALPHA</span>'.html_safe
     elsif user.recommended_by_alpha.present?
-      return "empfohlen von <br> #{user.recommended_by_alpha}".html_safe
+      return "Empfohlen von <br> #{user.recommended_by_alpha}".html_safe
     else
       return ""
     end
