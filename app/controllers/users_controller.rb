@@ -41,7 +41,6 @@ class UsersController < Clearance::UsersController
 
   # GET /users/1/edit
   def edit
-    @options = User.alphas.unshift User.new(id: 0, name: 'keine')
   end
 
   # POST /users
