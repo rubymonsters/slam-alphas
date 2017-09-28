@@ -17,21 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (document.querySelector('body').classList.contains('has-js')) {
 
-    // faq accordion
-    var heads = document.querySelectorAll('.accordion-h');
-    var bodies = document.querySelectorAll('.accordion-b');
-
-    bodies.forEach(function(item) {
-      item.classList.add('is-hidden');
-    });
-
-    for (var i = 0; i < heads.length; i++) {
-      heads[i].addEventListener('click', function (el) {
-        this.classList.toggle('is-open');
-        this.nextElementSibling.classList.toggle('is-hidden');
-      });
-    }
-
     // alphabet list toggle
 
     var alphabetList = document.querySelector('.list-position-wrapper');
