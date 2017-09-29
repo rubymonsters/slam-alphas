@@ -72,6 +72,9 @@ GEM
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
+    exception_notification (4.2.2)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     excon (0.59.0)
     execjs (2.7.0)
     faker (1.8.4)
@@ -360,6 +363,7 @@ DEPENDENCIES
   clearance
   coffee-rails (~> 4.1.0)
   database_cleaner
+  exception_notification
   faker (~> 1.7, >= 1.7.2)
   fog (~> 1.38)
   geocoder

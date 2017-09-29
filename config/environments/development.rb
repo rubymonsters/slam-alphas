@@ -39,7 +39,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_options = { from: 'alphas@mail.slamalphas.com' }
   config.action_mailer.smtp_settings = {
     address:              'smtp.mailgun.org',
@@ -52,3 +52,10 @@ Rails.application.configure do
   }
 
 end
+
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                        :email => {
+                                          :email_prefix => "[SLAM ALPHAS ERROR] ",
+                                          :sender_address => %{"notifier" <notifier@example.com>},
+                                          :exception_recipients => %w{passinglisa@gmail.com}
+                                        }
