@@ -1,8 +1,6 @@
-//
-
 $break-s: 800px
 $break: 1300px
-
+$turquoise: #5bd8d0
 
 .profile-button,
 .list-button
@@ -34,7 +32,20 @@ $break: 1300px
     border-left: 5px solid black
     padding-top: 1.5em
 
+.profile-header
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+
+.profile-avatar
+  width: 5rem
+  height: 5rem
+  border-radius: 50%
+  overflow: hidden
+  background-color: $turquoise
+
 .profile-location
+  margin-bottom: 0
   word-wrap: break-word
 
 .profile-notice
@@ -75,8 +86,8 @@ $break: 1300px
 
 .facebook
   +ico
-  width: 1.6rem
-  height: 1.6rem
+  width: 26px
+  height: 26px
   background-image: url(/facebook.svg)
   background-size: 100%
   &:hover,
@@ -85,8 +96,8 @@ $break: 1300px
 
 .email
   +ico
-  width: 1.65rem
-  height: 1.6rem
+  width: 26px
+  height: 26px
   background-image: url(/email-icon.svg)
   &:hover,
   &:active
@@ -94,8 +105,8 @@ $break: 1300px
 
 .website
   +ico
-  width: 1.6rem
-  height: 1.6rem
+  width: 26px
+  height: 26px
   background-image: url(/globe.svg)
   &:hover,
   &:active
