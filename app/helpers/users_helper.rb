@@ -29,6 +29,15 @@ module UsersHelper
     end
   end
 
+  def user_submit_label
+    if action_name == 'new'
+      'Profile anlegen'
+    else
+      'Profil aktualisieren'
+    end
+  end
+
+
   def vimeo_id(url)
     match = url.match(/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/?)?\/(?<id>[0-9]+)[^\s]*/)
     match[:id] if match.present?
