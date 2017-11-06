@@ -42,10 +42,9 @@
     <%= f.label :facebook_link, "Facebook-Link" %>
     <%= f.text_field :facebook_link %>
   </div>
-  <br />
-  <div class="field">
-    <%= image_tag @user.avatar_url(:medium), class: "avatar-preview" if @user.avatar? %><br>
-    <%= f.label :avatar, "Image Upload" %><br>
+  <div class="form-field field">
+    <%= image_tag @user.avatar_url(:medium), class: "avatar-preview" if @user.avatar? %>
+    <%= f.label :avatar, "Image Upload" %>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
     <p>

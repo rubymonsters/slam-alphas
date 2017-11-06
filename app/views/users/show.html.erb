@@ -1,13 +1,16 @@
 <article class="slam-profile">
   <button class="profile-button profile-close" type="button" title="close profile">X</button>
   <p class="profile-alphabadge"><%= user_alpha_or_recommended(@user) %></p>
-  <header>
-    <h1 class="title-sub">
-      <% if admin_user_public?(current_user, @user) %>
-        <span title="Profil is öffentlich">📍</span>
-      <% end %>
-      <%= @user.name %></h1>
-      <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
+  <header class="profile-header">
+    <%= image_tag @user.avatar_url(:medium), class: "profile-avatar", alt: "Bild von #{@user.name}" if @user.avatar? %>
+    <div>
+      <h1 class="title-sub">
+        <% if admin_user_public?(current_user, @user) %>
+          <span title="Profil is öffentlich">📍</span>
+        <% end %>
+        <%= @user.name %></h1>
+        <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
+    </div>
   </header>
   <div>
     <% if signed_in_as?(@user) && !@user.public? %>
