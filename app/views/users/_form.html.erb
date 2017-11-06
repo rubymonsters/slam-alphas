@@ -44,15 +44,16 @@
   </div>
   <div class="form-field field">
     <%= image_tag @user.avatar_url(:medium), class: "avatar-preview" if @user.avatar? %>
-    <%= f.label :avatar, "Image Upload" %>
+    <%= f.label :avatar, "Profilbild hochladen" %>
     <%= f.file_field :avatar %>
+    <p><small>Am besten quadratisch.</small></p>
     <%= f.hidden_field :avatar_cache %>
-    <p>
+  </div>
+  <div class="form-field">
     <label>
       <%= f.check_box :remove_avatar %>
-      Remove avatar
+      Profilbild entfernen
     </label>
-    </p>
   </div>
   <div class="form-field field">
     <%= f.label :video_link, "Video-Link*" %>
