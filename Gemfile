@@ -29,6 +29,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave_direct'
 gem 'fog', '~> 1.38' # cloud services library for AWS s3
 gem 'exception_notification'
+gem 'redis'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
