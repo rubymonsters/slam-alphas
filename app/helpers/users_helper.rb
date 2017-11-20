@@ -10,10 +10,11 @@ module UsersHelper
     end
   end
 
-  def user_age_range(user_age)
-    if user_age < 18
+  def user_age_category(user_age)
+    age = user_age.to_i
+    if age < 18
       return "U18"
-    elsif user_age < 20
+    elsif age < 20
       return "U20"
     else
       return "Ü20"

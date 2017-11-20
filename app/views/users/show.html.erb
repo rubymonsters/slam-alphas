@@ -17,7 +17,7 @@
       <p class="profile-notice">Du kannst dein eigenes Profil sehen aber es ist nicht öffentlich zugänglich.</p>
     <% end %>
     <% if @user.year_of_birth %>
-      <p><%= user_age_range @user %></p>
+      <p><%= user_age_category(@user.age) %></p>
     <% end %>
     <% if @user.video_link %>
       <p class="profile-video-link"><a class="js-open-video button" target="_blank" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
