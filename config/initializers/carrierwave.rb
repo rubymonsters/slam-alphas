@@ -28,10 +28,10 @@ CarrierWave.configure do |config|
       config.fog_directory  = ENV['S3_BUCKET'] # required
       # see https://github.com/jnicklas/carrierwave#using-amazon-s3
       # for more optional configuration
+      config.fog_attributes = { 'Cache-Control' => "max-age=#{90.day.to_i}" } # optional, defaults to {}
     end
   end
 
-  config.fog_attributes = { 'Cache-Control' => "max-age=#{90.day.to_i}" } # optional, defaults to {}
   # config.asset_host = "CDN LINK HERE"
 
   # Error messages
