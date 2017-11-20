@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 include UsersHelper
 
@@ -24,5 +25,11 @@ describe UsersHelper, type: :helper do
       countrystring = 'de'
       expect(user_map_nav_class(usercountry, countrystring)).to eq(['de', 'active'])
     end
+  end
+
+  describe 'user_age_range' do
+    expect(user_age_range(15).to eq('U18'))
+    expect(user_age_range(19).to eq('U20'))
+    expect(user_age_range(27).to eq('Ü20'))
   end
 end

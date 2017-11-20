@@ -1,3 +1,4 @@
+# coding: utf-8
 module UsersHelper
   def user_alpha_or_recommended(user)
     if user.alpha?
@@ -6,6 +7,16 @@ module UsersHelper
       return "Empfohlen von <br> #{user.recommended_by_alpha}".html_safe
     else
       return ""
+    end
+  end
+
+  def user_age_range(user_age)
+    if user_age < 18
+      return "U18"
+    elsif user_age < 20
+      return "U20"
+    else
+      return "Ü20"
     end
   end
 
