@@ -7,19 +7,31 @@ CarrierWave.configure do |config|
   # config.permissions = 0666
   # config.directory_permissions = 0777
 
-  # Configure fog for AWS s3
-  config.fog_provider = 'fog/aws'
-  config.fog_credentials = {
-    provider:               'AWS', # required
-    aws_access_key_id:      ENV['AWS_ACCESS_KEY_ID'], # required
-    aws_secret_access_key:  ENV['AWS_SECRET_ACCESS_KEY'], # required
-    region:                 ENV['S3_REGION'],  # optional, defaults to 'us-east-1'
-  }
-  config.fog_directory  = ENV['S3_BUCKET'] # required
-  # see https://github.com/jnicklas/carrierwave#using-amazon-s3
-  # for more optional configuration
+  # Use local storage if in development or test
+  if Rails.env.development? || Rails.env.test?
+    CarrierWave.configure do |config|
+      config.storage = :file
+    end
+  end
+
+  if Rails.env.production?
+    CarrierWave.configure do |config|
+      config.storage = :fog
+      # Configure fog for AWS s3
+      config.fog_provider = 'fog/aws'
+      config.fog_credentials = {
+        provider:               'AWS', # required
+        aws_access_key_id:      ENV['AWS_ACCESS_KEY_ID'], # required
+        aws_secret_access_key:  ENV['AWS_SECRET_ACCESS_KEY'], # required
+        region:                 ENV['S3_REGION'],  # optional, defaults to 'us-east-1'
+      }
+      config.fog_directory  = ENV['S3_BUCKET'] # required
+      # see https://github.com/jnicklas/carrierwave#using-amazon-s3
+      # for more optional configuration
+    end
+  end
+
   config.fog_attributes = { 'Cache-Control' => "max-age=#{90.day.to_i}" } # optional, defaults to {}
-  config.storage = :fog
   # config.asset_host = "CDN LINK HERE"
 
   # Error messages
