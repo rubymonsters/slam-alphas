@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     if signed_in?
       current_user.visible_for_signed_in_users
     else
-     User.sort_by_name(User.where(public: true))
+     User.where(public: true).sort_by { |x| x.transliterate_last_name }
    end
   end
 end

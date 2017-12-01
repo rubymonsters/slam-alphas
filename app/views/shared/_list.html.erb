@@ -11,8 +11,8 @@
   <div class="list-alphabet">
     <ul>
       <% @alphas.each_with_index do |user, i| %>
-        <% if @alphas[i-1].last_name.upcase.first != user.last_name.upcase.first || i == 0 %>
-          <li><h3 class="title-main <%= user.last_name.first.downcase %>"><%= user.last_name.first %></h3></li>
+        <% if @alphas[i-1].transliterate_last_name.upcase.first != user.transliterate_last_name.upcase.first || i == 0 %>
+          <li><h3 class="title-main <%= user.transliterate_last_name.first.downcase %>"><%= user.transliterate_last_name.first %></h3></li>
         <% end %>
         <li><%= link_to user_path(user.id), {title: "Zu #{user.name}s Profil"}  do %>
           <%= user.name %> (<%= user.country.upcase %>)
