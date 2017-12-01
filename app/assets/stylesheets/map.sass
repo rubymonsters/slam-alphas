@@ -42,10 +42,13 @@ $country-color: ("de": $red, "at": $blue, "ch": $turquoise)
 
 @each $country, $color in $country-color
   .is-#{$country}
-    .marker-cluster-small
+    .marker-cluster-small,
+    .marker-cluster-medium
       background-color: rgba($color, .6)
       div
         background-color: $color
+      @if $country == 'at'
+        color: white
 
 .leaflet-bar,
 .leaflet-touch .leaflet-bar // explicit overwrite for chrome
