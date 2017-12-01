@@ -53,8 +53,6 @@ class User < ActiveRecord::Base
   validates :country, inclusion:  COUNTRIES.keys.map { |k| k.to_s }
   validates :password, confirmation: true, unless: :persisted?
 
-  validates :is_available_on, presence: true
-
   # customized validity check in app/validators/email_validator.rb
   validates :email, email: true
 
@@ -64,6 +62,7 @@ class User < ActiveRecord::Base
   validates :video_link, website: true, allow_blank: false
 
   validates :will_travel, presence: true
+  validates :custom_availability, presence: true
 
   geocoded_by :location
   after_validation :geocode

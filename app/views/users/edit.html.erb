@@ -3,11 +3,10 @@
 
   <%= render partial: '/users/form', locals: { show_password_fields: false } %>
 
-  <br>
-  <hr>
-  <h1 class="title-main" style="padding-top: 15px"> Profil löschen</h1>
+  <hr class="m-t-m">
+  <h1 class="title-main m-t-m"> Profil löschen</h1>
 
-    <p style:"padding-top: 10px">ACHTUNG! Dies löscht das gesamte Profil endgültig!</p>
+    <p>ACHTUNG! Dies löscht das gesamte Profil endgültig!</p>
 
   <%= form_for(@user, method: :delete, data: {confirm: "Willst du dieses Profil wirklich löschen?"}) do |f| %>
     <div class="actions">
@@ -15,11 +14,10 @@
     </div>
   <% end %>
 
-  <br>
-  <hr>
+  <hr class="m-t-m">
 
-  <div class="other-links">
-    <%= link_to 'Show', @user %> |
-    <%= link_to 'Back', users_path %>
+  <div class="other-links m-t-m">
+    <%= link_to 'Zum Profil', @user %> |
+    <%= link_to 'Zurück', users_path %>
   </div>
 </div>
