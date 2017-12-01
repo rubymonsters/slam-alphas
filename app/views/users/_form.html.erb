@@ -63,14 +63,11 @@
     <p><small>Der Link sollte mit `https://` anfangen. Unterstützt werden Youtube und Vimeo.</small></p>
   </div>
   <div class="form-field field">
-    <p class="title-sub">Verfügbarkeit*</p>
-    <p><small>Aufgrund eines Bugs wird dein letztes Update nicht überschrieben, wenn keine Checkbox aktiviert ist. Bitte achte daher darauf, dass mindst. eine Checkbox aktiviert ist. Wir werden dieses Problem schnellstmöglich beheben.</small></p>
-      <% User::AVAILABLE_OPTIONS.each.with_index do |option, index| %>
-      <%= label_tag "is_available_on_#{index}", class: 'label-thin' do %>
-        <%= check_box_tag :'user[is_available_on][]', index, @user.is_available_on.include?(index.to_s), id: "is_available_on_#{index}" %>
-        <%= option %>
-      <% end %>
-  <% end %>
+    <div class="form-field field">
+      <%= f.label :custom_availability, "Verfügbarkeit*" %>
+      <%= f.text_area(:custom_availability, rows: 5) %>
+      <p><small>Wann/wie kannst du auftreten? Nur am Wochenende, nur unter bestimmten Bedingungen? Reist du mit Kind oder Hund?</small></p>
+    </div>
   </div>
   <div class="form-field field">
     <%= f.label :will_travel, "Reisebereitschaft*" %>
