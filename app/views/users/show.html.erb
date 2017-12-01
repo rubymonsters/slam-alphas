@@ -23,12 +23,8 @@
       <p class="profile-video-link"><a class="js-open-video button" target="_blank" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
     <% end %>
     <% if @user.is_available_on.present? %>
-      <h2 class="title-sub">Verfügbarkeit</h2>
-      <% if @user.custom_availability.present?  %>
-        <p><%= @user.custom_availability %></p>
-      <% else %>
-        <p><%= @user.available_at.join(", ") %></p>
-      <% end %>
+      <h2 class="title-sub">Verfügbar</h2>
+      <p><%= @user.available_at.join(", ") %></p>
     <% end %>
     <% if @user.will_travel.present? %>
       <h2 class="title-sub">Reisebereitschaft</h2>

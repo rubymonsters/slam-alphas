@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201205914) do
+ActiveRecord::Schema.define(version: 20170927210711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,26 +22,25 @@ ActiveRecord::Schema.define(version: 20171201205914) do
     t.string   "country"
     t.string   "email"
     t.integer  "year_of_birth"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "website"
     t.string   "facebook_link"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "encrypted_password",  limit: 128
-    t.string   "confirmation_token",  limit: 128
-    t.string   "remember_token",      limit: 128
-    t.boolean  "public",                          default: false
-    t.boolean  "admin",                           default: false
-    t.boolean  "alpha",                           default: false, null: false
-    t.integer  "recommended_by",                  default: 0
+    t.string   "encrypted_password", limit: 128
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128
+    t.boolean  "public",                         default: false
+    t.boolean  "admin",                          default: false
+    t.boolean  "alpha",                          default: false, null: false
+    t.integer  "recommended_by",                 default: 0
     t.text     "video_link"
-    t.text     "is_available_on",                 default: [],                 array: true
+    t.text     "is_available_on",                default: [],                 array: true
     t.string   "will_travel"
-    t.text     "travels_via",                     default: [],                 array: true
-    t.text     "train_bonus_card",                default: [],                 array: true
+    t.text     "travels_via",                    default: [],                 array: true
+    t.text     "train_bonus_card",               default: [],                 array: true
     t.string   "avatar"
-    t.text     "custom_availability",             default: "",    null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
