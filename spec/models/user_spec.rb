@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
       facebook_link: "https://fb.com/svenjagraefen",
       video_link: "https://vimeo.com/89895541",
       is_available_on: [0],
+      custom_availability: 'Heute keine',
       year_of_birth: 1990,
       alpha: true,
       recommended_by: 1,
