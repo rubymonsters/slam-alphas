@@ -77,16 +77,31 @@ class User < ActiveRecord::Base
   # According to the user rights which users is the logged_in user able to see
   def visible_for_signed_in_users
     if admin?
-      User.sort_by_name(User.all)
+      User.all.sort_by { |x| x.transliterate_last_name }
     else
       # Adds the user's id to the array of public ids
       visible_ids = User.where(public: true).pluck(:id) << id
-      User.sort_by_name(User.where(id: visible_ids))
+      User.where(id: visible_ids).sort_by { |x| x.transliterate_last_name }
     end
   end
 
   def last_name
     name.split(" ").last
+  end
+
+  def transliterate_last_name
+    # this is not correct in the sense of true transliteration
+    # but is the result we want in our sorting
+    last_name.gsub(/[ÄÖÜ]/) do |match|
+      case match
+      when "Ä"
+        'A'
+      when "Ö"
+        'O'
+      when "Ü"
+        'U'
+      end
+    end
   end
 
   def age
