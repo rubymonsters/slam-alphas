@@ -21,5 +21,9 @@ class UserMailer < ApplicationMailer
   def remind_user(user)
     @user = user
     mail(to: @user.email, subject: 'Vervollständige dein SLAM ALPHAS-Profil')
+
+  def account_added(user)
+    @user = user
+    mail(to: @user.email, subject: 'Auf Slam Alphas wurde ein Profil für dich angelegt')
   end
 end
