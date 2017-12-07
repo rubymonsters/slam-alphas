@@ -46,7 +46,7 @@
     <%= image_tag @user.avatar_url(:medium), class: "avatar-preview" if @user.avatar? %>
     <%= f.label :avatar, "Profilbild hochladen" %>
     <%= f.file_field :avatar %>
-    <p><small>Am besten quadratisch.</small></p>
+    <p><small>Am besten quadratisch als PNG oder JPG.</small></p>
     <%= f.hidden_field :avatar_cache %>
   </div>
   <% if action_name != 'new' %>
