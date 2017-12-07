@@ -24,7 +24,7 @@
     <% end %>
     <% if @user.is_available_on.present? %>
       <h2 class="title-sub">Verfügbarkeit</h2>
-      <% if @user.custom_availability.present?  %>
+      <% if @user.custom_availability.present? %>
         <p><%= @user.custom_availability %></p>
       <% else %>
         <p><%= @user.available_at.join(", ") %></p>
