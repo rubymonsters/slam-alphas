@@ -9,10 +9,10 @@ For a project overview of the Github issues, please refer to our [Waffle Board](
 ## Requirements
 
 ### Development
-Ruby 2.3.5
+Ruby 2.4.2, Postgres
 
 ### Production
-Ruby 2.3.5 and Redis
+Ruby 2.4.2, Postgres and Redis
 
 ## Credentials for production
 ### env.SAMPLE and .env
@@ -23,3 +23,15 @@ Ruby 2.3.5 and Redis
 `$ heroku config` -> This should then show you the credentials that is associated with our current production database configs on heroku
 4. now make sure to not check this file into git by putting `.env` to the file `.gitignore`
 5. Some gems require to load the credentials first before they can execute (e.g. fog/aws), means we need to make sure the `.env` file is loaded before those gems are running, e.g. by using a gem like dotenv
+
+### Running it locally
+
+Clone this repo and cd into it.
+
+Run `$ bundle install` to install dependencies.
+
+Run `$ rake db:setup` to create and seed the database and run migrations. 
+_If you get an error make sure you have Postgres installed and running. Maybe you also need to check credentials in  `config/database.yml`._
+
+Run `$ rails s` to start the local development server.
+
