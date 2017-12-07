@@ -1,4 +1,12 @@
 # coding: utf-8
+# This task is to be run locally
+# It will take a local csv file and import it to a db on Heroku
+# $ cat lib/tasks/your-csv-file.csv | heroku run rake profiles:import
+# It's probably buggy but I include it to have it
+# The CSV assumes the following structure
+# name, city, country, email, facebook link, website, video link, year of birth
+# the rest will be ignored
+
 namespace :profiles do
   desc "import profiles from files to database"
   task :import, [:param] => :environment do |t, args|
