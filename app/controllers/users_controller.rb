@@ -20,7 +20,7 @@ class UsersController < Clearance::UsersController
   # GET /users/1
   # GET /users/1.json
   def show
-    @center = CENTERS[@user[:country]]
+    @center = [@user.latitude, @user.longitude]
     @zoom = ZOOMS[@user[:country]]
     @marker = MARKERS[@user[:country]]
 
