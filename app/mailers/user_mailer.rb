@@ -7,10 +7,11 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Willkommen bei SLAM ALPHAS')
   end
 
-  def new_user(admin_user, user)
-    @admin_user = admin_user
+  def new_user(admin_email, user)
+    @admin_email = admin_email
+
     @user = user
-    mail(to: @admin_user.email, subject: 'Neuer Benutzer!')
+    mail(to: @admin_email, subject: 'Neuer Benutzer!')
   end
 
   def user_is_public(user)
