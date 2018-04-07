@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.4.3
+  - 2.4.4
 cache:
   bundler: true
 bundler_args: --without development production
