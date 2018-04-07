@@ -47,6 +47,13 @@ class User < ActiveRecord::Base
     'General Abonnement'
   ]
 
+  BOOKABLE_AS = [
+    'Poetin',
+    'Veranstalterin',
+    'Moderatorin',
+    'Featured Artist'
+  ]
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]
@@ -147,6 +154,11 @@ class User < ActiveRecord::Base
   def has_train_bonus_card
     train_bonus_card_options = train_bonus_card.map(&:to_i)
     TRAIN_BONUS_CARDS.select.with_index { |card, i| card if train_bonus_card_options.include?(i) }
+  end
+
+  def is_bookable_as
+    bookable_as_options = bookable_as.map(&:to_i)
+    BOOKABLE_AS.select.with_index { |job, i| job if bookable_as_options.include?(i) }
   end
 
   def recommended_by_alpha

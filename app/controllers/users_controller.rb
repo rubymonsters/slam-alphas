@@ -129,7 +129,8 @@ class UsersController < Clearance::UsersController
         :custom_availability,
         is_available_on: [],
         travels_via: [],
-        train_bonus_card: []
+        train_bonus_card: [],
+        bookable_as: []
       )
     end
 end
