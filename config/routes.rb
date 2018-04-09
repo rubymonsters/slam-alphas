@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users" do
+
+    get '/edit_travel' => "users#edit_travel"
+
     member do
       get :change_password
       patch :update_password

@@ -188,7 +188,7 @@ $turquoise: #5bd8d0
     position: relative
     top: 5px
     display: inline-block
-    padding: 0.2em 0.5em
+    padding: 0.5em 0.9em 0.3em
     font-weight: 600
     text-transform: uppercase
     border-top: 5px solid black
@@ -201,6 +201,9 @@ $turquoise: #5bd8d0
     &.active
       border-bottom-color: white
       color: $blue
+      &:active,
+      &:hover
+        color: white
 
   li:last-of-type a
     border-right: 5px solid black

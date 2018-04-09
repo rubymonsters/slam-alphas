@@ -1,0 +1,63 @@
+<div class="admin-wrapper">
+  <h1 class="title-main">Reiseprofil ändern</h1>
+  <%= render "profile_form_nav" %>
+
+  <div class="m-t-l">
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-field field">
+        <div class="form-field field">
+          <%= f.label :custom_availability, "Verfügbarkeit *" %>
+          <%= f.text_area(:custom_availability, rows: 5) %>
+          <p><small>Wann/wie kannst du auftreten? Nur am Wochenende, nur unter bestimmten Bedingungen? Reist du mit Kind oder Hund?</small></p>
+        </div>
+      </div>
+      <div class="form-field field">
+        <%= f.label :will_travel, "Reisebereitschaft *" %>
+        <% User::WILL_TRAVEL.each.with_index do |option, index| %>
+          <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
+        <% end %>
+      </div>
+      <div class="form-field field">
+        <p class="title-sub">Fortbewegungmittel *</p>
+        <p><small>Bitte achte darauf, dass mindst. eine Checkbox aktiviert ist (siehe Erläuterung unter Verfügbarkeit).</small></p>
+        <% User::TRAVELS_VIA_OPTIONS.each.with_index do |option, index| %>
+          <%= label_tag "travels_via_#{index}", class: 'label-thin' do %>
+            <%= check_box_tag :'user[travels_via][]', index, @user.travels_via.include?(index.to_s), id: "travels_via_#{index}" %>
+            <%= option %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="form-field field">
+        <p class="title-sub">Bahncards</p>
+        <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
+          <%= label_tag "train_bonus_card_#{index}", class: 'label-thin' do %>
+            <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>
+            <%= option %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="actions m-b-l">
+        <%= f.submit(user_submit_label) %>
+      </div>
+    <% end %>
+  </div>
+  <hr class="m-t-m">
+
+  <div class="other-links m-t-m">
+    <%= link_to 'Zum Profil', @user %> |
+    <%= link_to 'Zurück', users_path %>
+  </div>
+</div>
