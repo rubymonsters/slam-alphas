@@ -1,3 +1,5 @@
+<%= render "profile_form_nav" %>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation" class="error_explanation">
@@ -10,8 +12,6 @@
       </ul>
     </div>
   <% end %>
-
-  <p style="color:#e63831">Felder mit * sind Pflichtfelder</p>
 
   <div class="form-field field">
     <%= f.label :name, "Name*" %>
@@ -147,4 +147,4 @@
   <div class="actions">
     <%= f.submit(user_submit_label) %>
   </div>
-    <% end %>
+<% end %>

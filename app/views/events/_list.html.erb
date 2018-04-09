@@ -1,0 +1,8 @@
+<% if list.present? %>
+  <h2 class="title-sub m-t-l m-b-m"><%= title %></h2>
+  <ul class="event-list">
+    <% list.each do |e| %>
+      <%= render 'list_element', event: e %>
+    <% end %>
+  </ul>
+<% end %>

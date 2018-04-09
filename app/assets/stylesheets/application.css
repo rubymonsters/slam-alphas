@@ -16,6 +16,8 @@
  *= require main-wp
  *= require base
  *= require admin
+ *= require forms
+ *= require events
  *= require map
  *= require profile
  *= require flashes

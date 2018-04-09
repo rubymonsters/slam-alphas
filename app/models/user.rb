@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
     'Featured Artist'
   ]
 
+  has_many :events
+
   validates :name, :city, :email, :country, :year_of_birth, presence: true
   validates :name, length: { minimum: 2 }
   validates :email, uniqueness: { case_sensitive: false }, on: [:create, :update]

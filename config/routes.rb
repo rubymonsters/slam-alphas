@@ -13,6 +13,11 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
 
     resource :avatar
+
+    resources :events,
+             controller: "events",
+             except: [:show]
+
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"

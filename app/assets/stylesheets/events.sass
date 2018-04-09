@@ -1,0 +1,17 @@
+.event-list
+  padding: 0
+  margin: 0
+
+.event-item
+  display: flex
+  padding: 0.4em
+  margin: 0 -0.4em 0.4em
+
+  span:first-child
+    flex-grow: 1
+
+  > a ~ a
+    margin-left: 1em
+
+  &:nth-child(even)
+    background-color: #f1f1f1

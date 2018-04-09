@@ -16,7 +16,7 @@
         <% if current_user && current_user.admin?%>
           <p>
             <%= link_to '📎 Bearbeiten', edit_user_path(user) %> |
-            <%= link_to '❌Löschen', user, method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %></p>
+            <%= link_to '❌ Löschen', user, method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %></p>
         <% end %>
       </li>
     <% end %>

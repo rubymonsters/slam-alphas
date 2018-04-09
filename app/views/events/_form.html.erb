@@ -1,0 +1,44 @@
+<%= form_for @event, url: form_action, html: { method: form_method } do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation" class="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "Fehler") %> verhindern das Speichern der Veranstaltung:</h2>
+
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-field field">
+    <%= f.label :name, "Name*" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-field field">
+    <%= f.label :url, "Link" %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="form-field field">
+    <%= f.label :city, "Stadt*" %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="form-field field">
+    <%= f.label :relationship do %>
+      Deine Rolle? *
+      <%= f.select(:relationship) do %>
+        <% Event::ROLES.each_with_index do |r, i| %>
+          <%= content_tag(:option, r, value: i) %>
+        <% end%>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit(form_submit) %>
+  </div>
+
+<% end %>

@@ -1,0 +1,12 @@
+<div class="admin-wrapper">
+  <h1 class="title-main">Veranstaltungen bearbeiten</h1>
+
+  <%= render '/users/profile_form_nav', locals: @user %>
+
+  <%= render "form", form_method: :patch, form_action: user_event_path(@user, @event), form_submit: "Veranstaltung ändern" %>
+
+  <div class="other-links m-t-m">
+    <%= link_to 'Zum Profil', @user %> |
+    <%= link_to 'Zurück', users_path %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<li class="event-item">
+  <span>
+    <% if event.url.present? %>
+      <%= link_to event.name, event.url, target: "_blank" %>
+    <% else %>
+      <%= event.name %>
+    <% end %>
+    (<%= event.city %>)
+  </span>
+  <%= link_to '📎 Bearbeiten', edit_user_event_path(current_user, event) %>
+  <%= link_to '❌ Löschen', user_event_path(current_user, event), method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %>
+</li>

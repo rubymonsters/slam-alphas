@@ -22,6 +22,9 @@
     <% if @user.video_link %>
       <p class="profile-video-link"><a class="js-open-video button" target="_blank" href="<%= @user.video_link %>" title="<%= @user.name %> bei YouTube/Vimeo">Video ansehen</a></p>
     <% end %>
+    <% if @user.events.present? %>
+      <%= @user.events.join(", ") %>
+    <% end %>
     <% if @user.bookable_as.size > 0 %>
       <h2 class="title-sub">Unterwegs als</h2>
       <p><%= @user.is_bookable_as.join(", ") %></p>
