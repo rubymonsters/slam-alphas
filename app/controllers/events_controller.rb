@@ -8,10 +8,12 @@ class EventsController < ApplicationController
   def index
     @mod, @orga = Event.where(user_id: current_user).partition { |e| e.relationship == 'moderation' }
     @event = Event.new
+    @subnav_active = "events"
   end
 
   def new
     @event = Event.new
+    @subnav_active = "events"
   end
 
   def create
@@ -27,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @subnav_active = "events"
   end
 
   def update

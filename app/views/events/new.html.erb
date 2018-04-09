@@ -3,7 +3,9 @@
 
   <%= render '/users/profile_form_nav', locals: @user %>
 
-  <%= render "form", form_method: :post, form_action: user_events_path(@user), form_submit: "Veranstaltung hinzufügen" %>
+  <div class="m-t-l">
+    <%= render "form", form_method: :post, form_action: user_events_path(@user), form_submit: "Veranstaltung hinzufügen" %>
+  </div>
 
   <div class="other-links m-t-m">
     <%= link_to 'Zum Profil', @user %> |

@@ -3,7 +3,10 @@
 
   <%= render '/users/profile_form_nav', locals: @user %>
 
-  <%= render "form", form_method: :patch, form_action: user_event_path(@user, @event), form_submit: "Veranstaltung ändern" %>
+  <div class="m-t-l">
+    <%= render "form", form_method: :patch, form_action: user_event_path(@user, @event), form_submit: "Veranstaltung ändern" %>
+
+  </div>
 
   <div class="other-links m-t-m">
     <%= link_to 'Zum Profil', @user %> |
