@@ -1,0 +1,9 @@
+<p>Felder mit * sind Pflichtfelder</p>
+
+<nav class="profile-form-nav">
+  <ul>
+    <li><%= link_to  "Persönliche Angaben", edit_user_path(@user), class: profile_nav_active_class('user') %></li>
+    <li><%= link_to  "Reiseprofil", user_edit_travel_path(@user), class: profile_nav_active_class('travel') %></li>
+    <li><%= link_to  "Veranstaltungen", user_events_path(@user), class: profile_nav_active_class('events') %></li>
+  </ul>
+</nav>

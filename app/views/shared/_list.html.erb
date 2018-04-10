@@ -1,8 +1,10 @@
 <aside class="l-alphabet">
   <a class="mobile-only title-sub mobile-nav-toggle" href="#" title="Alle Slammerinnen">Alle anzeigen</a>
   <ul class="desktop-only">
-    <% @list.each do |char| %>
-      <li><%= link_to char, "#{char.downcase}" %></li>
+    <% if @list.present? %>
+      <% @list.each do |char| %>
+        <li><%= link_to char, "#{char.downcase}" %></li>
+      <% end %>
     <% end %>
   </ul>
 </aside>

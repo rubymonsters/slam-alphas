@@ -1,0 +1,19 @@
+<div class="admin-wrapper">
+  <h1 class="title-main">Veranstaltungen verwalten</h1>
+
+  <%= render '/users/profile_form_nav', locals: @user %>
+
+  <%= render 'list', list: @mod, title: "Moderatorin" %>
+
+  <%= render 'list', list: @orga, title: "Veranstalterin" %>
+
+  <fieldset class="m-t-l m-b-l">
+    <legend class="title-sub">Neue Veranstaltung hinzufügen</legend>
+        <%= render "form", form_method: :post, form_action: user_events_path(@user), form_submit: "Veranstaltung hinzufügen" %>
+  </fieldset>
+
+  <div class="other-links m-t-m">
+    <%= link_to 'Zum Profil', @user %> |
+    <%= link_to 'Zurück', users_path %>
+  </div>
+</div>

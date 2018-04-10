@@ -1,0 +1,14 @@
+<div class="admin-wrapper">
+  <h1 class="title-main">Veranstaltung hinzufügen</h1>
+
+  <%= render '/users/profile_form_nav', locals: @user %>
+
+  <div class="m-t-l">
+    <%= render "form", form_method: :post, form_action: user_events_path(@user), form_submit: "Veranstaltung hinzufügen" %>
+  </div>
+
+  <div class="other-links m-t-m">
+    <%= link_to 'Zum Profil', @user %> |
+    <%= link_to 'Zurück', users_path %>
+  </div>
+</div>

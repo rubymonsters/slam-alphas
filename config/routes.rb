@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users" do
+
+    get '/edit_travel' => "users#edit_travel"
+
     member do
       get :change_password
       patch :update_password
@@ -13,6 +16,11 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
 
     resource :avatar
+
+    resources :events,
+             controller: "events",
+             except: [:show]
+
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"

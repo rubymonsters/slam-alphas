@@ -1,3 +1,8 @@
+<% if current_user && @user %>
+  <%= render "profile_form_nav" %>
+<% end %>
+
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation" class="error_explanation">
@@ -11,27 +16,25 @@
     </div>
   <% end %>
 
-  <p style="color:#e63831">Felder mit * sind Pflichtfelder</p>
-
-  <div class="form-field field">
-    <%= f.label :name, "Name*" %>
+  <div class="m-t-l form-field field">
+    <%= f.label :name, "Name *" %>
     <%= f.text_field :name %>
   </div>
   <div class="form-field field">
-    <%= f.label :city, "Stadt*" %>
+    <%= f.label :city, "Stadt *" %>
     <%= f.text_field :city %>
     <p><small>Bitte nur eine Stadt angeben!</small></p>
   </div>
   <div class="form-field field">
-    <%= f.label :country, "Land*" %>
+    <%= f.label :country, "Land *" %>
     <%= f.select :country, User::COUNTRIES.to_a.map(&:reverse) %>
   </div>
   <div class="form-field field">
-    <%= f.label :email, "E-Mail*" %>
+    <%= f.label :email, "E-Mail *" %>
     <%= f.text_field :email %>
   </div>
   <div class="form-field field">
-    <%= f.label :year_of_birth, "Geburtsjahr*" %>
+    <%= f.label :year_of_birth, "Geburtsjahr *" %>
     <%= f.number_field :year_of_birth %>
   </div>
   <div class="form-field field">
@@ -58,7 +61,7 @@
     </div>
   <% end %>
   <div class="form-field field">
-    <%= f.label :video_link, "Video-Link*" %>
+    <%= f.label :video_link, "Video-Link *" %>
     <%= f.text_field :video_link %>
     <p><small>Der Link sollte mit `https://` anfangen. Unterstützt werden Youtube und Vimeo.</small></p>
   </div>
@@ -73,42 +76,52 @@
     <% end%>
   </div>
 
-
-  <div class="form-field field">
+  <% if show_travel_fields %>
     <div class="form-field field">
-      <%= f.label :custom_availability, "Verfügbarkeit*" %>
-      <%= f.text_area(:custom_availability, rows: 5) %>
-      <p><small>Wann/wie kannst du auftreten? Nur am Wochenende, nur unter bestimmten Bedingungen? Reist du mit Kind oder Hund?</small></p>
+      <div class="form-field field">
+        <%= f.label :custom_availability, "Verfügbarkeit *" %>
+        <%= f.text_area(:custom_availability, rows: 5) %>
+        <p><small>Wann/wie kannst du auftreten? Nur am Wochenende, nur unter bestimmten Bedingungen? Reist du mit Kind oder Hund?</small></p>
+      </div>
     </div>
-  </div>
-  <div class="form-field field">
-    <%= f.label :will_travel, "Reisebereitschaft*" %>
-    <% User::WILL_TRAVEL.each.with_index do |option, index| %>
-      <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
-    <% end %>
-  </div>
-  <div class="form-field field">
-    <p class="title-sub">Fortbewegungmittel*</p>
-    <p><small>Bitte achte darauf, dass mindst. eine Checkbox aktiviert ist (siehe Erläuterung unter Verfügbarkeit).</small></p>
-    <% User::TRAVELS_VIA_OPTIONS.each.with_index do |option, index| %>
-      <%= label_tag "travels_via_#{index}", class: 'label-thin' do %>
-        <%= check_box_tag :'user[travels_via][]', index, @user.travels_via.include?(index.to_s), id: "travels_via_#{index}" %>
-        <%= option %>
+    <div class="form-field field">
+      <%= f.label :will_travel, "Reisebereitschaft *" %>
+      <% User::WILL_TRAVEL.each.with_index do |option, index| %>
+        <%= f.radio_button(:will_travel, option[0], checked: (@user.will_travel == option[0] ? true : false)) %> <%= option[1] %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    <div class="form-field field">
+      <p class="title-sub">Fortbewegungmittel *</p>
+      <p><small>Bitte achte darauf, dass mindst. eine Checkbox aktiviert ist (siehe Erläuterung unter Verfügbarkeit).</small></p>
+      <% User::TRAVELS_VIA_OPTIONS.each.with_index do |option, index| %>
+        <%= label_tag "travels_via_#{index}", class: 'label-thin' do %>
+          <%= check_box_tag :'user[travels_via][]', index, @user.travels_via.include?(index.to_s), id: "travels_via_#{index}" %>
+          <%= option %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-field field">
+      <p class="title-sub">Bahncards</p>
+      <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
+        <%= label_tag "train_bonus_card_#{index}", class: 'label-thin' do %>
+          <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>
+          <%= option %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="form-field field">
-    <p class="title-sub">Bahncards</p>
-    <% User::TRAIN_BONUS_CARDS.each.with_index do |option, index| %>
-      <%= label_tag "train_bonus_card_#{index}", class: 'label-thin' do %>
-        <%= check_box_tag :'user[train_bonus_card][]', index, @user.train_bonus_card.include?(index.to_s), id: "train_bonus_card_#{index}" %>
-        <%= option %>
-      <% end %>
+    <%= f.label :recommended_by do %>
+      Welche Slam Alpha hat dich empfohlen?
+      <%= collection_select(:user, :recommended_by, User.alphas, :id, :name, :include_blank => "keine") %>
     <% end %>
   </div>
 
   <% if current_user.present? && current_user.admin? %>
+    <hr class="m-t-l m-b-l">
+
     <div class="form-field field">
       <%= f.label :public do %>
         Öffentlich?
@@ -128,12 +141,8 @@
       <% end %>
     </div>
   <% end %>
-  <div class="form-field field">
-    <%= f.label :recommended_by do %>
-      Welche Slam Alpha hat dich empfohlen?
-      <%= collection_select(:user, :recommended_by, User.alphas, :id, :name, :include_blank => "keine") %>
-    <% end %>
-  </div>
+
+
   <% if show_password_fields %>
     <div class="form-field field">
       <%= f.label :password, "Passwort*" %>
@@ -144,7 +153,7 @@
       <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
-  <div class="actions">
+  <div class="actions m-b-l">
     <%= f.submit(user_submit_label) %>
   </div>
-    <% end %>
+<% end %>

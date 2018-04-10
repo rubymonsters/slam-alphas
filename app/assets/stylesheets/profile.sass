@@ -1,5 +1,6 @@
 $break-s: 800px
 $break: 1300px
+$blue: #1837a0
 $turquoise: #5bd8d0
 
 .profile-button,
@@ -172,3 +173,37 @@ $turquoise: #5bd8d0
   &:hover,
   &:active
     background-color: black
+
+.profile-form-nav
+  ul
+    display: flex
+    padding: 0
+    margin: 0
+    border-bottom: 5px solid black
+
+  li
+    list-style: none
+  a
+    text-decoration: none
+    position: relative
+    top: 5px
+    display: inline-block
+    padding: 0.5em 0.9em 0.3em
+    font-weight: 600
+    text-transform: uppercase
+    border-top: 5px solid black
+    border-left: 5px solid black
+    border-bottom: 5px solid black
+    &:hover,
+    &:active
+      background-color: $blue
+      color: white
+    &.active
+      border-bottom-color: white
+      color: $blue
+      &:active,
+      &:hover
+        color: white
+
+  li:last-of-type a
+    border-right: 5px solid black
