@@ -1,4 +1,7 @@
-<%= render "profile_form_nav" %>
+<% if current_user && @user %>
+  <%= render "profile_form_nav" %>
+<% end %>
+
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>

@@ -1,24 +1,28 @@
 <main class="admin-wrapper">
   <h1 class="title-main">Finde Slammerinnen</h1>
   <ul class="user-index-list">
-    <% @users.each do |user| %>
-      <li>
-        <h2 class="title-sub">
-          <% if admin_user_public?(current_user, user) %>
-            <span title="Profil is öffentlich">📍</span>
+    <% if @users.size > 0 %>
+      <% @users.each do |user| %>
+        <li>
+          <h2 class="title-sub">
+            <% if admin_user_public?(current_user, user) %>
+              <span title="Profil is öffentlich">📍</span>
+            <% end %>
+            <%=  link_to user, title: "Zu #{user.name}s Profil" do %>
+              <%= user.name %>
+            <% end %>
+          </h2>
+          <p><%= user_alpha_or_recommended(user) %> | <%= user.city %>,
+            <%= user.country.upcase %></p>
+          <% if current_user && current_user.admin?%>
+            <p>
+              <%= link_to '📎 Bearbeiten', edit_user_path(user) %> |
+              <%= link_to '❌ Löschen', user, method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %></p>
           <% end %>
-          <%=  link_to user, title: "Zu #{user.name}s Profil" do %>
-            <%= user.name %>
-          <% end %>
-        </h2>
-        <p><%= user_alpha_or_recommended(user) %> | <%= user.city %>,
-          <%= user.country.upcase %></p>
-        <% if current_user && current_user.admin?%>
-          <p>
-            <%= link_to '📎 Bearbeiten', edit_user_path(user) %> |
-            <%= link_to '❌ Löschen', user, method: :delete, data: { confirm: 'Bist du sicher? Was weg ist ist weg!' } %></p>
-        <% end %>
-      </li>
+        </li>
+      <% end %>
+    <% else %>
+      <p>Noch niemand hier</p>
     <% end %>
   </ul>
   <p>
