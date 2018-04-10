@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     list = Array.new
 
     visible_users.each do |x| # visible_users appears to be nil
-      unless list.include? x.name.first
+      unless list.include? x.last_name.first
         list.push(x.transliterate_last_name.first.upcase)
       end
     end
