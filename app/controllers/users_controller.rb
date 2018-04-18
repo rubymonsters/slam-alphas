@@ -26,7 +26,7 @@ class UsersController < Clearance::UsersController
 
     @alphas = visible_users
     @list = set_list
-    @mod, @orga = Event.where(user_id: current_user).partition { |e| e.relationship == 'moderation' }
+    @mod, @orga = Event.where(user_id: @user).partition { |e| e.relationship == 'moderation' }
   end
 
   # GET /users/new
