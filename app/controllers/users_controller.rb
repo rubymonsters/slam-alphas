@@ -92,7 +92,7 @@ class UsersController < Clearance::UsersController
   end
 
   def edit_travel
-    @user = current_user
+    @user = User.find(params[:user_id])
     @subnav_active = 'travel'
   end
 

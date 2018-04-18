@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_action -> {disallow_unless_admin_or_user(@user)}, only: [:edit, :update, :destroy]
 
   def index
-    @mod, @orga = Event.where(user_id: current_user).partition { |e| e.relationship == 'moderation' }
+    @mod, @orga = Event.where(user_id: @user).partition { |e| e.relationship == 'moderation' }
     @event = Event.new
     @subnav_active = "events"
   end
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   end
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
 
   def set_event
