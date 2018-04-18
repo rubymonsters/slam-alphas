@@ -9,10 +9,10 @@ For a project overview of the Github issues, please refer to our [Waffle Board](
 ## Requirements
 
 ### Development
-Ruby 2.4.3, Postgres
+Ruby 2.4.4, Postgres
 
 ### Production
-Ruby 2.4.3, Postgres and Redis
+Ruby 2.4.4, Postgres and Redis
 
 ## Credentials for production
 ### env.SAMPLE and .env
@@ -30,8 +30,7 @@ Clone this repo and cd into it.
 
 Run `$ bundle install` to install dependencies.
 
-Run `$ rake db:setup` to create and seed the database and run migrations. 
+Run `$ rake db:setup` to create and seed the database and run migrations.
 _If you get an error make sure you have Postgres installed and running. Maybe you also need to check credentials in  `config/database.yml`._
 
 Run `$ rails s` to start the local development server.
-
