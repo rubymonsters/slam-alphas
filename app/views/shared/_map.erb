@@ -2,12 +2,14 @@ var map = L.map('map', {
   center: <%= @center %>,
   zoom: <%= @zoom %>,
   zoomControl: false,
+  minZoom: 4,
+  maxZoom: 10,
   attributionControl: false,
   scrollWheelZoom: false
 });
 
 L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer('https://api.mapbox.com/styles/v1/l1sl1s/cj3est9sk00042smqpywtke4i/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibDFzbDFzIiwiYSI6ImNqM25jZWxyNDAwMDMyd3FkendmYmJoZHcifQ.c_6cgfZFT-ooeWWJ8UqaBg')
+L.tileLayer("https://api.mapbox.com/styles/v1/<%= @tile %>/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibDFzbDFzIiwiYSI6ImNpeDF5MWZ4YzAwMTMydG8zeG42eDM5ZXMifQ.SYhfna-uRBaZCpIkuZIvhw")
 .addTo(map);
 
 var marker = L.icon({
