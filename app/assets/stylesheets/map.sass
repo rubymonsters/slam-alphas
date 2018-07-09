@@ -32,7 +32,7 @@ $break: 1300px
       text-decoration: underline
       color: inherit
 
-  @each $country, $color in (de, red), (at, blue), (ch, turquoise)
+  @each $country, $color in (de, blue), (at, $turquoise), (ch, $red)
     &.is-#{$country}
       .#{$country}
         color: $color
