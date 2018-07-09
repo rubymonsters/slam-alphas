@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
   ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
-  MARKERS = {"de" => "red", "at" => "blue", "ch" => "turquoise"}
+  MARKERS = {"de" => "red", "at" => "red", "ch" => "turquoise"}
   TILES = {
     "de" => "l1sl1s/cjhhq61jt05ka2rn2stnj3ylp",
     "at" => "l1sl1s/cjhhq7s2q23st2spyv8xc4f6t",
