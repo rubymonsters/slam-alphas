@@ -9,7 +9,7 @@ var map = L.map('map', {
 });
 
 L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer("https://api.mapbox.com/styles/v1/<%= @tile %>/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibDFzbDFzIiwiYSI6ImNpeDF5MWZ4YzAwMTMydG8zeG42eDM5ZXMifQ.SYhfna-uRBaZCpIkuZIvhw")
+L.tileLayer("https://api.mapbox.com/styles/v1/<%= @tile %>/tiles/256/{z}/{x}/{y}?access_token=<%= Rails.application.secrets.mapbox_api_key %>")
 .addTo(map);
 
 var marker = L.icon({
