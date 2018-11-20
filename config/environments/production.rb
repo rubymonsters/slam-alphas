@@ -45,7 +45,7 @@ Rails.application.configure do
   config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise
+  # when problems arise.
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
@@ -81,6 +81,7 @@ Rails.application.configure do
     host: 'karte.slamalphas.org',
     protocol: 'https'
   }
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
@@ -103,3 +104,4 @@ Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :sender_address => %{"notifier" <notifier@example.com>},
                                           :exception_recipients => %w{passinglisa@gmail.com}
                                         }
+end
