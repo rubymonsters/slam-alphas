@@ -104,4 +104,3 @@ Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :sender_address => %{"notifier" <notifier@example.com>},
                                           :exception_recipients => %w{passinglisa@gmail.com}
                                         }
-end
