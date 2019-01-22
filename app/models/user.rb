@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   # customized validity check in app/validators/website_validator.rb
   validates :website, website: true, allow_blank: true
   validates :facebook_link, website: true, allow_blank: true
-  validates :video_link, website: true, allow_blank: false
+  validates :video_link, website: true, allow_blank: true
 
   validates :will_travel, presence: true
   validates :custom_availability, presence: true

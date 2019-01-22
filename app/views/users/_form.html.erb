@@ -46,6 +46,11 @@
     <%= f.text_field :facebook_link %>
   </div>
   <div class="form-field field">
+    <%= f.label :video_link, "Video-Link" %>
+    <%= f.text_field :video_link %>
+    <p><small>Der Link sollte mit `https://` anfangen. Unterstützt werden Youtube und Vimeo.</small></p>
+  </div>
+  <div class="form-field field">
     <%= image_tag @user.avatar_url(:medium), class: "avatar-preview" if @user.avatar? %>
     <%= f.label :avatar, "Profilbild hochladen" %>
     <%= f.file_field :avatar %>
@@ -60,11 +65,6 @@
       </label>
     </div>
   <% end %>
-  <div class="form-field field">
-    <%= f.label :video_link, "Video-Link *" %>
-    <%= f.text_field :video_link %>
-    <p><small>Der Link sollte mit `https://` anfangen. Unterstützt werden Youtube und Vimeo.</small></p>
-  </div>
 
   <div class="form-field field">
     <p class="title-sub">Unterwegs als</p>
