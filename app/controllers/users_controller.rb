@@ -13,6 +13,7 @@ class UsersController < Clearance::UsersController
                                                               :change_password,
                                                               :update_password,
                                                               :edit_travel]
+  before_action :ensure_accessible_profile, only: [:show]
 
   CENTERS = {"de"=> [50.931, 11.272], "at"=> [47.61, 13.78], "ch"=> [46.87, 8.24]}
   ZOOMS = {"de"=> 6, "at"=> 7, "ch"=> 8}
@@ -124,37 +125,44 @@ class UsersController < Clearance::UsersController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(
-        :name,
-        :city,
-        :country,
-        :email,
-        :year_of_birth,
-        :website,
-        :facebook_link,
-        :password,
-        :password_confirmation,
-        :public,
-        :admin,
-        :alpha,
-        :recommended_by,
-        :video_link,
-        :avatar,
-        :avatar_cache,
-        :remove_avatar,
-        :will_travel,
-        :custom_availability,
-        is_available_on: [],
-        travels_via: [],
-        train_bonus_card: [],
-        bookable_as: []
-      )
+  def ensure_accessible_profile
+    if @user != current_user && @user.public == false
+      redirect_to root_url unless @user.public
     end
+    return true
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :city,
+      :country,
+      :email,
+      :year_of_birth,
+      :website,
+      :facebook_link,
+      :password,
+      :password_confirmation,
+      :public,
+      :admin,
+      :alpha,
+      :recommended_by,
+      :video_link,
+      :avatar,
+      :avatar_cache,
+      :remove_avatar,
+      :will_travel,
+      :custom_availability,
+      is_available_on: [],
+      travels_via: [],
+      train_bonus_card: [],
+      bookable_as: []
+    )
+  end
 end
