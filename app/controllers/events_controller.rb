@@ -1,9 +1,9 @@
 # coding: utf-8
 class EventsController < ApplicationController
-  before_action :authenticate_user
+
   before_action :set_event, only: [:destroy, :update, :edit]
   before_action :set_user, onlly: [:index, :edit]
-  before_action -> {disallow_unless_admin_or_user(@user)}, only: [:edit, :update, :destroy]
+  before_action -> {disallow_unless_admin_or_user(@user)}
 
   def index
     @mod, @orga = Event.where(user_id: @user).partition { |e| e.relationship == 'moderation' }
