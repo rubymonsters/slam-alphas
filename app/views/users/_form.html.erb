@@ -117,6 +117,7 @@
       Welche Slam Alpha hat dich empfohlen?
       <%= collection_select(:user, :recommended_by, User.alphas, :id, :name, :include_blank => "keine") %>
     <% end %>
+    <p>Wenn ihr noch keine von uns kennt, <a href="mailto:office@slamalphas.org">meldet euch bei uns</a>! Wir empfehlen euch gerne!</p>
   </div>
 
   <% if current_user.present? && current_user.admin? %>
