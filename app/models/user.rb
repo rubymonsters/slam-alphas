@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   validates :video_link, website: true, allow_blank: true
 
   validates :will_travel, presence: true
-  validates :custom_availability, presence: true
+  #validates :custom_availability, presence: true
 
   geocoded_by :location
   after_validation :geocode
