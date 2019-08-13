@@ -14,7 +14,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp
+/tmp/*
+!/tmp/.keep
+
+/node_modules
+/yarn-error.log
+.byebug_history
 
 # Ignore config files
 .env
@@ -25,4 +30,3 @@
 /public/uploads
 
 .DS_Store
-.byebug_history

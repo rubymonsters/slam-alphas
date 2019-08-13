@@ -9,7 +9,7 @@ default: &default
   host: localhost
   username: pguser
   password: pguser_password
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:

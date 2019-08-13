@@ -1,4 +1,4 @@
-class AddClearanceToUsers < ActiveRecord::Migration
+class AddClearanceToUsers < ActiveRecord::Migration[5.1]
   def self.up
     change_table :users do |t|
       t.string :encrypted_password, limit: 128
