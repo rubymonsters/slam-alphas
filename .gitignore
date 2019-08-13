@@ -16,7 +16,9 @@
 !/log/.keep
 /tmp/*
 !/tmp/.keep
-# Ignore Byebug command history file.
+
+/node_modules
+/yarn-error.log
 .byebug_history
 
 # Ignore config files
@@ -28,4 +30,3 @@
 /public/uploads
 
 .DS_Store
-.byebug_history
