@@ -17,7 +17,7 @@
  <%= render 'shared/map'%>
 
  var clusters = {};
- <% @cities.each do |city| %>
+ <% @cities.sort.each do |city| %>
    clusters["<%= city %>"] = L.markerClusterGroup();
    <% @users.select {|user| user.city == city}.each do |user| %>
      clusters["<%= city %>"].addLayer(
