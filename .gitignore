@@ -30,3 +30,6 @@
 /public/uploads
 
 .DS_Store
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
