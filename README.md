@@ -9,10 +9,10 @@ For a project overview of the Github issues, please refer to our [Waffle Board](
 ## Requirements
 
 ### Development
-Ruby 2.6.0, Postgres
+Ruby 2.6.3, Postgres
 
 ### Production
-Ruby 2.6.0, Postgres and Redis
+Ruby 2.6.3, Postgres and Redis
 
 ## Credentials for production
 ### env.SAMPLE and .env
