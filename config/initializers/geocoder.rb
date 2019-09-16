@@ -1,7 +1,7 @@
 require 'redis'
 
 if Rails.env.production?
-  #REDIS = Redis.connect(url: ENV['REDISTOGO_URL'])
+  REDIS = Redis.connect(url: ENV['REDISTOGO_URL'])
 
   Geocoder.configure(
     timeout: 3,
