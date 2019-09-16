@@ -11,5 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery/dist/jquery.min.js
 //= require leaflet
 //= require_tree .

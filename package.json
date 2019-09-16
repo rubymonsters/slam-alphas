@@ -1,5 +1,12 @@
 {
   "name": "slam-alphas",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rubymonsters/slam-alphas.git",
+  "author": "lislis <mail@lislis.de>",
+  "license": "MIT"
 }
