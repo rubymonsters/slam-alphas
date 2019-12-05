@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg'
 gem 'addressable', '~> 2.4'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'geocoder'
 gem 'clearance'
 gem 'mini_magick'
