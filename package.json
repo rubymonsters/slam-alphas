@@ -2,7 +2,7 @@
   "name": "slam-alphas",
   "private": true,
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "version": "1.0.0",
   "main": "index.js",
