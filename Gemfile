@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.5'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg'
-gem 'addressable', '~> 2.4'
+gem 'addressable', '~> 2.8'
 gem 'puma', '~> 3.7'
 gem 'geocoder'
 gem 'clearance'
