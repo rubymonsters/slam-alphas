@@ -382,7 +382,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 1.0)
   carrierwave_direct
-  clearance
+  clearance (= 1.17.0)
   database_cleaner
   exception_notification
   faker (~> 1.7, >= 1.7.2)
@@ -406,7 +406,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.6.0p0
+   ruby 2.7.4p191
 
 BUNDLED WITH
-   1.17.2
+   2.2.15
