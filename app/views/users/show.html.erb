@@ -9,7 +9,11 @@
           <span title="Profil is öffentlich">📍</span>
         <% end %>
         <%= @user.name %></h1>
-        <p class="profile-location"><%= @user.city %> (<%= @user.country.upcase %>)</p>
+        <p class="profile-location">
+            <% if @user.pronouns != "" %><span><%= @user.pronouns %></span>
+            <br><% end %>
+            <span><%= @user.city %> (<%= @user.country.upcase %>)</span>
+        </p>
     </div>
   </header>
   <div>

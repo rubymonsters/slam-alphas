@@ -158,6 +158,7 @@ class UsersController < Clearance::UsersController
       :avatar_cache,
       :remove_avatar,
       :will_travel,
+      :pronouns,
       :custom_availability,
       is_available_on: [],
       travels_via: [],
