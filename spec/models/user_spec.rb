@@ -20,7 +20,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "sorting by user name" do
-
     it "can sort users with only one name" do
       user1 = make_user(name: "Eva", email: "eva@email.com")
       user2 = make_user(name: "Sabine Sauer", email: "sabine@email.com")
@@ -49,6 +48,18 @@ RSpec.describe User, type: :model do
       expect(users[0]).to eq user3
       expect(users[1]).to eq user1
       expect(users[2]).to eq user2
+    end
+  end
+
+  describe "are_public scope" do
+    it "includes public users" do
+      user1 = make_user(name: "Eva Maria Mahler",email: "evamaria@email.com", public: true)
+      expect(User.are_public).to include(user1)
+    end
+
+    it "excludes non-pub users" do
+      user1 = make_user(name: "Eva Maria Mahler",email: "evamaria@email.com", public: false)
+      expect(User.are_public).to_not include(user1)
     end
   end
 end
