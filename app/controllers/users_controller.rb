@@ -30,7 +30,7 @@ class UsersController < Clearance::UsersController
     if current_user
       @users = current_user.visible_for_signed_in_users
     else
-      @users = User.where(public: true).order("upper(name) ASC")
+      @users = User.are_public.order("upper(name) ASC")
     end
   end
 
