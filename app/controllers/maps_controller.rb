@@ -11,6 +11,7 @@ class MapsController < ApplicationController
   def show
     if ["de", "at", "ch"].include?(map_params[:country])
       @users = User.where(public: true, country: map_params[:country])
+                 .sort_by { |x| x.city }
       @center = CENTERS[map_params[:country]]
       @zoom = ZOOMS[map_params[:country]]
       @cities = User.all.pluck(:city).uniq

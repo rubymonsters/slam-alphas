@@ -7,8 +7,8 @@
 default: &default
   adapter: postgresql
   host: localhost
-  username: pguser
-  password: pguser_password
+  username: slam
+  password: alpha
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
