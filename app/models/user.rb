@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
 
   scope :alphas, -> { where(alpha: true) }
   scope :admin, -> { where(admin: true) }
+  scope :are_public, -> { where(public: true) }
 
   def self.sort_by_name(users)
     users.sort { |a, b| a.last_name <=> b.last_name }
@@ -87,7 +88,7 @@ class User < ActiveRecord::Base
       User.all.sort_by { |x| x.transliterate_last_name }
     else
       # Adds the user's id to the array of public ids
-      visible_ids = User.where(public: true).pluck(:id) << id
+      visible_ids = User.are_public.pluck(:id) << id
       User.where(id: visible_ids).sort_by { |x| x.transliterate_last_name }
     end
   end
