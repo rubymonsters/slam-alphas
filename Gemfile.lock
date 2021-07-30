@@ -436,7 +436,7 @@ DEPENDENCIES
   addressable (~> 2.4)
   bootsnap (>= 1.1.0)
   byebug
-  capybara (>= 2.15, < 4.0)
+  capybara (>= 2.15)
   carrierwave (~> 1.0)
   carrierwave_direct
   chromedriver-helper
@@ -452,7 +452,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   pg
   puma (~> 3.11)
-  rails (~> 5.2.0)
+  rails (~> 5.2.6)
   redis (~> 4.0)
   rspec-rails
   sass-rails (~> 5.0)

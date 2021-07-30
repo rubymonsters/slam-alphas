@@ -32,5 +32,6 @@
 .DS_Store
 
 /storage/*
+!/storage/.keep
 /public/assets
 /config/master.key
