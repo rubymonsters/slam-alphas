@@ -48,9 +48,9 @@ class User < ActiveRecord::Base
   ]
 
   BOOKABLE_AS = [
-    'Poetin',
-    'Veranstalterin',
-    'Moderatorin',
+    'Poet*in',
+    'Veranstalter*in',
+    'Moderator*in',
     'Featured Artist'
   ]
 
