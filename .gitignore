@@ -30,3 +30,7 @@
 /public/uploads
 
 .DS_Store
+
+/storage/*
+/public/assets
+/config/master.key
