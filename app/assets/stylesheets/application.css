@@ -10,9 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require leaflet
- *= require MarkerCluster.Default
- *= require MarkerCluster
+ *= require leaflet/dist/leaflet.css
+ *= require leaflet.markercluster/dist/MarkerCluster.Default.css
+ *= require leaflet.markercluster/dist/MarkerCluster.css
  *= require main-wp
  *= require base
  *= require admin

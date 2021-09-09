@@ -13,5 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery/dist/jquery.min.js
-//= require leaflet
-//= require_tree .
+//= require leaflet/dist/leaflet.js
+//= require leaflet.markercluster/dist/leaflet.markercluster.js
+//= require main-wp.js
