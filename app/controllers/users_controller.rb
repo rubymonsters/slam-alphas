@@ -5,7 +5,8 @@ class UsersController < Clearance::UsersController
                                   :update,
                                   :destroy,
                                   :change_password,
-                                  :update_password]
+                                  :update_password,
+                                  :edit_travel]
   before_action -> {disallow_unless_admin_or_user(@user)}, only:
                                                              [:edit,
                                                               :update,
@@ -134,7 +135,7 @@ class UsersController < Clearance::UsersController
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || params[:user_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
