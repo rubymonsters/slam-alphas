@@ -66,6 +66,9 @@ class User < ActiveRecord::Base
 
   validates :website, website: true, allow_blank: true
   validates :facebook_link, website: true, allow_blank: true
+  validates :instagram, website: true, allow_blank: true
+  validates :twitter, website: true, allow_blank: true
+  validates :tiktok, website: true, allow_blank: true
   validates :video_link, website: true, allow_blank: true
 
   validates :will_travel, presence: true
