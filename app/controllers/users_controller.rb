@@ -147,6 +147,7 @@ class UsersController < Clearance::UsersController
       :year_of_birth,
       :website,
       :facebook_link,
+      :instagram,
       :password,
       :password_confirmation,
       :public,

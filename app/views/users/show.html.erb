@@ -78,6 +78,9 @@
       <% if @user.facebook_link.present? %>
         <a href="<%= @user.facebook_link %>" target="_blank" class="facebook" title="<%= @user.name %> bei Facebook">Facebook-Seite</a>
       <% end %>
+      <% if @user.instagram.present? %>
+          <a href="<%= @user.instagram %>" target="_blank" class="instagram" title="<%= @user.name %> bei Instagram">Instagram Account</a>
+      <% end %>
     </p>
 
     <div class="profile-links">
