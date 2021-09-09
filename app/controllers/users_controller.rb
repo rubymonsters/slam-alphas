@@ -148,6 +148,8 @@ class UsersController < Clearance::UsersController
       :website,
       :facebook_link,
       :instagram,
+      :twitter,
+      :tiktok,
       :password,
       :password_confirmation,
       :public,
