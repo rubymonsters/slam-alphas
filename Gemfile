@@ -8,7 +8,7 @@ gem 'addressable', '~> 2.4'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave_direct'
-gem 'clearance', '~> 2.4.0'
+gem 'clearance', '~> 2.5.0'
 gem 'dotenv-rails'
 gem 'exception_notification'
 gem 'fog', '~> 1.38' # cloud services library for AWS s3
