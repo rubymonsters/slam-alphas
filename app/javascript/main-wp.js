@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('.slam-profile-video').classList.remove('is-open');
           }
 
-          document.querySelector('.is-highlight').classList.remove('is-highlight');
+          document.querySelector('.is-highlight')?.classList.remove('is-highlight');
           link.classList.add('is-highlight');
           alphabetList.classList.remove('is-hidden');
           // get clicked on letter
