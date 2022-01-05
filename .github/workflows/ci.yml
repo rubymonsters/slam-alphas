@@ -1,0 +1,24 @@
+name: CI
+'on':
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  Build:
+    runs-on: '${{ matrix.os }}'
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+            AWS_ACCESS_KEY_ID: ABCDEFGH
+            AWS_SECRET_ACCESS_KEY: ZYWV
+    steps:
+      - uses: actions/checkout@v2
+      - run: gem update --system
+      - run: gem install bundler
+      - run: psql -c 'create database slam_alphas_test;' -U postgres
+      - run: cp config/database.yml.travis config/database.yml
+      - run: 'bundle exec rake db:create db:migrate RAILS_ENV=test'
