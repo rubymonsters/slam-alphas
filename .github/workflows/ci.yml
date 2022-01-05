@@ -14,7 +14,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ZYWV
       RAILS_ENV: test
       SESSION_SECRET: "thisisonlyfortesting"
-      DATABASE_TEST_URL: "postgresql://postgres:postgres@localhost:5432/mapper_test?pool=5&timeout=5000"
+      DATABASE_TEST_URL: "postgresql://postgres:postgres@localhost:5432/slam_alphas_test?pool=5&timeout=5000"
     services:
       postgres:
         image: postgres
