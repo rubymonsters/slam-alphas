@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
           // get clicked on letter
           let letter = link.getAttribute('href');
           // find letter section in the overall list and how far it is down
-          let offsetInList = document.querySelector('.list-alphabet .title-main.'+ letter).offset().top;
-          let offsetOfList = document.querySelector('.list-alphabet').offset().top;
-          let sectionHeaderHeight =  $('.list-alphabet .title-main.'+ letter).height();
+          let offsetInList = document.querySelector('.list-alphabet .title-main.'+ letter).offsetTop;
+          let offsetOfList = document.querySelector('.list-alphabet').offsetTop;
+          let sectionHeaderHeight =  document.querySelector('.list-alphabet .title-main.'+ letter).getBoundingClientRect().height;
           let scrollTo = offsetOfList - (-1 * offsetInList) - sectionHeaderHeight;
 
           document.querySelector('.list-alphabet')
