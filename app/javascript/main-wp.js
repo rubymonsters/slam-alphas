@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector('body').classList.add('has-js');
 
   // tofuburger toggle
-
   var burger = document.querySelector('.logo-burger');
   var cross = document.querySelector('.navigation-button');
   var nav = document.querySelector('.l-navigation');
@@ -16,36 +15,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   if (document.querySelector('body').classList.contains('has-js')) {
-
     // alphabet list toggle
-
     var alphabetList = document.querySelector('.list-position-wrapper');
     var listClose = document.querySelector('.list-button');
 
     if (alphabetList) {
       alphabetList.classList.add('is-hidden');
 
-      $('.l-alphabet a').on('click', function (ev) {
-        ev.preventDefault();
+      document.querySelectorAll('.l-alphabet a').forEach(link => {
+        link.addEventListener('click', ev => {
+          ev.preventDefault();
 
-        if ($('.slam-profile').length) {
-          $('.slam-profile').addClass('is-hidden');
-        }
-        if ($('.slam-profile-video').length) {
-          $('.slam-profile-video').removeClass('is-open');
-        }
+          if (document.querySelector('.slam-profile')) {
+            document.querySelector('.slam-profile').classList.add('is-hidden');
+          }
+          if (document.querySelector('.slam-profile-video')) {
+            document.querySelector('.slam-profile-video').classList.remove('is-open');
+          }
 
-        $('.is-highlight').removeClass('is-highlight');
-        $(this).addClass('is-highlight');
-        alphabetList.classList.remove('is-hidden');
-        // get clicked on letter
-        var letter = $(this).attr('href');
-        // find letter section in the overall list and how far it is down
-        var offsetInList = $('.list-alphabet .title-main.'+ letter).offset().top;
-        var offsetOfList = $('.list-alphabet').scrollTop();
-        // scroll to that point!
-        var sectionHeaderHeight =  $('.list-alphabet .title-main.'+ letter).height();
-        $('.list-alphabet').scrollTop(offsetOfList - (-1 * offsetInList) - sectionHeaderHeight);
+          document.querySelector('.is-highlight').classList.remove('is-highlight');
+          link.classList.add('is-highlight');
+          alphabetList.classList.remove('is-hidden');
+          // get clicked on letter
+          let letter = link.getAttribute('href');
+          // find letter section in the overall list and how far it is down
+          let offsetInList = document.querySelector('.list-alphabet .title-main.'+ letter).offset().top;
+          let offsetOfList = document.querySelector('.list-alphabet').offset().top;
+          let sectionHeaderHeight =  $('.list-alphabet .title-main.'+ letter).height();
+          let scrollTo = offsetOfList - (-1 * offsetInList) - sectionHeaderHeight;
+
+          document.querySelector('.list-alphabet')
+            .scroll({top: scrollTo, left: 0, behaviour: 'smooth'});
+        });
       });
 
       listClose.addEventListener('click', function () {
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (profileElem && profileClose) {
       profileClose.addEventListener('click', function () {
-        var url = $('.map-nav .active').attr('href');
+        var url = document.querySelector('.map-nav .active').getAttribute('href');
         location = url;
       });
     }
@@ -78,8 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // hide flash messages
-    $('.flashes .flash-close').click(function (ev) {
-        $(this).parent().hide();
+    document.querySelectorAll('.flashes .flash-close').forEach(closeBtn => {
+      closeBtn.addEventListener('click', ev => {
+        closeBtn.closest('.flash').remove();
+      });
     });
   }
 });
