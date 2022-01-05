@@ -6,7 +6,7 @@
         <li><%= link_to "Alle", users_path, title: "Alle Profile ansehen"%> |</li>
       <% end %>
       <li><%= link_to "Password ändern", change_password_user_path(current_user) %></li>
-      <li><%= link_to "Abmelden", sign_out_path, method: :delete, title: "Logge dich aus" %></li>
+      <li><%= button_to "Abmelden", sign_out_path, method: :delete %></li>
     </ul>
   </div>
 <% end %>

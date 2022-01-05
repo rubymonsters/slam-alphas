@@ -1,6 +1,6 @@
 # coding: utf-8
 # # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 # #
 # # Examples:
 # #
@@ -11,6 +11,7 @@ User.create!(
   name: "Svenja Graefen",
   city: "Berlin",
   country: "de",
+  pronouns: "sie/ihr",
   email: "mail@svenjagraefen.de",
   password: "password",
   password_confirmation: "password",
@@ -35,6 +36,7 @@ User.create!(
   name: "Franziska Holzheimer",
   city: "Wien",
   country: "at",
+  pronouns: "sie oder keine",
   email: "info@franziskaholzheimer.de",
   password: "password",
   password_confirmation: "password",
@@ -63,6 +65,7 @@ cities = ["Hamburg", "Berlin", "München", "Frankfurt am Main", "Bremen", "Stutt
   User.create!(
     name: name,
     email: email,
+    pronouns: "keine",
     password: password,
     password_confirmation: password,
     city: cities.sample,

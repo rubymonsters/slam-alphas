@@ -1,4 +1,0 @@
-test:
-  adapter: postgresql
-  database: slam_alphas_test
-  username: postgres

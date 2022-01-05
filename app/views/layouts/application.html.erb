@@ -8,8 +8,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <title>SlamAlphas</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   </head>
@@ -39,7 +39,7 @@
       <div class="flashes">
         <% flash.each do |name, msg| -%>
           <div class="inner">
-            <p class="<%= name%>"><%= msg %> <button class="flash-close" type="button">X</button></p>
+            <p class="<%= name%> flash"><%= msg %> <button class="flash-close" type="button">X</button></p>
           </div>
         <% end -%>
       </div>
