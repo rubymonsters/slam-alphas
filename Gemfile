@@ -8,10 +8,10 @@ gem 'addressable', '~> 2.4'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave_direct'
-gem 'clearance', '~> 2.4.0'
+gem 'clearance', '~> 2.5.0'
 gem 'dotenv-rails'
 gem 'exception_notification'
-gem 'fog', '~> 1.38' # cloud services library for AWS s3
+gem 'fog', '~> 2.2.0' # cloud services library for AWS s3
 gem 'geocoder'
 gem 'jbuilder', '~> 2.7'
 gem 'mini_magick', '~> 4.8'
@@ -22,7 +22,7 @@ gem 'redis', '~> 4.0'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 2.2.0', group: :doc
 gem 'uglifier', '>= 1.3.0'
 
 
