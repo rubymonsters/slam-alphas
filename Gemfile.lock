@@ -360,7 +360,7 @@ GEM
     psych (4.0.3)
       stringio
     public_suffix (4.0.6)
-    puma (5.5.2)
+    puma (5.6.2)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -528,7 +528,7 @@ DEPENDENCIES
   listen (~> 3.3)
   mini_magick (~> 4.8)
   pg
-  puma (~> 5.0)
+  puma (~> 5.6)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
   redis (~> 4.0)
