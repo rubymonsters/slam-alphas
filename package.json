@@ -17,5 +17,8 @@
   "license": "MIT",
   "devDependencies": {
     "webpack-dev-server": "^4.7.2"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
