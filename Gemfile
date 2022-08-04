@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'mini_magick', '~> 4.8'
 gem 'pg'
 gem 'puma', '~> 5.0'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
+gem 'rails', '~> 6.1.4'
 gem 'redis', '~> 4.0'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -47,7 +47,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers'
 end
