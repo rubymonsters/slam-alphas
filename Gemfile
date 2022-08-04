@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.0.4'
 
 gem 'addressable', '~> 2.4'
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -14,7 +14,6 @@ gem 'exception_notification'
 gem 'fog-aws', '~> 3.14'
 gem 'geocoder'
 gem 'jbuilder', '~> 2.7'
-gem 'net-smtp', require: false
 gem 'mini_magick', '~> 4.8'
 gem 'pg'
 gem 'puma', '~> 5.0'
